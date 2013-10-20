@@ -1,0 +1,32 @@
+upstream citizenqa_django {
+  server unix:///tmp/citizenqa.sock;
+  keepalive 64;
+}
+
+server {
+    listen 80;
+
+    server_name citizenqa.bg;
+    access_log /home/ubuntu/web/citizenqa/access.log;
+
+
+    location /m/ {
+        alias /home/osqa/forum/skins/;
+        access_log off;
+    }
+
+    location /upfiles/ {
+        alias /home/osqa/forum/upfiles/;
+        access_log off;
+    }
+	 
+    location /admin_media/ {
+        alias /home/osqa/admin_media/;
+        access_log off;
+    }
+
+    location / {
+      include uwsgi_params;
+      uwsgi_pass citizenqa_django;
+    }
+}

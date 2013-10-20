@@ -1,0 +1,16 @@
+[uwsgi]
+#workers = 2
+# master
+master = true
+# maximum number of processes
+#processes = 10
+# the socket (use the full path to be safe)
+# with appropriate permissions - *may* be needed
+socket = /tmp/citizenqa.sock
+# chmod-socket = 664
+chdir = /home/ubuntu/web/citizenqa
+module = app.wsgi
+# the virtualenv
+#home = /home/ubuntu/.virtualenvs/citizenqa
+# clear environment on exit
+vacuum = true
