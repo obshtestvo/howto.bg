@@ -1,0 +1,16 @@
+{% load i18n %}
+
+<table>
+    <caption><h2>{% trans "Report user" %}</h2></caption>
+    <tr>
+        <td>
+            <p><b>{% trans "Public message" %}:</b></p>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <textarea rows="3" name="publicmsg" cols="35"></textarea><br />
+            <small>{% trans "This message will be visible through the user activity log."  %}</small>
+        </td>
+    </tr>
+</table>
