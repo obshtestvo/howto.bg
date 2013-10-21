@@ -11,6 +11,6 @@ socket = /tmp/citizenqa.sock
 chdir = /home/ubuntu/web/citizenqa
 module = app.wsgi
 # the virtualenv
-#home = /home/ubuntu/.virtualenvs/citizenqa
+virtualenv  = /home/ubuntu/.virtualenvs/citizenqa
 # clear environment on exit
 vacuum = true

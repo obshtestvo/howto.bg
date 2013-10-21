@@ -6,22 +6,22 @@ upstream citizenqa_django {
 server {
     listen 80;
 
-    server_name citizenqa.bg;
+    server_name howto.obshtestvo.bg;
     access_log /home/ubuntu/web/citizenqa/access.log;
 
 
     location /m/ {
-        alias /home/osqa/forum/skins/;
+        alias /home/ubuntu/web/citizenqa/forum/skins/;
         access_log off;
     }
 
     location /upfiles/ {
-        alias /home/osqa/forum/upfiles/;
+        alias /home/ubuntu/web/citizenqa/forum/upfiles/;
         access_log off;
     }
 	 
     location /admin_media/ {
-        alias /home/osqa/admin_media/;
+        alias /home/ubuntu/web/citizenqa/admin_media/;
         access_log off;
     }
 
