@@ -78,3 +78,9 @@ sudo service nginx restart
 На разработчиците в Obshtestvo.bg беше пратен до мейл ключ за достъп до сървъра.
 
 Прилагам и снимки на това как се настройва FileZilla:
+
+![Към настройките](http://i41.tinypic.com/v62gi8.jpg)
+
+![Добавяне на ключа в настройките](http://i42.tinypic.com/1d6xi.png)
+
+![Създаване на ftp връзка](http://i43.tinypic.com/359ixht.png)
