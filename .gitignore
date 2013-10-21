@@ -1,1 +1,4 @@
+access.log
 app/settings_local.py
+*.pyc
+log/
