@@ -16,6 +16,7 @@ official-citrizen-website
     - uwsgi python plugin
     - pip (python package manager)
     - virtualenvwrapper
+    - postfix
 	
 ### Инсталация
 
@@ -27,6 +28,7 @@ official-citrizen-website
 mkvirtualenv citizenqa --no-site-packages
 workon citizenqa
 pip install django==1.3 south MarkDown html5lib ElementTree ipython python-openid mysql-python
+ln -s /home/ubuntu/.virtualenvs/citizenqa/lib/python2.7/site-packages/django/contrib/admin/media /home/ubuntu/web/citizenqa/admin_media
 ```
 
 Ако смятате да ползвате сървъра за база данни и няма mysql инсталиран:
@@ -84,3 +86,15 @@ sudo service nginx restart
 ![Добавяне на ключа в настройките](http://i42.tinypic.com/1d6xi.png)
 
 ![Създаване на ftp връзка](http://i43.tinypic.com/359ixht.png)
+
+### Мейл настройки
+След като си съдадете акаунт в сайта, настройте базови настройки за мейл на `/admin/settings/email/`.
+
+Може да се ползва външна SMTP услуга за изпращане, но за най-базов старт ще ползваме `postfix`, за което
+в страницата на админ панела, която заредихме да въведем:
+
+ - `Email Server`: `localhost`
+ - `Email port`: `25`
+ - `Use TLS`: трябва да е тикнато
+
+
