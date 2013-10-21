@@ -72,3 +72,9 @@ sudo ln -s /home/ubuntu/web/citizenqa/citizenqa.uwsgi /etc/uwsgi/apps-enabled/ci
 sudo service uwsgi restart
 sudo service nginx restart
 ```
+
+### FTP достъп
+
+На разработчиците в Obshtestvo.bg беше пратен до мейл ключ за достъп до сървъра.
+
+Прилагам и снимки на това как се настройва FileZilla:
