@@ -1,0 +1,37 @@
+{% load i18n extra_tags email_tags %}
+
+{% declare %}
+
+    reporter_author = html.mark_safe(smart_str(user.username))
+    reported = html.mark_safe(smart_str(reported.username))
+    
+    reported_link = html.objlink(reported, style=settings.EMAIL_ANCHOR_STYLE)
+    message = html.mark_safe(smart_str(message))
+    
+{% enddeclare %}
+
+{% email %}
+    {% subject %}{% blocktrans %}{{ prefix }} User reported: {{ reported }} by {{ reporter_author }}{% endblocktrans %}{% endsubject %}
+
+    {% htmlcontent notifications/base.html %}
+        <p style="{{ p_style }}">
+            {% blocktrans %}
+			User reported: {{ reported }} by {{ reporter_author }}.<br/>
+			Reporter Message: {{message}}
+            {% endblocktrans %}
+        </p>
+
+
+    {% endhtmlcontent %}
+
+{% textcontent notifications/base_text.html %}
+{% blocktrans %}
+			User reported: {{ reported }} by {{ reporter_author }}.
+			Reporter Message: {{message}}
+{% endblocktrans %}
+
+
+{% endtextcontent %}
+
+{% endemail %}
+

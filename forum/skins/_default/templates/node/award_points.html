@@ -1,0 +1,75 @@
+{% load i18n %}
+
+<p>
+    {% blocktrans %}
+    If you like this answer you can award {{ awarded_user }} with reputation points.
+    {% endblocktrans %}
+</p>
+
+<p>
+    {% blocktrans %}
+    Use the slider below or the input field to choose the amount of points you would like to give.
+    {% endblocktrans %}
+</p>
+
+<table>
+    <tr>
+        <td width="50%">{% trans "Points:" %}</td>
+        <td width="50%"><input type="text" name="points" id="points_input" value="1" style="border: 1px solid #ccc; padding: 1px 2px;" /></td>
+    </tr>
+</table>
+
+<div class="award_points_slider"></div>
+
+<script>
+    var awardPointsNotified = false;
+    var reputation_to_comment = {{ reputation_to_comment }};
+    var user_reputation = {{ user.reputation }};
+
+    function points_award_confirm(reputation, event) {
+        var message = '<div style="max-width: 300px !important; text-align: left;">';
+        message += "{% blocktrans %}Your karma points will be below the minimum reputation to comment. Are you sure you want to award points?{% endblocktrans %}";
+        message += "</div>";
+
+        if ((user_reputation - reputation) < reputation_to_comment && !awardPointsNotified) {
+            awardPointsNotified = true;
+
+            var doptions = {
+                html: message,
+                extra_class: 'confirm',
+                yes_text: messages.yes,
+                show_no: true,
+                no_callback: function() {
+                    $(".dialog").fadeOut("fast", function() {
+                        $('.dialog').remove();
+                    })
+                },
+
+                no_text: messages.no
+            }
+
+            doptions.event = event;
+            show_dialog(doptions);
+        }
+    }
+
+    $('.award_points_slider').slider({
+        min: 1, max: user_reputation,
+        slide: function(evt, ui) {
+            $('#points_input').val(ui.value);
+            points_award_confirm(Number(ui.value), evt)
+        }
+    });
+
+    $('#points_input').live('change keyup', function(evt) {
+        if ($(this).val() > user_reputation) {
+            $(this).attr('value', user_reputation);
+        }
+
+        points_award_confirm(Number($(this).val()), evt);
+
+        $('.award_points_slider').slider('option', 'value', $(this).val());
+
+    });
+
+</script>

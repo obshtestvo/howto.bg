@@ -6,7 +6,9 @@
 {% block title %}{% spaceless %}{% trans "Login" %}{% endspaceless %}{% endblock %}
         
 {% block forejs %}
+
     <link rel="stylesheet" type="text/css" media="screen" href="{% media "/media/style/auth.css" %}"/>
+
     {% for provider in all_providers %}
         {% for location in provider.extra_css %}
             <link rel="stylesheet" type="text/css" media="screen" href="{{ location }}"/>
@@ -165,7 +167,8 @@
 {% block sidebar %}
 <div class="boxC">
     <h3 class="subtitle">{% trans "Why use OpenID?" %}</h3>
-    <ul class="list-item">
+    <div class="list-item">
+    <ul>
         <li>
 		{% trans "with openid it is easier" %}
         </li>
@@ -178,8 +181,8 @@
         <li>
 		{% trans "openid is supported open standard" %}
         </li>
-
     </ul>
+    </div>
     <p class="info-box-follow-up-links">
         <a href="http://openid.net/what/" target="_blank">{% trans "Find out more" %} </a><br/>
         <a href="http://openid.net/get/" target="_blank">{% trans "Get OpenID" %} </a>
