@@ -25,6 +25,7 @@
 			//todo remove copy-paste
             var display = true;
             var txt = "[{% trans "hide preview" %}]";
+
             $('#pre-collapse').text(txt);
             $('#pre-collapse').bind('click', function(){
                 txt = display ? "[{% trans "show preview" %}]" : "[{% trans "hide preview" %}]";
@@ -124,13 +125,15 @@
             <div class="form-item">
                 <div id="wmd-button-bar" class="wmd-panel"></div>
                 {{ form.text }} {{ form.text.errors }}
+
+
                 <div class="preview-toggle">
                     <table width="100%">
                         <tr>
                             <td>
                                 <span id="pre-collapse" title="{% trans "Toggle the real time Markdown editor preview" %}">{% trans "toggle preview" %}</span>
                             </td>
-                            <td style="text-align: right;" id="editor-metrics"></td>
+<td style="text-align: right;" id="editor-metrics"></td>
                             {% if settings.WIKI_ON %}
                             <td class="tright">
                                 {{ form.wiki }} <span class="help_text" title="{{form.wiki.help_text}}">{{ form.wiki.label_tag }} </span>
@@ -140,7 +143,9 @@
 
                     </table>
                 </div>
+
                 <div id="previewer" class="wmd-preview"></div>
+
                 <span class="form-error"></span>
             </div>
             <div class="form-item">

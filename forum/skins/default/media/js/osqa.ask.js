@@ -5,7 +5,6 @@ function changeSideBar(enabled_bar) {
         currentSideBar = enabled_bar;
         $(currentSideBar).fadeIn('slow');
     }
-
 }
 
 $(function () {
@@ -51,7 +50,7 @@ $(function() {
                 }
 
                 if(data.length == 0) {
-                    relatedQuestionsDiv.html('<br /><br /><div align="center">No questions like this have been found.</div>');
+                    relatedQuestionsDiv.html('<br /><br /><div align="center">Няма намерени подобни въпроси.</div>');
                     return;
                 }
 

@@ -6372,7 +6372,7 @@ msgstr "Последни точки"
 #: forum/skins/default/templates/sidebar/recent_awards.html:15
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:15
 msgid "all awards"
-msgstr "всички точки"
+msgstr "всички значки"
 
 #: forum/skins/default/templates/sidebar/recent_tags.html:7
 #: forum/skins/nuxeo/templates/sidebar/recent_tags.html:4

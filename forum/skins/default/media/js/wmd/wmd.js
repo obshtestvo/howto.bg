@@ -1029,8 +1029,9 @@ Attacklab.wmdBase = function(){
 			quoteButton.textOp = command.doBlockquote;
 			setupButton(quoteButton, true);
 			buttonRow.appendChild(quoteButton);
-			
-			var codeButton = document.createElement("li");
+
+			/*
+            var codeButton = document.createElement("li");
 			codeButton.className = "wmd-button";
 			codeButton.id = "wmd-code-button";
 			codeButton.title = "Code Sample <pre><code> Ctrl+K";
@@ -1038,6 +1039,7 @@ Attacklab.wmdBase = function(){
 			codeButton.textOp = command.doCode;
 			setupButton(codeButton, true);
 			buttonRow.appendChild(codeButton);
+			*/
 
 			var imageButton = document.createElement("li");
 			imageButton.className = "wmd-button";
@@ -1053,8 +1055,9 @@ Attacklab.wmdBase = function(){
 			var spacer2 = document.createElement("li");
 			spacer2.className = "wmd-spacer";
 			spacer2.id = "wmd-spacer2";
-			buttonRow.appendChild(spacer2); 
+			buttonRow.appendChild(spacer2);
 
+            /*
 			var olistButton = document.createElement("li");
 			olistButton.className = "wmd-button";
 			olistButton.id = "wmd-olist-button";
@@ -1065,8 +1068,10 @@ Attacklab.wmdBase = function(){
 			};
 			setupButton(olistButton, true);
 			buttonRow.appendChild(olistButton);
+			*/
 			
-			var ulistButton = document.createElement("li");
+			/*
+            var ulistButton = document.createElement("li");
 			ulistButton.className = "wmd-button";
 			ulistButton.id = "wmd-ulist-button";
 			ulistButton.title = "Bulleted List <ul> Ctrl+U";
@@ -1076,7 +1081,9 @@ Attacklab.wmdBase = function(){
 			};
 			setupButton(ulistButton, true);
 			buttonRow.appendChild(ulistButton);
-			
+			*/
+
+            /*
 			var headingButton = document.createElement("li");
 			headingButton.className = "wmd-button";
 			headingButton.id = "wmd-heading-button";
@@ -1084,7 +1091,7 @@ Attacklab.wmdBase = function(){
 			headingButton.XShift = "-160px";
 			headingButton.textOp = command.doHeading;
 			setupButton(headingButton, true);
-			buttonRow.appendChild(headingButton); 
+			//buttonRow.appendChild(headingButton);
 			
 			var hrButton = document.createElement("li");
 			hrButton.className = "wmd-button";
@@ -1093,12 +1100,13 @@ Attacklab.wmdBase = function(){
 			hrButton.XShift = "-180px";
 			hrButton.textOp = command.doHorizontalRule;
 			setupButton(hrButton, true);
-			buttonRow.appendChild(hrButton); 
-			
+			buttonRow.appendChild(hrButton);
+			*/
+
 			var spacer3 = document.createElement("li");
 			spacer3.className = "wmd-spacer";
 			spacer3.id = "wmd-spacer3";
-			buttonRow.appendChild(spacer3); 
+			buttonRow.appendChild(spacer3);
 			
 			var undoButton = document.createElement("li");
 			undoButton.className = "wmd-button";
