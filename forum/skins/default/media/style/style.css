@@ -201,6 +201,12 @@ blockquote {
   float: left;
   padding: 0 5px;
   width: 1090px; }
+  #CAFull .short-summary {
+    width: 100%; }
+    #CAFull .short-summary .question-summary-wrapper {
+      width: 965.6px; }
+    #CAFull .short-summary .counts {
+      width: 112.2px; }
 
 #ground {
   text-align: center;
@@ -218,7 +224,7 @@ blockquote {
     line-height: 38px;
     display: inline-block;
     color: #333333;
-    margin-left: 20px;
+    margin-left: 6.1px;
     text-align: right; }
 
 #logo {
@@ -238,7 +244,7 @@ blockquote {
     float: left;
     border-right: solid 1px #dcdbd7;
     border-left: solid 1px #f3f2ee;
-    padding: 0 12px 3px;
+    padding: 0 12px;
     text-decoration: none;
     text-transform: capitalize; }
     #nav a:hover {
@@ -343,8 +349,8 @@ blockquote {
 #listA .short-summary:first-of-type {
   border-top: none; }
 
-.user-stats-table .short-summary {
-  width: 764px; }
+.user-stats-table {
+  margin: 0 !important; }
 
 .short-summary h2 a {
   color: #2a5594; }
@@ -366,10 +372,8 @@ blockquote {
 .short-summary .question-summary-wrapper {
   float: right;
   width: 705.3px; }
-.short-summary .status {
-  border-radius: 31px; }
 .short-summary .votes, .short-summary .status, .short-summary .views {
-  font-size: 6.25px;
+  font-size: 8.33333px;
   float: left;
   height: 50px;
   padding: 8px 2px 0;
@@ -441,7 +445,6 @@ blockquote {
   padding: 5px 0 10px; }
   .paginator a, .paginator .curr {
     background: #fbfaf8;
-    border-radius: 1em;
     padding: 0.2em 0.6em; }
     .paginator a:hover, .paginator .curr:hover {
       background: #2a5594;
@@ -524,9 +527,8 @@ a.medal {
 
 .tabsA {
   display: block;
-  float: right;
-  position: relative;
-  vertical-align: top; }
+  vertical-align: top;
+  float: right; }
   .tabsA a {
     padding: 6px 10px;
     display: inline-block;
@@ -538,6 +540,25 @@ a.medal {
       border-top-right-radius: 3px; }
     .tabsA a:hover {
       color: #444444; }
+
+.userSection {
+  margin-bottom: 30px; }
+  .userSection .answer-votes {
+    height: auto; }
+  .userSection .userSectionHeader {
+    position: relative;
+    margin-bottom: 7.5px;
+    border-bottom: solid 1px #ddddde;
+    height: 30px;
+    margin-top: 15px; }
+    .userSection .userSectionHeader h2 {
+      float: left;
+      height: 30px;
+      vertical-align: bottom; }
+    .userSection .userSectionHeader #tabsA {
+      float: right;
+      height: 30px;
+      vertical-align: bottom; }
 
 .headlineA {
   border-bottom: 1px solid #ddddde;
@@ -777,7 +798,6 @@ ins {
   background-color: #97ff97; }
 
 .user-about {
-  background-color: #eeeeee;
   height: 200px;
   line-height: 20px;
   overflow: auto;
@@ -789,7 +809,8 @@ ins {
   padding-left: 20px; }
 
 .user-info-table {
-  margin-bottom: 10px; }
+  margin-bottom: 10px;
+  width: 100%; }
 
 .relativetime {
   text-decoration: none; }
@@ -797,16 +818,17 @@ ins {
 .answer-summary {
   clear: both;
   display: block;
-  padding: 3px; }
+  padding: 3px;
+  height: 27px;
+  line-height: 27px; }
 
 .answer-votes {
   background-color: #eeeeee;
   color: #555555;
   float: left;
   font-size: 13px;
-  height: 15px;
-  margin-right: 10px;
-  padding: 4px 4px 5px;
+  margin-right: 6px;
+  padding: 0 4px;
   text-align: center;
   text-decoration: none;
   width: 20px; }
@@ -1316,7 +1338,6 @@ span.comment-chars-left {
   margin-right: 20px; }
 
 div.comment-tools {
-  border-top: 1px solid #ddddde;
   padding-top: 12px;
   text-align: right; }
   div.comment-tools span.comment-tools-separator {
@@ -1330,25 +1351,17 @@ div.comment-tools {
     color: #ddddde;
     font-size: 11px; }
   div.comment-tools a {
-    background: none repeat scroll 0 0 #eeeeee;
-    color: black;
-    cursor: pointer;
+    background: #fbfaf8;
     font-size: 11px;
-    padding: 3px; }
+    padding: 3px 8px; }
     div.comment-tools a:hover {
       color: white;
+      background: #2a5594;
       text-decoration: none; }
 
 .action-link {
-  color: #ddddde;
   cursor: pointer;
   padding: 3px; }
-  .action-link a {
-    color: inherit; }
-    .action-link a.ajax-command:hover {
-      background-color: #ddddde;
-      color: white;
-      text-decoration: none; }
 
 .action-link-separator {
   color: #cccccc; }
@@ -1526,3 +1539,7 @@ div.wmd-button {
   color: white; }
 div.wmd-button-bar {
   float: left; }
+
+#interestingTagAdd,
+#ignoredTagAdd {
+  padding: 6px 11px 5px; }

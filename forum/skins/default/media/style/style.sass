@@ -238,6 +238,15 @@ blockquote
   float: left
   padding: 0 5px
   width: $size-page-full
+  
+  .short-summary
+    width: 100%
+    
+    .question-summary-wrapper
+      width: $size-page - 2 * $size-block - $size-padding-content-x - ($size-block * 2) - $size-padding-content-x
+
+    .counts
+      width: ($size-block * 2) + $size-padding-content-x
 
 #ground
   text-align: center
@@ -250,12 +259,13 @@ blockquote
   right: $size-padding-x
   height: $size-top-height
   text-align: right
+
   a
     height: $size-top-height
     line-height: $size-top-height
     display: inline-block
     color: #333333
-    margin-left: 20px
+    margin-left: $size-padding-content-x/2
     text-align: right
 
 #logo
@@ -276,7 +286,7 @@ blockquote
     float: left
     border-right: solid 1px #dcdbd7
     border-left: solid 1px #f3f2ee
-    padding: 0 12px 3px
+    padding: 0 12px
     text-decoration: none
     text-transform: capitalize
 
@@ -388,8 +398,8 @@ blockquote
 #listA .short-summary:first-of-type
   border-top: none
 
-.user-stats-table .short-summary
-  width: 764px
+.user-stats-table
+  margin: 0 !important
 
 .short-summary
   h2 a
@@ -416,11 +426,8 @@ blockquote
     float: right
     width: $size-page-left - 2 * $size-block - $size-padding-content-x
 
-  .status
-    border-radius: 31px
-
   .votes, .status, .views
-    font-size: $font-size-tiny / 1.6
+    font-size: $font-size-tiny / 1.2
     float: left
     height: $size-block
     padding: 8px 2px 0
@@ -500,7 +507,6 @@ blockquote
 
   a, .curr
     background: $color-background-header
-    border-radius: 1em
     padding: 0.2em 0.6em
 
     &:hover
@@ -592,9 +598,8 @@ a.medal
 
 .tabsA
   display: block
-  float: right
-  position: relative
   vertical-align: top
+  float: right
 
   a
     padding: 6px 10px
@@ -609,6 +614,29 @@ a.medal
 
     &:hover
       color: $color-text
+
+.userSection
+  margin-bottom: $size-padding-content-y * 2
+
+  .answer-votes
+    height: auto
+
+  .userSectionHeader
+    position: relative
+    margin-bottom: $size-padding-content-y / 2
+    border-bottom: solid 1px $color-divider
+    height: 30px
+    margin-top: $size-padding-content-y
+
+    h2
+      float: left
+      height: 30px
+      vertical-align: bottom
+
+    #tabsA
+      float: right
+      height: 30px
+      vertical-align: bottom
 
 .headlineA
   border-bottom: 1px solid $color-divider
@@ -873,7 +901,6 @@ ins
 //.user-details
 
 .user-about
-  background-color: #EEEEEE
   height: 200px
   line-height: 20px
   overflow: auto
@@ -886,6 +913,7 @@ ins
 
 .user-info-table
   margin-bottom: 10px
+  width: 100%
 
 .relativetime
   text-decoration: none
@@ -894,15 +922,16 @@ ins
   clear: both
   display: block
   padding: 3px
+  height: 27px
+  line-height: 27px
 
 .answer-votes
   background-color: #EEEEEE
   color: #555555
   float: left
   font-size: $font-size-big
-  height: 15px
-  margin-right: 10px
-  padding: 4px 4px 5px
+  margin-right: 6px
+  padding: 0 4px
   text-align: center
   text-decoration: none
   width: 20px
@@ -1413,9 +1442,9 @@ span.comment-chars-left
   margin-right: 20px
 
 div.comment-tools
-  border-top: 1px solid $color-divider
   padding-top: 12px
   text-align: right
+
   span.comment-tools-separator
     float: left
     display: block
@@ -1423,29 +1452,24 @@ div.comment-tools
     color: #ccc
     font-size: $font-size-huge
     margin-left: 1px
+
   .comments-showing
     color: $color-divider
     font-size: $font-size-small
+
   a
-    background: none repeat scroll 0 0 #EEEEEE
-    color: black
-    cursor: pointer
+    background: $color-background-header
     font-size: $font-size-small
-    padding: 3px
+    padding: 3px 8px
+
     &:hover
-      color: white
+      color: #ffffff
+      background: $color-link
       text-decoration: none
 
 .action-link
-  color: $color-divider
   cursor: pointer
   padding: 3px
-  a
-    color: inherit
-    &.ajax-command:hover
-      background-color: $color-divider
-      color: #FFFFFF
-      text-decoration: none
 
 .action-link-separator
   color: #CCCCCC
@@ -1641,3 +1665,7 @@ div
     color: white
   &.wmd-button-bar
     float: left
+
+#interestingTagAdd,
+#ignoredTagAdd
+  padding: 6px 11px 5px
