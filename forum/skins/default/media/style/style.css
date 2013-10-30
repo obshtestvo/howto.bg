@@ -271,6 +271,9 @@ blockquote {
         text-decoration: none;
         background: #b4260a; }
 
+#askform hr {
+  display: none; }
+
 #nav_questions:before {
   padding-right: 4px;
   font-family: FontAwesome;
@@ -591,11 +594,10 @@ a.medal {
 .questions-related {
   word-wrap: break-word; }
   .questions-related p {
-    line-height: 20px;
-    margin-bottom: 10px; }
+    margin-bottom: 13px; }
 
 .question-body {
-  font-size: 13px;
+  font-size: 14px;
   min-height: 100px; }
   .question-body p {
     line-height: 22.1px; }
@@ -604,7 +606,8 @@ a.medal {
 
 .vote-buttons {
   float: left;
-  text-align: center; }
+  text-align: center;
+  margin-top: 5px; }
 
 span.form-error {
   color: #990000;
@@ -630,16 +633,17 @@ ul.errorlist {
   width: 100%; }
 
 .answer-body {
-  font-size: 13px;
+  font-size: 14px;
   line-height: 20px;
   min-height: 80px;
-  margin: 0 0 20px 0; }
+  margin: 2px 0 20px 0; }
   .answer-body img {
     max-width: 640px; }
 
 /* Fixes OSQA-143 IE8 text overflow issue */
 div.question-body p, div.answer-body p {
-  max-width: 817.5px; }
+  max-width: 817.5px;
+  padding-left: 5px; }
 
 .accepted-answer {
   border-right: solid 5px #00cc00; }
@@ -681,14 +685,9 @@ div.question-body p, div.answer-body p {
 #medalList .badgeListItem {
   float: left;
   width: 32%; }
-#medalList .intoMyBadges {
-  float: left;
-  min-width: 5%;
-  text-align: right;
-  height: 30px; }
-  #medalList .intoMyBadges span {
-    padding-right: 5px;
-    color: #5b9058; }
+#medalList .ownedBadge .badge {
+  border: solid 1px #22dd22;
+  box-shadow: none; }
 
 .list-item ul {
   margin: 0;
@@ -1017,7 +1016,8 @@ ins {
     clear: both;
     display: inline;
     float: left;
-    margin-right: 4px; }
+    margin-right: 4px;
+    background: #fbfaf8; }
 
 .message {
   background-color: #eeeeee;
@@ -1041,36 +1041,37 @@ ins {
 .ask-body {
   padding-right: 10px; }
 
+.notify p {
+  margin: 0; }
+
 .notify {
-  background-color: #f4a83d;
-  color: #444444;
+  color: #625c46;
+  background-color: #e4d499;
+  border-color: #bce8f1;
   left: 0;
-  padding: 0;
+  padding: 15px 0;
   position: fixed;
   text-align: center;
   top: 0;
   width: 100%;
   z-index: 100; }
+  .notify a {
+    color: white; }
 
 * html .notify {
   position: absolute; }
 
-.notify p {
-  margin-bottom: 5px;
-  margin-top: 5px; }
-
 #close-notify {
-  background-color: #fad163;
-  border: 2px solid #735005;
-  color: #735005;
+  border: 1px solid #857b54;
+  color: #857b54;
+  background: white;
   cursor: pointer;
   font-size: 14px;
-  line-height: 18px;
-  padding: 0 3px;
+  padding: 0 5px;
   position: absolute;
-  right: 5px;
-  text-decoration: none;
-  top: 5px; }
+  right: 12.2px;
+  top: 14px;
+  text-decoration: none; }
   #close-notify:hover {
     text-decoration: none; }
 
@@ -1193,9 +1194,9 @@ a.sidebar_button {
   color: black;
   cursor: pointer;
   font-size: 11px;
-  padding: 3px; }
+  padding: 3px 8px; }
   a.sidebar_button:hover {
-    background-color: #ddddde;
+    background-color: #2a5594;
     color: white;
     text-decoration: none; }
 a.post-vote {
@@ -1240,7 +1241,12 @@ a.accept-answer {
 .post-score, .comments-char-left-count {
   padding: 0 0 3px; }
 
+.post-score {
+  font-size: 22.5px;
+  padding: 5px 0; }
+
 .favorite-mark {
+  margin-top: 7px;
   background: url("../images/vote-favorite-off.png") no-repeat scroll center center transparent; }
   .favorite-mark.on {
     background: url("../images/vote-favorite-on.png") no-repeat scroll center center transparent; }
@@ -1442,14 +1448,14 @@ div.dialog {
   cursor: pointer; }
 
 div.dialog .dialog-content {
-  padding: 12px 12px 42px 12px;
+  padding: 12px 15px 42px 15px;
   z-index: 1000; }
 div.dialog .dialog-buttons {
   margin: 0px;
   height: 25px;
   text-align: center;
   position: absolute;
-  bottom: 0px;
+  bottom: 6px;
   left: 0px;
   width: 100%; }
 
@@ -1481,12 +1487,11 @@ div.dialog.prompt {
   width: 14px;
   height: 14px;
   display: inline-block;
-  margin-top: 2px; }
+  margin-bottom: -2px; }
 
 div#subscription_list {
   width: 100%; }
 
-/*float:left; */
 .subscription_switch {
   display: inline-block;
   zoom: 1;

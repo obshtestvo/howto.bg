@@ -317,6 +317,10 @@ blockquote
         text-decoration: none
         background: darken(#c72a0b, 4%)
 
+#askform
+  hr
+    display: none
+
 #nav_questions:before
   padding-right: $font-size / 3
   @include icon($question-sign)
@@ -391,9 +395,6 @@ blockquote
   padding: $size-padding-content-x 0px $size-padding-content-x 0
   position: relative
   width: $size-page-left
-
-  //&:nth-child(2n-1)
-  //  background: $color-background-hover-light
 
 #listA .short-summary:first-of-type
   border-top: none
@@ -669,11 +670,10 @@ a.medal
 .questions-related
   word-wrap: break-word
   p
-    line-height: 20px
-    margin-bottom: 10px
+    margin-bottom: 13px
 
 .question-body
-  font-size: $font-size-big
+  font-size: $font-size-large
   min-height: 100px
 
   p
@@ -685,6 +685,7 @@ a.medal
 .vote-buttons
   float: left
   text-align: center
+  margin-top: 5px
 
 span.form-error
   color: #990000
@@ -711,10 +712,11 @@ ul.errorlist
   width: 100%
 
 .answer-body
-  font-size: $font-size-big
+  font-size: $font-size-large
   line-height: 20px
   min-height: 80px
-  margin: 0 0 20px 0
+  margin: 2px 0 20px 0
+
   img
     max-width: 640px
 
@@ -723,6 +725,7 @@ ul.errorlist
 div
   &.question-body p, &.answer-body p
     max-width: $size-page-left
+    padding-left: 5px
 
 //.answered-by-owner
 
@@ -767,17 +770,15 @@ div
     height: 30px
     margin: $size-padding-content-y/2 0
     line-height: 30px
+
   .badgeListItem
     float: left
     width: 32%
-  .intoMyBadges
-    span
-      padding-right: 5px
-      color: #5B9058
-    float: left
-    min-width: 5%
-    text-align: right
-    height: 30px
+
+  .ownedBadge
+    .badge
+      border: solid 1px #22dd22
+      box-shadow: none
 
 .list-item
   ul
@@ -1104,14 +1105,17 @@ ins
   padding: 5px
   width: 170px
   display: inline-block
+
   ul
     list-style-type: none
     margin: 0
+
   .thumb
     clear: both
     display: inline
     float: left
     margin-right: 4px
+    background: $color-background-header
 
 .message
   background-color: #EEEEEE
@@ -1137,36 +1141,39 @@ ins
 .ask-body
   padding-right: 10px
 
+.notify p
+  margin: 0
+
 .notify
-  background-color: #F4A83D
-  color: #444444
+  color: #625c46
+  background-color: #e4d499
+  border-color: #bce8f1
   left: 0
-  padding: 0
+  padding: $size-padding-content-y 0
   position: fixed
   text-align: center
   top: 0
   width: 100%
   z-index: 100
 
+  a
+    color: #ffffff
+
 * html .notify
   position: absolute
 
-.notify p
-  margin-bottom: 5px
-  margin-top: 5px
-
 #close-notify
-  background-color: #FAD163
-  border: 2px solid #735005
-  color: #735005
+  border: 1px solid #857b54
+  color: #857b54
+  background: #ffffff
   cursor: pointer
   font-size: $font-size-large
-  line-height: 18px
-  padding: 0 3px
+  padding: 0 5px
   position: absolute
-  right: 5px
+  right: $size-padding-content-x
+  top: 14px
   text-decoration: none
-  top: 5px
+
   &:hover
     text-decoration: none
 
@@ -1291,9 +1298,10 @@ a
     color: black
     cursor: pointer
     font-size: $font-size-small
-    padding: 3px
+    padding: 3px 8px
+
     &:hover
-      background-color: $color-divider
+      background-color: $color-link
       color: white
       text-decoration: none
 
@@ -1341,8 +1349,14 @@ a
 .post-score, .comments-char-left-count
   padding: 0 0 3px
 
+.post-score
+  font-size: $font-size-huge * 1.5
+  padding: 5px 0
+
 .favorite-mark
+  margin-top: 7px
   background: url("../images/vote-favorite-off.png") no-repeat scroll center center transparent
+
   &.on
     background: url("../images/vote-favorite-on.png") no-repeat scroll center center transparent
 
@@ -1555,7 +1569,7 @@ div.dialog
 
 div.dialog
   .dialog-content
-    padding: 12px 12px 42px 12px
+    padding: 12px 15px 42px 15px
     z-index: 1000
 
   .dialog-buttons
@@ -1563,7 +1577,7 @@ div.dialog
     height: 25px
     text-align: center
     position: absolute
-    bottom: 0px
+    bottom: 6px
     left: 0px
     width: 100%
 
@@ -1579,8 +1593,6 @@ div.dialog
 div.dialog
   &.confirm, &.warning
     text-align: center
-
-  //&.confirm
 
   &.prompt
     width: 355px
@@ -1600,11 +1612,10 @@ div.dialog
   width: 14px
   height: 14px
   display: inline-block
-  margin-top: 2px
+  margin-bottom: -2px
 
 div#subscription_list
   width: 100%
-/*float:left;
 
 .subscription_switch
   display: inline-block

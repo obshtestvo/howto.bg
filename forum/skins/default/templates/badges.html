@@ -17,12 +17,7 @@
     <div id="medalList">
         {% for badge in badges %}
         <div style="clear:both;line-height:30px">
-            <div class="intoMyBadges">
-            {% if badge.id in mybadges %}
-                 <span>&#10004;</span>
-            {% endif %}
-            </div>
-            <div class="badgeListItem">
+            <div class="badgeListItem {% if badge.id in mybadges %} ownedBadge {% endif %}">
                 <a href="{{badge.get_absolute_url}}" title="{{ badge.get_type_display }} : {{ badge.description }}" class="medal"><span class="badge{{ badge.type }} badge-type-{{ badge.id }} badge"></span>&nbsp;{{ badge.name }}</a><strong> &#215; {{ badge.awarded_count|intcomma }}</strong>
             </div>
             <p class="badgeListDescription">
