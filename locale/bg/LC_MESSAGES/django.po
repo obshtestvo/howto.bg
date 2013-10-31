@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: OSQA\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-02 14:14-0700\n"
-"PO-Revision-Date: 2013-10-31 13:57+0200\n"
+"PO-Revision-Date: 2013-10-31 14:09+0200\n"
 "Last-Translator:  <jordan@gape.bg>\n"
 "Language-Team: Obshtestvo.bg <info@obshtestvo.bg>\n"
 "Language: Bulgarian\n"
@@ -7209,7 +7209,7 @@ msgstr ""
 
 #: forum/views/admin.py:462
 msgid "filter"
-msgstr ""
+msgstr "филтрирай"
 
 #: forum/views/admin.py:475
 msgid "No action performed"
