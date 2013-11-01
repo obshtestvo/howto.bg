@@ -75,6 +75,14 @@ sudo service uwsgi restart
 sudo service nginx restart
 ```
 
+Директории с достъп за запис:
+
+```
+log
+locale
+app/cache
+```
+
 ### FTP достъп
 
 На разработчиците в Obshtestvo.bg беше пратен до мейл ключ за достъп до сървъра.

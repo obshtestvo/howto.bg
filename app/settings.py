@@ -92,6 +92,10 @@ if FORCE_SCRIPT_NAME.endswith('/'):
 MODULES_PACKAGE = 'forum_modules'
 MODULES_FOLDER = os.path.join(SITE_SRC_ROOT, MODULES_PACKAGE)
 
+LOCALE_PATHS = LOCALE_PATHS = (
+  os.path.join(SITE_SRC_ROOT, 'locale'),
+)
+
 MODULE_LIST = filter(lambda m: getattr(m, 'CAN_USE', True), [
         __import__('forum_modules.%s' % f, globals(), locals(), ['forum_modules'])
         for f in os.listdir(MODULES_FOLDER)
