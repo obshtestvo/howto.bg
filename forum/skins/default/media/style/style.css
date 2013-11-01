@@ -375,6 +375,8 @@ blockquote {
 .short-summary .question-summary-wrapper {
   float: right;
   width: 705.3px; }
+.short-summary .status {
+  border-radius: 4px; }
 .short-summary .votes, .short-summary .status, .short-summary .views {
   font-size: 8.33333px;
   float: left;
@@ -425,7 +427,7 @@ blockquote {
 
 .boxC {
   margin-bottom: 8px;
-  padding: 10px; }
+  padding: 15px 12.2px; }
   .boxC p {
     margin-bottom: 8px; }
     .boxC p.nomargin {
@@ -448,7 +450,8 @@ blockquote {
   padding: 5px 0 10px; }
   .paginator a, .paginator .curr {
     background: #fbfaf8;
-    padding: 0.2em 0.6em; }
+    padding: 0.2em 0.6em;
+    border-radius: 3px; }
     .paginator a:hover, .paginator .curr:hover {
       background: #2a5594;
       color: white;
@@ -547,7 +550,8 @@ a.medal {
 .userSection {
   margin-bottom: 30px; }
   .userSection .answer-votes {
-    height: auto; }
+    height: auto;
+    border-radius: 3px; }
   .userSection .userSectionHeader {
     position: relative;
     margin-bottom: 7.5px;
@@ -835,6 +839,12 @@ ins {
 .vote-count {
   font-size: 14px; }
 
+.user-stats-table .vote-count {
+  height: 32px;
+  line-height: 32px;
+  display: inline-block;
+  vertical-align: top; }
+
 .badge {
   font-size: 15px;
   width: 30px;
@@ -1003,6 +1013,14 @@ ins {
   color: #2a5594; }
   .footerLinks a {
     color: #2a5594; }
+
+.gravatar {
+  background: #fbfaf8;
+  border-radius: 4px; }
+
+#user-reputation {
+  font-size: 14px;
+  padding-top: 5px; }
 
 .user {
   line-height: 140%;
@@ -1194,7 +1212,8 @@ a.sidebar_button {
   color: black;
   cursor: pointer;
   font-size: 11px;
-  padding: 3px 8px; }
+  padding: 3px 8px;
+  border-radius: 3px; }
   a.sidebar_button:hover {
     background-color: #2a5594;
     color: white;
@@ -1300,6 +1319,10 @@ a.favorite-mark:hover {
     float-height: 18px;
     float-margin-left: 4px; }
 
+.comment-cancel {
+  background: #eeeeee !important;
+  color: #444444 !important; }
+
 a.comment-like, a.comment-delete, a.comment-edit, a.comment-convert, a.comment-convert-to-question {
   margin-left: 2px;
   width: 18px; }
@@ -1359,7 +1382,8 @@ div.comment-tools {
   div.comment-tools a {
     background: #fbfaf8;
     font-size: 11px;
-    padding: 3px 8px; }
+    padding: 3px 8px;
+    border-radius: 3px; }
     div.comment-tools a:hover {
       color: white;
       background: #2a5594;
@@ -1398,7 +1422,8 @@ div.comment-tools {
   height: auto;
   padding: 2px 0 4px 0;
   vertical-align: middle;
-  margin-top: 6px; }
+  margin-top: 6px;
+  font-size: 11px; }
 
 .comments-char-left-count.warn {
   color: orange; }
@@ -1423,11 +1448,11 @@ div.dialog {
   top: 1.5em;
   text-align: left;
   list-style-type: none;
-  z-index: 500; }
+  z-index: 500;
+  padding: 10px;
+  border-radius: 4px; }
   .context-menu-dropdown li.item {
-    padding: 4px 8px 4px 8px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px; }
+    padding: 4px 8px 4px 8px; }
     .context-menu-dropdown li.item a {
       color: inherit;
       white-space: nowrap;
@@ -1450,6 +1475,8 @@ div.dialog {
 div.dialog .dialog-content {
   padding: 12px 15px 42px 15px;
   z-index: 1000; }
+  div.dialog .dialog-content p {
+    margin: 0; }
 div.dialog .dialog-buttons {
   margin: 0px;
   height: 25px;

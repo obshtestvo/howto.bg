@@ -427,6 +427,9 @@ blockquote
     float: right
     width: $size-page-left - 2 * $size-block - $size-padding-content-x
 
+  .status
+    border-radius: 4px
+
   .votes, .status, .views
     font-size: $font-size-tiny / 1.2
     float: left
@@ -481,7 +484,7 @@ blockquote
 
 .boxC
   margin-bottom: 8px
-  padding: 10px
+  padding: $size-padding-content-y $size-padding-content-x
 
   p
     margin-bottom: 8px
@@ -509,6 +512,7 @@ blockquote
   a, .curr
     background: $color-background-header
     padding: 0.2em 0.6em
+    border-radius: 3px
 
     &:hover
       background: $color-link
@@ -621,6 +625,7 @@ a.medal
 
   .answer-votes
     height: auto
+    border-radius: 3px
 
   .userSectionHeader
     position: relative
@@ -940,6 +945,13 @@ ins
 .vote-count
   font-size: $font-size-large
 
+.user-stats-table
+  .vote-count
+    height: 32px
+    line-height: 32px
+    display: inline-block
+    vertical-align: top
+
 //.user-action-1
 
 //.user-action-2
@@ -1099,6 +1111,14 @@ ins
   color: $color-link
   a
     color: $color-link
+
+.gravatar
+  background: $color-background-header
+  border-radius: 4px
+
+#user-reputation
+  font-size: $font-size-large
+  padding-top: 5px
 
 .user
   line-height: 140%
@@ -1299,6 +1319,7 @@ a
     cursor: pointer
     font-size: $font-size-small
     padding: 3px 8px
+    border-radius: 3px
 
     &:hover
       background-color: $color-link
@@ -1410,6 +1431,10 @@ a.favorite-mark:hover
     height: 18px
     margin-left: 4px
 
+.comment-cancel
+  background: $color-background-body !important
+  color: $color-text !important
+
 a
   &.comment-like, &.comment-delete, &.comment-edit, &.comment-convert, &.comment-convert-to-question
     margin-left: 2px
@@ -1475,6 +1500,7 @@ div.comment-tools
     background: $color-background-header
     font-size: $font-size-small
     padding: 3px 8px
+    border-radius: 3px
 
     &:hover
       color: #ffffff
@@ -1517,6 +1543,7 @@ div.comment-tools
   padding: 2px 0 4px 0
   vertical-align: middle
   margin-top: 6px
+  font-size: $font-size-small
 
 .comments-char-left-count.warn
   color: orange
@@ -1542,22 +1569,26 @@ div.dialog
   text-align: left
   list-style-type: none
   z-index: 500
+  padding: 10px
+  border-radius: 4px
 
   li
     &.item
       padding: 4px 8px 4px 8px
-      -moz-border-radius: 5px
-      -webkit-border-radius: 5px
+
       a
         color: inherit
         white-space: nowrap
         text-decoration: none
+
     &.separator
       text-align: center
       padding: 10px 0 4px 0
     &.item:hover
+
       background-color: #3060A8
       color: white
+
   span
     margin-right: 4px
     float: left
@@ -1571,6 +1602,9 @@ div.dialog
   .dialog-content
     padding: 12px 15px 42px 15px
     z-index: 1000
+
+    p
+      margin: 0
 
   .dialog-buttons
     margin: 0px

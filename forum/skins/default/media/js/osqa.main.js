@@ -415,7 +415,8 @@ $(function() {
         var ajax_url = el.attr('href')
         ajax_url = ajax_url + "?nocache=" + new Date().getTime()
 
-        $('.context-menu-dropdown').slideUp('fast');
+        //$('.context-menu-dropdown').slideUp('fast');
+        $('.context-menu-dropdown').hide();
 
         if (el.is('.withprompt')) {
             load_prompt(evt, el, ajax_url);
@@ -504,7 +505,7 @@ $(function() {
 
             var hcheck = !($.browser.msie || $.browser.opera);
 
-            $textarea.css("padding-top", 0).css("padding-bottom", 0).css("resize", "none");
+            $textarea.css("resize", "none");
             textarea.style.overflow = 'hidden';
 
 
@@ -563,14 +564,16 @@ $(function() {
 
                 var h = Math.max(80, textarea.scrollHeight);
                 textarea.style.height = current_height;
-                $textarea.animate({height: h + 'px'}, 50);
+                //$textarea.animate({height: h + 'px'}, 50);
 
                 current_length = length;
             }
 
             function show_comment_form() {
-                $container.slideDown('slow');
-                $add_comment_link.fadeOut('slow');
+                //$container.slideDown('slow');
+                $container.show();
+                $add_comment_link.hide();
+                //$add_comment_link.fadeOut('slow');
                 $textarea.focus();
                 interval = window.setInterval(function() {
                     process_form_changes();
@@ -582,8 +585,10 @@ $(function() {
                     window.clearInterval(interval);
                     interval = null;
                 }
-                $container.slideUp('slow');
-                $add_comment_link.fadeIn('slow');
+                //$container.slideUp('slow');
+                $container.hide();
+                $add_comment_link.show();
+                //$add_comment_link.fadeIn('slow');
             }
 
             $add_comment_link.click(function(){
@@ -603,7 +608,9 @@ $(function() {
                     $textarea.val(data);
                 });
 
-                $comment.slideUp('slow');
+                //$comment.slideUp('slow');
+                $comment.hide();
+
                 show_comment_form();
                 return false;
             });
@@ -654,9 +661,12 @@ $(function() {
         }
 
         $comment_tools.find('.show-all-comments-link').click(function() {
-            $comments_container.find('.not_top_scorer').slideDown('slow');
-            $(this).fadeOut('slow');
-            $comment_tools.find('.comments-showing').fadeOut('slow');
+            //$comments_container.find('.not_top_scorer').slideDown('slow');
+            $comments_container.find('.not_top_scorer').show();
+            //$(this).fadeOut('slow');
+            $(this).hide();
+            //$comment_tools.find('.comments-showing').fadeOut('slow');
+            $comment_tools.find('.comments-showing').hide()
             return false;
         });
     });

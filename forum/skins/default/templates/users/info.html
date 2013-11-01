@@ -10,6 +10,7 @@
 <div id="subheader" class="headUser{% if view_user.is_suspended %} suspended-user{% endif %}">
     {{view_user.decorated_name}}
 </div>
+
 <table class="user-info-table">
     <tr>
         <td width="180" style="vertical-align:middle;text-align:center;">
@@ -119,7 +120,7 @@
 				-->
             </table>
         </td>
-        <td width="380">
+        <td>
             {% if not view_user.is_suspended %}
             <div class="user-about">
             {% if view_user.about %}

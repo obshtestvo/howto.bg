@@ -161,7 +161,7 @@
                         {% for award, count in awards %}
                             {% spaceless %}
                             <a href="{% url badges %}{{award.id}}/{{award.name|slugify}}" title="{{ award.description }}" class="medal">
-                                <span class="badge{{ award.type }}">&#9679;</span>&nbsp;{{ award.name }}
+                                <span class="badge{{ award.type }} badge-type-{{ award.id }} badge"></span>&nbsp;{{ award.name }}
                             </a>
                             {% ifnotequal count 1 %}
                                 <span class="tag-number"> &#215; {{ count|intcomma }}</span>

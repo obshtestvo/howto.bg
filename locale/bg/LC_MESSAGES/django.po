@@ -71,7 +71,7 @@ msgstr "въпрос"
 #: forum/skins/nuxeo/templates/index.html:15
 #: forum/skins/nuxeo/templates/question_edit_tips.html:8
 msgid "faq"
-msgstr "често задавани въпроси"
+msgstr "ч.з.в"
 
 #: forum/registry.py:25 forum/registry.py:60
 #: forum/skins/default/templates/index.html:14
@@ -855,7 +855,7 @@ msgstr "Вашата забрана беше отменена."
 #: forum/actions/user.py:217
 #, python-format
 msgid "for %s days"
-msgstr "за %s дена"
+msgstr "за %s дни"
 
 #: forum/actions/user.py:219
 msgid "indefinetely"
@@ -3331,7 +3331,7 @@ msgstr "Значки"
 #: forum/skins/nuxeo/templates/badges.html:13
 msgid "Community gives you awards for your questions, answers and votes."
 msgstr ""
-"Ако Вашите отговори са ползотворни, общността ще Ви се отблагодари с точки."
+""
 
 #: forum/skins/default/templates/badges.html:14
 #: forum/skins/nuxeo/templates/badges.html:14
@@ -3344,7 +3344,7 @@ msgstr "Списък с всички значки и колко пъти те с
 #: forum/skins/default/templates/badges.html:39
 #: forum/skins/nuxeo/templates/badges.html:41
 msgid "Community badges"
-msgstr "Значки на общността"
+msgstr "Значки на общността:"
 
 #: forum/skins/default/templates/badges.html:42
 #: forum/skins/nuxeo/templates/badges.html:44
@@ -3973,7 +3973,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/pagesize.html:6
 #: forum/skins/nuxeo/templates/paginator/page_sizes.html:4
 msgid "posts per page"
-msgstr "публикации на страница"
+msgstr "въпроси на страница:"
 
 #: forum/skins/default/templates/paginator.html:6
 #: forum/skins/default/templates/paginator.html:7
@@ -4109,7 +4109,7 @@ msgstr[1] "%(counter)s Отговори"
 #: forum/skins/default/templates/question.html:199
 #: forum/skins/nuxeo/templates/question.html:200
 msgid "Your answer"
-msgstr "Вашия отговор"
+msgstr "Вашия отговор:"
 
 #: forum/skins/default/templates/question.html:201
 #: forum/skins/nuxeo/templates/question.html:202
@@ -4159,7 +4159,7 @@ msgstr "използва тагове"
 #: forum/skins/default/templates/question.html:304
 #: forum/skins/nuxeo/templates/question.html:305
 msgid "question asked"
-msgstr "Зададен въпрос"
+msgstr "Въпроса е зададен"
 
 #: forum/skins/default/templates/question.html:307
 #: forum/skins/nuxeo/templates/question.html:308
@@ -4179,7 +4179,7 @@ msgstr "Последно обновен"
 #: forum/skins/default/templates/question.html:316
 #: forum/skins/nuxeo/templates/question.html:317
 msgid "Related questions"
-msgstr "Подобни въпроси"
+msgstr "Подобни въпроси:"
 
 #: forum/skins/default/templates/question_edit.html:5
 #: forum/skins/default/templates/question_edit.html:92
@@ -4319,17 +4319,17 @@ msgstr ""
 #: forum/skins/default/templates/subscription_status.html:3
 #: forum/skins/nuxeo/templates/subscription_status.html:3
 msgid "Follow this question"
-msgstr "Следвай този въпрос"
+msgstr "Абонамент"
 
 #: forum/skins/default/templates/subscription_status.html:4
 #: forum/skins/nuxeo/templates/subscription_status.html:4
 msgid "By Email"
-msgstr "По email"
+msgstr ""
 
 #: forum/skins/default/templates/subscription_status.html:9
 #: forum/skins/nuxeo/templates/subscription_status.html:9
 msgid "You were automatically subscribed to this question."
-msgstr "Вие бяхте автоматично абониран за този въпрос."
+msgstr "Абониранирани сте за този въпрос автоматично."
 
 #: forum/skins/default/templates/subscription_status.html:11
 #: forum/skins/nuxeo/templates/subscription_status.html:11
@@ -4344,7 +4344,7 @@ msgstr "Вие не сте абониран за този въпрос."
 #: forum/skins/default/templates/subscription_status.html:19
 #: forum/views/commands.py:520
 msgid "unsubscribe me"
-msgstr "махни абонамента ми"
+msgstr "премахни абонамента ми"
 
 #: forum/skins/default/templates/subscription_status.html:21
 #: forum/views/commands.py:520
@@ -4360,8 +4360,8 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"(можете да настроите известията си от <a href=\"%(subscriptions_url)s"
-"\">профила</a>)"
+"(<a href=\"%(subscriptions_url)s"
+"\">настройки на абонаментите</a>)"
 
 #: forum/skins/default/templates/subscription_status.html:30
 #, fuzzy
@@ -4508,7 +4508,7 @@ msgstr "този email вече е използван, моля, въведет�
 #: forum/skins/nuxeo/templates/auth/mail_already_validated.html:10
 #, fuzzy
 msgid "Already validated"
-msgstr "не е проверено"
+msgstr "Потвърден email"
 
 #: forum/skins/default/templates/auth/mail_validation.html:11
 #: forum/skins/nuxeo/templates/auth/mail_validation.html:11
@@ -4798,7 +4798,7 @@ msgstr "Точки"
 #: forum/skins/default/templates/node/comment_skeleton.html:14
 #: forum/skins/nuxeo/templates/node/comments.html:56
 msgid "characters needed"
-msgstr "необходими символи"
+msgstr "необходими символа"
 
 #: forum/skins/default/templates/node/comment_skeleton.html:15
 #: forum/skins/nuxeo/templates/node/comments.html:57
@@ -4808,7 +4808,7 @@ msgstr "оставащи символи"
 #: forum/skins/default/templates/node/comment_skeleton.html:17
 #: forum/skins/nuxeo/templates/node/comments.html:59
 msgid " comment"
-msgstr " коментар"
+msgstr "коментирай"
 
 #: forum/skins/default/templates/node/comment_skeleton.html:18
 #: forum/skins/nuxeo/templates/node/comments.html:60
@@ -6218,13 +6218,13 @@ msgstr "последни"
 #: forum/skins/default/templates/question_list/sort_tabs.html:6
 #: forum/skins/nuxeo/templates/question_list/sort_tabs.html:6
 msgid "hottest questions"
-msgstr "горещи въпроси"
+msgstr "популярни въпроси"
 
 #: forum/skins/default/templates/question_list/sort_tabs.html:6
 #: forum/skins/nuxeo/templates/question_list/sort_tabs.html:6
 #: forum/views/readers.py:41
 msgid "hottest"
-msgstr "горещи"
+msgstr "популярни"
 
 #: forum/skins/default/templates/question_list/sort_tabs.html:7
 #: forum/skins/nuxeo/templates/question_list/sort_tabs.html:7
@@ -6252,7 +6252,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/tag_selector.html:4
 #: forum/skins/nuxeo/templates/question_list/tag_selector.html:6
 msgid "Interesting tags"
-msgstr "Интересни тагове"
+msgstr "Интересни тагове:"
 
 #: forum/skins/default/templates/question_list/tag_selector.html:18
 #: forum/skins/nuxeo/templates/tag_selector.html:14
@@ -6274,7 +6274,7 @@ msgstr "Добави"
 #: forum/skins/nuxeo/templates/tag_selector.html:21
 #: forum/skins/nuxeo/templates/question_list/tag_selector.html:24
 msgid "Ignored tags"
-msgstr "Игнорирани тагове"
+msgstr "Игнорирани тагове:"
 
 #: forum/skins/default/templates/question_list/tag_selector.html:36
 #: forum/skins/nuxeo/templates/tag_selector.html:31
@@ -6367,7 +6367,7 @@ msgstr "научете повече относно Markdown"
 #: forum/skins/default/templates/sidebar/recent_awards.html:4
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:4
 msgid "Recent awards"
-msgstr "Последни точки"
+msgstr "Последни точки:"
 
 #: forum/skins/default/templates/sidebar/recent_awards.html:15
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:15
@@ -6377,12 +6377,12 @@ msgstr "всички значки"
 #: forum/skins/default/templates/sidebar/recent_tags.html:7
 #: forum/skins/nuxeo/templates/sidebar/recent_tags.html:4
 msgid "Recent tags"
-msgstr "Последни тагове"
+msgstr "Последни тагове:"
 
 #: forum/skins/default/templates/sidebar/recent_tags.html:14
 #: forum/skins/nuxeo/templates/sidebar/recent_tags.html:11
 msgid "popular tags"
-msgstr "популярни тагове"
+msgstr "всички тагове"
 
 #: forum/skins/default/templates/users/edit.html:6
 #: forum/skins/nuxeo/templates/users/edit.html:6
@@ -6423,23 +6423,23 @@ msgstr "Обнови"
 #: forum/skins/nuxeo/templates/users/info.html:64
 #: forum/skins/nuxeo/templates/users/signature.html:8 forum/views/users.py:38
 msgid "reputation"
-msgstr "репутация"
+msgstr "точки"
 
 #: forum/skins/default/templates/users/info.html:28
 #: forum/skins/nuxeo/templates/users/info.html:66
 #, fuzzy
 msgid "Suspended"
-msgstr "Преостановено"
+msgstr "Спиране"
 
 #: forum/skins/default/templates/users/info.html:42
 #, fuzzy
 msgid "Administrator"
-msgstr "администрация"
+msgstr "Администратор"
 
 #: forum/skins/default/templates/users/info.html:45
 #, fuzzy
 msgid "Moderator"
-msgstr "Местоположение"
+msgstr "Модератор"
 
 #: forum/skins/default/templates/users/info.html:55
 msgid "real name"
@@ -6475,7 +6475,7 @@ msgstr "години"
 #: forum/skins/default/templates/users/info.html:96
 #: forum/skins/nuxeo/templates/users/info.html:53
 msgid "not validated"
-msgstr "не е проверено"
+msgstr "не потвърден"
 
 #: forum/skins/default/templates/users/info.html:107
 msgid "todays unused votes"
@@ -6483,7 +6483,7 @@ msgstr "неизползвани гласове днес"
 
 #: forum/skins/default/templates/users/info.html:108
 msgid "votes left"
-msgstr "останали гласове"
+msgstr "оставащи гласове"
 
 #: forum/skins/default/templates/users/karma_bonus.html:5
 #: forum/skins/nuxeo/templates/users/karma_bonus.html:5
@@ -7686,15 +7686,15 @@ msgstr "последни въпроси"
 
 #: forum/views/readers.py:85
 msgid "unanswered"
-msgstr "неотговорени"
+msgstr "без отговор"
 
 #: forum/views/readers.py:89
 msgid "open questions without an accepted answer"
-msgstr "отворени въпроса без приет отговор"
+msgstr "въпроси без отговор"
 
 #: forum/views/readers.py:91
 msgid "Unanswered Questions"
-msgstr "Неотговорени Въпроси"
+msgstr "Въпроси без отговор"
 
 #: forum/views/readers.py:124
 #, python-format
@@ -7758,7 +7758,7 @@ msgstr "подредба по репутация"
 
 #: forum/views/users.py:39
 msgid "recent"
-msgstr "последно"
+msgstr "най-нови"
 
 #: forum/views/users.py:39
 msgid "newest members"
@@ -7766,7 +7766,7 @@ msgstr "последни потребители"
 
 #: forum/views/users.py:40
 msgid "last"
-msgstr "последно"
+msgstr "най-новите"
 
 #: forum/views/users.py:40
 #, fuzzy
@@ -7815,7 +7815,7 @@ msgstr "Невалидна стройност за брой дни."
 
 #: forum/views/users.py:321
 msgid "overview"
-msgstr "преглед"
+msgstr "статистика"
 
 #: forum/views/users.py:321
 msgid "user overview"
@@ -7831,7 +7831,7 @@ msgstr "последна потребителска дейност"
 
 #: forum/views/users.py:367
 msgid "reputation history"
-msgstr "история на репутацията"
+msgstr "история"
 
 #: forum/views/users.py:367
 msgid "graph of user karma"
@@ -7843,7 +7843,7 @@ msgstr "история на гласуванията"
 
 #: forum/views/users.py:389
 msgid "favorites"
-msgstr "любими"
+msgstr "любими въпроси"
 
 #: forum/views/users.py:389
 msgid "questions that user selected as his/her favorite"
@@ -8268,7 +8268,7 @@ msgstr ""
 #: forum_modules/default_badges/settings.py:30
 #, fuzzy
 msgid "Nice Question up votes"
-msgstr "Tags"
+msgstr ""
 
 #: forum_modules/default_badges/settings.py:31
 msgid ""
