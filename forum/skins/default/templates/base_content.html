@@ -78,10 +78,13 @@
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400&subset=latin,cyrillic' rel='stylesheet' type='text/css'>
     </head>
     <body>
-        <div class="wrapper">
 
+        <div class="wrapper {% block roofclass %}{% endblock %}">
         <div id="body">
-            {% include "header.html" %}
+
+            {% block header_block %}
+                {% include "header.html" %}
+            {% endblock %}
 
             <div id="content">
             {% block page_center %}
@@ -96,7 +99,6 @@
                     <div id="CAFull">
                         {% block content%}
                         {% endblock%}
-
                     </div>
                     <div id="tail" style="clear:both;">
                         {% block tail %}

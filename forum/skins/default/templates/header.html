@@ -1,8 +1,6 @@
 <!-- template header.html -->
 {% load extra_tags ui_registry i18n extra_filters markup %}
-
 	<div id="roof">
-	  
 		<div id="logo">
 			<a href="{% url index %}">
 				<img src="{{ settings.APP_LOGO }}" title="{% trans "back to home page" %}" alt="{{settings.APP_TITLE}} logo"/>
@@ -24,7 +22,7 @@
             <form action="{% url search %}" method="get">
                 {% csrf_token %}
                 <div>
-                    <input type="text" class="searchInput" value="{{ keywords }}" name="q" id="keywords" />
+                    <input type="text" placeholder="Как да ...?" class="searchInput" value="{{ keywords }}" name="q" id="keywords" autofocus="on" />
                     <input type="submit" name="Submit" value="{% trans "search" %}" class="searchBtn" />
                 </div>
                 <div class="options">

@@ -1,4 +1,5 @@
 {% extends "base.html" %}
+
 <!-- questions.html -->
 {% load question_list_tags %}
 {% load i18n %}
@@ -18,18 +19,18 @@
 {% endblock %}
 
 {% block content %}
+    <div class="tabBar">
+        {% include "question_list/title.html" %}
+        <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');" href="{{ feed_url }}" title="{% trans "subscribe to question RSS feed" %}"></a>
+        {{ questions.paginator.sort_tabs }}
+    </div>
 
-<div class="tabBar">
-    {% include "question_list/title.html" %}
-    <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');" href="{{ feed_url }}" title="{% trans "subscribe to question RSS feed" %}"></a>
-    {{ questions.paginator.sort_tabs }}
-</div>
-<div id="listA">{% for question in questions.paginator.page %}
-    {% if show_summary %}
-      {% question_list_item question question_summary=yes %}
-    {% else %}
-      {% question_list_item question %}
-    {% endif %}
+    <div id="listA">{% for question in questions.paginator.page %}
+        {% if show_summary %}
+          {% question_list_item question question_summary=yes %}
+        {% else %}
+          {% question_list_item question %}
+        {% endif %}
 {% endfor %}</div>
 {% endblock %}
 
@@ -44,6 +45,14 @@
     {% tag_selector %}
     {% sidebar_lower %}
     {% question_list_related_tags questions.paginator.page %}
-
+    {% recent_awards %}
 {% endblock %}
 <!-- end questions.html -->
+
+
+
+
+
+
+
+

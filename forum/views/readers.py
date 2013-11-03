@@ -74,13 +74,11 @@ def feed(request):
 
 @decorators.render('index.html')
 def index(request):
-    paginator_context = QuestionListPaginatorContext()
-    paginator_context.base_path = reverse('questions')
-    return question_list(request,
-                         Question.objects.all(),
-                         base_path=reverse('questions'),
-                         feed_url=reverse('latest_questions_feed'),
-                         paginator_context=paginator_context)
+    return {
+        'first_row': Question.objects.filter(tags__name="ddd").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+        'second_row': Question.objects.filter(tags__name="dd").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+        'third_row': Question.objects.filter(tags__name="fgwgew").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+    }
 
 @decorators.render('questions.html', 'unanswered', _('unanswered'), weight=400)
 def unanswered(request):
