@@ -640,10 +640,11 @@ blockquote {
       color: white; }
 
 span.tag {
-  background-color: #eeeeee;
+  background-color: #666666;
   color: #ddddde;
   font-size: 11px;
-  white-space: nowrap; }
+  white-space: nowrap;
+  border-radius: 3px; }
 
 .tag-number {
   font-weight: 700; }
@@ -1252,7 +1253,7 @@ ins {
   font-size: 15px; }
 
 .strong, strong, b {
-  font-weight: 500; }
+  font-weight: bold; }
 
 .orange {
   color: #d64000; }
