@@ -5,74 +5,74 @@ FAQ_SET = SettingSet('faq', 'FAQ page', "Define the text in the about page. You 
 
 FAQ_PAGE_TEXT = Setting('FAQ_PAGE_TEXT',
 u"""
-**Please customize this text in the administration area**
+**Често задавани въпроси (ЧЗВ)**
+ 
+**С какво HowTo.bg е по-различен от обикновените форуми?**
+ 
+HowTo.bg се различава по това че се фокусира върху намиране на отговор на зададените въпроси. Във форумите, се получава дискусия, в която хората свободно изразяват тяхното лично мнение, често субективно.
+ 
+HowTo.bg се фокусира върху намирането на по-добрите и правилни отговори, като намалява до минимум разсейващите елементи.
+ 
+**Какви въпроси мога да задавам в HowTo.bg?**
+ 
+Най-важното – въпроси свързани със нашето гражданско общество. Преди да попитате, проверите дали въпроса не съществува вече. Може да търсите по тема, съдържание или като използвате таговете.
+ 
+**Какви въпроси трябва да бъдат избягвани?**
+ 
+Моля избягвайте въпроси които нямат общо със нашето общество, твърде са субективни или заядливи.
+ 
+**Какво трябва да избягваме в отговорите си?**
+ 
+HowTo.bg е сайт за въпроси и отговори – не е място за дебати. Моля опитайте се да не се впускате в дълго обсъждане на въпроса, за да няма разсейване от темата. Все пак за кратки дискусии могат да се използват коментарите към даден въпрос или отговор.
+ 
+**Защо уведомяването по e-mail е важно?**
+ 
+Изпращането на уведомителни съобщения по e-mail са много важни за успеха на нашия сайт за въпроси и отговори. Тези съобщения че държат нашите потребители в течение за:
+ 
+* Въпросът им е бил отговорен
+* Има коментар по дадения въпрос
+* Когато други потребители зададат въпрос, отговорят, или коментират във вашата област на интерес
+ 
+Успехът на HowTo.bg зависи от участието и заангажираността на потребителите, и когато се изпращат съобщения е по-вероятно, потребителите да стават активни участници в сайта, когато разбират за промени по интересуващите ги теми.  Затова изискваме валиден e-mail адрес от потребителите които искат да станат част от нашата общност.
+ 
+Ако сте потребител и все още не сте потвърдили e-mail адреса си можете да го направите от [тук](/account/send-validation/ "Валидация на e-mail адреса"). Ако все още не сте член, можете да станете от [създаване на нов акаунт](/account/local/register/ "Създаване на нов акаунт")
+ 
+**Кой се грижи за тази общност?**
+ 
+Това си ТИ. Този сайт се управлява от потребителите. Сайта има система карма система в която потребителите могат да получат права да извършват различни дейности в зависимост от тяхното участие. Колкото повече участват толкова повече права да подобряват съдържанието на сайта имат.
+ 
+**Как работи тази карма система?**
+ 
+Когато се гласува за някой въпрос, потребителят който го е задал получава точки, които се казват "карма точки". Тези точки служат за груба оценка на това до колко общността има доверие във дадения потребител. Различни задачи по поддръжката ще бъдат разрешавани на потребители с определен брой точки.
+ 
+Например, ако вие зададете интересен въпрос или дадете добър отговор, за тях ще бъде гласувано доверие. Ако от друга страна са подвеждащи или не са от значение, те ще бъдат санкционирани като недоверчиви. Всеки глас ще генерира 10 точки, всяка санкция ще изважда 2 точки. Има лимит от 200 точки които могат да бъдат спечелени от един въпрос. Таблицата по-долу показва какви са изискванията за карма точки за определени задачи от поддръжката.
+ 
+ 
+добавяне на коментар ->  |REP_TO_COMMENT|
+изтриване на коментар -> |REP_TO_DELETE_COMMENTS|
+затваряне на собствен въпрос -> |REP_TO_CLOSE_OWN|
+отваряне отново на собствен въпрос -> |REP_TO_REOPEN_OWN|
+промяна на таговете -> |REP_TO_RETAG|
+промяна по отговор -> |REP_TO_EDIT_OTHERS|
+отваряне и затваряне на чужд въпрос -> |REP_TO_CLOSE_OTHERS|
+изтриване на чужд коментар -> |REP_TO_DELETE_COMMENTS|
+ 
+**Какво е граватар?**
+ 
+Граватар означава аватар, профилна снимка разпознаваема из цялата мрежа – вашата уникална картинка асоциирана с вашата поща. Това е просто картинка която се показва на всеки ваш въпрос или коментар на сайт използващ граватар протокола. По подразбиране тя е квадратна снимка със геометрични форми приличащи на снежинка или звезда. Може да си зададете ваша картинка от gravatar.com
+ 
+**Трябва ли да си създавам нов акаунт, ако искам да участвам в сайта?**
+ 
+Не, не е задължително. Можете да влезете със всеки друг акаунт който ползва OpenID, тоест Google, Yahoo, AOL, и други. [Вход!] (/account/signin/ "Вход")
+ 
+**Защо трябва други потребители да могат да променят моите въпроси или отговори?**
+ 
+Позволявайки на по-опитните потребители да променят вашите въпроси или отговори подобрява цялостното качество на информацията в сайта. Ако това не ви харесва, ще уважим вашия избор.
+ 
+**Имате други въпроси?**
+ 
+Моля задайте ги като въпрос в сайтa, ще се радваме да им отговорим!
 
-**Frequently Asked Questions (FAQ)**
-
-**How is a Question/Answer community different from a typical forum?**
-
-A Question/Answer community is different from a typical forum because it focuses on finding answers to the questions of its members.  A typical forum, by contrast, operates more like a discussion group, where people are free to give their opinions and topics tend to be more subjective.
-
-By keeping a laser focus on questions and answers, this community ensures that finding answers to existing questions - and getting answers to new questions - can be done without any distractions.
-
-**What kinds of questions can I ask here?**
-
-Most importantly - questions should be relevant to this community. Before you ask, please make sure to search for a similar question. You can search for questions by their title, content, or tags.
-
-**What kinds of questions should be avoided?**
-
-Please avoid asking questions that are not relevant to this community, are too subjective or argumentative.
-
-**What should I avoid in my answers?**
-
-OSQA: Open Source Q&A Forum is a question and answer site - it is not a discussion group. Please avoid holding debates in your answers as they tend to dilute the essense of questions and answers. For brief discussions please use commenting facility.
-
-** Why are email notifications so important? **
-
-Email notifications are the bedrock of a successful question and answer community. These notifications allow community members to be notified of important events, such as:
-
-* When their questions have been answered
-* When one of their posts is commented on by another member
-* When other members post new questions, answers, or comments in their area of interest
-
-The success of the community relies upon community member involvement, and members are much more likely to become involved, active participants on the site when they're notified of interesting developments.  That is why this community considers a valid email address as a requirement for participating in the community and using this site.
-
-If you're already a member of this community and haven't validated your email address, you can do so [here](/account/send-validation/ "Validate Email Address").  If you aren't yet a member of this community, join up by [creating a new account](/account/local/register/ "Create a new account").
-
- **Who moderates this community?**
-
-The short answer is: you. This website is moderated by the users. The community features a karma system that allows users to earn rights to perform a variety of moderation tasks.
-
-**How does the karma system work?**
-
-When a question or answer is upvoted, the user who posted them will gain some points, which are called "karma points". These points serve as a rough measure of the community trust in him/her. Various moderation tasks are gradually assigned to the users based on those points.
-
-For example, if you ask an interesting question or give a helpful answer, your input will be upvoted. On the other hand if the answer is misleading, it will be downvoted. Each vote in favor will generate |REP_GAIN_BY_UPVOTED| points, each vote against will subtract |REP_LOST_BY_DOWNVOTED| points. There is a limit of 200 points that can be accumulated per question or answer. The table below explains karma requirements for each type of moderation task.
-
-* add comments ->  |REP_TO_COMMENT|
-* delete comments -> |REP_TO_DELETE_COMMENTS|
-* close own questions -> |REP_TO_CLOSE_OWN|
-* reopen own questions -> |REP_TO_REOPEN_OWN|
-* retag questions -> |REP_TO_RETAG|
-* edit any answer -> |REP_TO_EDIT_OTHERS|
-* open any closed question -> |REP_TO_CLOSE_OTHERS|
-* delete any comment -> |REP_TO_DELETE_COMMENTS|
-
-**What is a gravatar?**
-
-Gravatar means globally recognized avatar - your unique avatar image associated with your email address. It's simply a picture that shows next to your posts on the websites that support gravatar protocol. The default gravatar appears as a square filled with a snowflake-like figure. You can set your image at gravatar.com
-
-**To participate in this community, do I need to create new account?**
-
-No, you don't have to. You can login through any service that supports OpenID, e.g. Google, Yahoo, AOL, etc. [Login now!](/account/signin/ "Login")
-
-**Why can other people can edit my questions/answers?**
-
-Allowing experienced members of this community to curate the questions and answers improves the overall quality of the knowledge base content. If this approach is not for you, we respect your choice.
-
-**Still have questions?**
-
-Please ask your question, help make our community better!
 """, FAQ_SET, dict(
 label = "FAQ page text",
 help_text = " The faq page. ",
