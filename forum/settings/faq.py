@@ -1,3 +1,4 @@
+# coding: utf-8
 from base import Setting, SettingSet
 from django.forms.widgets import Textarea
 
