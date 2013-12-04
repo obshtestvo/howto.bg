@@ -556,6 +556,12 @@ blockquote {
     font-size: 12px !important;
     font-weight: normal; }
 
+span.questions-feed:before {
+  font-family: FontAwesome;
+  content: "\f09e";
+  margin-right: 3px;
+  color: #a40000; }
+
 .boxA {
   background: none repeat scroll 0 0 #888a85;
   margin-bottom: 8px;
@@ -573,7 +579,6 @@ blockquote {
     text-align: right; }
 
 .boxC {
-  margin-bottom: 8px;
   padding: 15px 12.2px; }
   .boxC p {
     margin-bottom: 8px; }
@@ -682,6 +687,9 @@ a.medal {
   height: 30px;
   width: 100%;
   /* border-bottom: solid 1px $color-divider */ }
+
+.headQuestions:first-letter {
+  text-transform: capitalize; }
 
 .tabsA {
   display: block;
@@ -1671,22 +1679,18 @@ div.dialog.prompt {
   width: 14px;
   height: 14px;
   display: inline-block;
-  margin-bottom: -2px; }
+  margin-bottom: -2px;
+  background: none; }
 
 div#subscription_list {
   width: 100%; }
 
 .subscription_switch {
-  display: inline-block;
-  zoom: 1;
-  /* zoom and *display = ie7 hack for display:inline-block */
-  *display: inline;
   vertical-align: baseline;
   margin: 0 2px;
   outline: none;
   text-align: center;
-  text-decoration: none;
-  padding: 0.2em 1em 0.275em; }
+  text-decoration: none; }
   .subscription_switch:hover {
     text-decoration: none; }
   .subscription_switch:active {

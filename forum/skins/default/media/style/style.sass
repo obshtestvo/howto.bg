@@ -648,6 +648,13 @@ blockquote
     font-size: $font-size !important
     font-weight: normal
 
+span.questions-feed
+
+  &:before
+    @include icon($rss)
+    margin-right: 3px
+    color: #A40000
+
 .boxA
   background: none repeat scroll 0 0 #888A85
   margin-bottom: 8px
@@ -665,7 +672,6 @@ blockquote
     text-align: right
 
 .boxC
-  margin-bottom: 8px
   padding: $size-padding-content-y $size-padding-content-x
 
   p
@@ -789,6 +795,9 @@ a.medal
   height: 30px
   width: 100%
   /* border-bottom: solid 1px $color-divider */
+
+.headQuestions:first-letter
+  text-transform: capitalize
 
 .tabsA
   display: block
@@ -1841,21 +1850,17 @@ div.dialog
   height: 14px
   display: inline-block
   margin-bottom: -2px
+  background: none
 
 div#subscription_list
   width: 100%
 
 .subscription_switch
-  display: inline-block
-  zoom: 1
-  /* zoom and *display = ie7 hack for display:inline-block
-  *display: inline
   vertical-align: baseline
   margin: 0 2px
   outline: none
   text-align: center
   text-decoration: none
-  padding: .2em 1em .275em
 
   &:hover
     text-decoration: none

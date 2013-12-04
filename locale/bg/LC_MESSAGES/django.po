@@ -1,23 +1,21 @@
 # SOME DESCRIPTIVE TITLE.
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
-#
 msgid ""
 msgstr ""
 "Project-Id-Version: OSQA\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2012-04-02 14:14-0700\n"
-"PO-Revision-Date: 2013-10-31 14:09+0200\n"
-"Last-Translator:  <jordan@gape.bg>\n"
-"Language-Team: Obshtestvo.bg <info@obshtestvo.bg>\n"
+"PO-Revision-Date: 2013-12-04 22:55+0200\n"
+"Language-Team: www.obshtesvo.bg\n"
+"Language: bg\n"
 "Language: Bulgarian\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Translated-Using: django-rosetta 0.6.0\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 "X-Generator: Poedit 1.5.4\n"
+"Last-Translator: Obshtestvo.bg <info@obshtestvo.bg>\n"
 
 #: forum/feed.py:73 forum/models/page.py:24 forum/utils/pagination.py:167
 #: forum/views/readers.py:175 forum/views/readers.py:328
@@ -569,7 +567,7 @@ msgstr "Първоначална версия"
 
 #: forum/actions/node.py:20 forum/templatetags/node_tags.py:257
 msgid "asked"
-msgstr "зададен на"
+msgstr "зададен "
 
 #: forum/actions/node.py:34
 #, fuzzy, python-format
@@ -3331,7 +3329,6 @@ msgstr "Значки"
 #: forum/skins/nuxeo/templates/badges.html:13
 msgid "Community gives you awards for your questions, answers and votes."
 msgstr ""
-""
 
 #: forum/skins/default/templates/badges.html:14
 #: forum/skins/nuxeo/templates/badges.html:14
@@ -3556,7 +3553,7 @@ msgstr "търсене"
 #: forum/views/readers.py:95 forum/views/readers.py:168
 #: forum/views/users.py:343
 msgid "questions"
-msgstr "въпроси"
+msgstr "въпроса"
 
 #: forum/skins/default/templates/header.html:37
 #: forum/skins/default/templates/search.html:22
@@ -3583,10 +3580,8 @@ msgid ""
 "As a registered user you can login with your OpenID, log out of the site or "
 "permanently remove your account."
 msgstr ""
-"<p>Натискането на бутона <strong>Изход</strong> ще Ви изведе от системата, "
-"но не и от OpenID доставчика.</p>\n"
-"<p>Ако искатед а излезнете напълно, моля, уверете се, че сте напуснали и "
-"OpenID.</p>"
+"<p>На път сте да излезете от акаунта си. Ако това е намерението Ви, "
+"натиснете бутона по-долу .</p>"
 
 #: forum/skins/default/templates/logout.html:20
 #: forum/skins/nuxeo/templates/logout.html:20
@@ -3972,7 +3967,7 @@ msgstr ""
 #: forum/skins/nuxeo/templates/pagesize.html:6
 #: forum/skins/nuxeo/templates/paginator/page_sizes.html:4
 msgid "posts per page"
-msgstr "въпроси на страница:"
+msgstr "въпроса на страница:"
 
 #: forum/skins/default/templates/paginator.html:6
 #: forum/skins/default/templates/paginator.html:7
@@ -4318,12 +4313,12 @@ msgstr ""
 #: forum/skins/default/templates/subscription_status.html:3
 #: forum/skins/nuxeo/templates/subscription_status.html:3
 msgid "Follow this question"
-msgstr "Абонамент"
+msgstr "Получавай известия"
 
 #: forum/skins/default/templates/subscription_status.html:4
 #: forum/skins/nuxeo/templates/subscription_status.html:4
 msgid "By Email"
-msgstr ""
+msgstr "По email"
 
 #: forum/skins/default/templates/subscription_status.html:9
 #: forum/skins/nuxeo/templates/subscription_status.html:9
@@ -4359,8 +4354,7 @@ msgid ""
 "        "
 msgstr ""
 "\n"
-"(<a href=\"%(subscriptions_url)s"
-"\">настройки на абонаментите</a>)"
+"(<a href=\"%(subscriptions_url)s\">настройки на абонаментите</a>)"
 
 #: forum/skins/default/templates/subscription_status.html:30
 #, fuzzy
@@ -6177,7 +6171,7 @@ msgstr "гледане"
 #: forum/skins/default/templates/question_list/related_tags.html:6
 #: forum/skins/nuxeo/templates/question_list/related_tags.html:6
 msgid "Related tags"
-msgstr "Tags"
+msgstr "Последни тагове:"
 
 #: forum/skins/default/templates/question_list/related_tags.html:9
 #: forum/skins/default/templates/question_list/tag_selector.html:14
@@ -6366,12 +6360,12 @@ msgstr "научете повече относно Markdown"
 #: forum/skins/default/templates/sidebar/recent_awards.html:4
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:4
 msgid "Recent awards"
-msgstr "Последни точки:"
+msgstr "Последно наградени:"
 
 #: forum/skins/default/templates/sidebar/recent_awards.html:15
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:15
 msgid "all awards"
-msgstr "всички значки"
+msgstr "виж възможните значки"
 
 #: forum/skins/default/templates/sidebar/recent_tags.html:7
 #: forum/skins/nuxeo/templates/sidebar/recent_tags.html:4
@@ -6992,8 +6986,8 @@ msgid "hour ago"
 msgstr "преди час"
 
 #: forum/templatetags/extra_tags.py:170
-msgid "hours ago"
-msgstr "преди часове"
+msgid "%(hr)d hours ago"
+msgstr "преди %(hr)d часa"
 
 #: forum/templatetags/extra_tags.py:170
 #, python-format
@@ -7047,7 +7041,7 @@ msgstr ""
 #: forum/templatetags/node_tags.py:110
 #, python-format
 msgid "award points to %s"
-msgstr "точки за наград за %s"
+msgstr "точки за значки за %s"
 
 #: forum/templatetags/node_tags.py:120
 msgid "retag"
@@ -7604,7 +7598,6 @@ msgid "Most <strong>recently updated</strong> questions"
 msgstr "Последно обновените въпроси"
 
 #: forum/views/readers.py:40
-#, fuzzy
 msgid "most <strong>recently asked</strong> questions"
 msgstr "последно зададените въпроси"
 
@@ -7619,7 +7612,7 @@ msgstr "най-гласувани"
 
 #: forum/views/readers.py:42
 msgid "most <strong>voted</strong> questions"
-msgstr "най-гласувани въпроси"
+msgstr "най-високо гласуваните въпроси"
 
 #: forum/views/readers.py:55 forum/views/readers.py:307
 #: forum/views/users.py:40 forum/views/users.py:51
@@ -7688,7 +7681,7 @@ msgstr "без отговор"
 
 #: forum/views/readers.py:89
 msgid "open questions without an accepted answer"
-msgstr "въпроси без отговор"
+msgstr "въпросa без отговор"
 
 #: forum/views/readers.py:91
 msgid "Unanswered Questions"
@@ -8269,7 +8262,6 @@ msgid ""
 msgstr ""
 
 #: forum_modules/default_badges/settings.py:30
-#, fuzzy
 msgid "Nice Question up votes"
 msgstr ""
 
@@ -9001,6 +8993,10 @@ msgstr "Тест фраза 3"
 #: locale/phrases.py:4
 msgid "Test Phrase n"
 msgstr "Тест фраза 4"
+
+#: forum/skins/default/templates/question_list/count.html:4
+msgid "Subscribe to them via RSS"
+msgstr "Следи ги чрез RSS"
 
 #~ msgid "Change email "
 #~ msgstr "Промяна на emailа "

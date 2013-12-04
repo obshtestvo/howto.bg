@@ -278,38 +278,23 @@
 {% endblock %}
 
 {% block sidebar %}
+{% cache 60 questions_tags settings.APP_URL question.id %}
+<div class="boxC">
+    <p>
+     	{% trans "question was seen" %}: <strong>{{ question.view_count|intcomma }} {% trans "times" %}</strong>
+    </p>
+    <p>
+        {% trans "last updated" %}: <strong title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</strong>
+    </p>
+</div>
+{% endcache %}
+
+{% sidebar_upper %}
 <div class="boxC" id="subscription_box">
     {% include "subscription_status.html" %}
 </div>
 
 {% markdown_help %}
-
-{% sidebar_upper %}
-
-{% cache 60 questions_tags settings.APP_URL question.id %}
-<div class="boxC">
-    <p>
-		{% trans "Question tags" %}:
-    </p>
-    <p class="tags" >
-        {% for tag in question.tags.all %}
-        	<a href="{% url tag_questions tag.name|urlencode %}"
-            class="tag-link-{{ tag.name }}"
-			title="{% trans "see questions tagged"%}'{{tag.name}}'{% trans "using tags" %}"
-			rel="tag">{{ tag.name }}</a> <span class="tag-number">&#215;{{ tag.used_count|intcomma }}</span><br/>
-        {% endfor %}
-    </p>
-    <p>
-        {% trans "question asked" %}: <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
-    </p>
-    <p> 
-     	{% trans "question was seen" %}: <strong>{{ question.view_count|intcomma }} {% trans "times" %}</strong>
-    </p>
-    <p> 
-        {% trans "last updated" %}: <strong title="{{ question.last_activity_at }}">{% diff_date question.last_activity_at %}</strong>
-    </p>
-</div>
-{% endcache %}
 {% sidebar_lower %}
 <div class="boxC">
     <h3 class="subtitle">{% trans "Related questions" %}</h3>
