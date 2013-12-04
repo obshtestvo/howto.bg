@@ -474,7 +474,8 @@ blockquote {
       font-size: 11px;
       cursor: pointer; }
     #searchBar .options input {
-      cursor: pointer; }
+      cursor: pointer;
+      vertical-align: middle; }
       #searchBar .options input:hover {
         cursor: pointer; }
 
