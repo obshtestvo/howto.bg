@@ -6193,7 +6193,7 @@ msgstr "последно обновяваните въпроси"
 #: forum/skins/nuxeo/templates/question_list/sort_tabs.html:4
 #: forum/views/readers.py:39
 msgid "active"
-msgstr ""
+msgstr "активни"
 
 #: forum/skins/default/templates/question_list/sort_tabs.html:5
 #: forum/skins/nuxeo/templates/question_list/sort_tabs.html:5
@@ -6415,7 +6415,7 @@ msgstr "Обнови"
 #: forum/skins/nuxeo/templates/users/info.html:64
 #: forum/skins/nuxeo/templates/users/signature.html:8 forum/views/users.py:38
 msgid "reputation"
-msgstr "точки"
+msgstr "по точки"
 
 #: forum/skins/default/templates/users/info.html:28
 #: forum/skins/nuxeo/templates/users/info.html:66
@@ -6957,9 +6957,8 @@ msgid "%s has one accepted answer"
 msgstr "%s е дал един правилен отговор"
 
 #: forum/templatetags/extra_tags.py:126
-#, fuzzy, python-format
 msgid "%s has no accepted answers"
-msgstr "няма приети отговори"
+msgstr "%s няма приети отговори"
 
 #: forum/templatetags/extra_tags.py:132
 #, fuzzy
@@ -8998,6 +8997,9 @@ msgstr "Получвай известия за нови по RSS"
 #: forum/skins/default/templates/users/info.html:108
 msgid "Report user"
 msgstr "Съобщи за нередност около потребителя"
+
+msgid "accept rate"
+msgstr "приети отговори"
 
 #~ msgid "Change email "
 #~ msgstr "Промяна на emailа "

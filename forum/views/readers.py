@@ -88,7 +88,7 @@ def unanswered(request):
                          None,
                          _("Unanswered Questions"))
 
-@decorators.render('questions.html', 'questions', _('questions'), weight=0)
+@decorators.render('questions.html', 'questions', _('Questions'), weight=0)
 def questions(request):
     return question_list(request,
                          Question.objects.all(),
