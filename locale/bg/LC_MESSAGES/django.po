@@ -982,7 +982,7 @@ msgstr "email адрес (не го споделяме)"
 
 #: forum/forms/auth.py:21
 msgid "Your account email"
-msgstr "Нов email: (няма да бъде споделян, трябва да бъде действителен)"
+msgstr "Вашият email: (няма да бъде споделян, трябва да бъде действителен)"
 
 #: forum/forms/auth.py:23
 msgid "You cannot leave this field blank"
@@ -3328,7 +3328,7 @@ msgstr "Значки"
 #: forum/skins/default/templates/badges.html:13
 #: forum/skins/nuxeo/templates/badges.html:13
 msgid "Community gives you awards for your questions, answers and votes."
-msgstr ""
+msgstr "Howto.bg дава значки за въпросите, отговорите и гласовете дадени от теб."
 
 #: forum/skins/default/templates/badges.html:14
 #: forum/skins/nuxeo/templates/badges.html:14
@@ -3336,7 +3336,7 @@ msgid ""
 "Below is the list of available badges and number of times each type of badge "
 "has been awarded.\n"
 "    "
-msgstr "Списък с всички значки и колко пъти те са били спечелвани."
+msgstr "Ето списък на всички възможни значки и колко пъти те са били печелени."
 
 #: forum/skins/default/templates/badges.html:39
 #: forum/skins/nuxeo/templates/badges.html:41
@@ -3481,7 +3481,7 @@ msgstr "Обратна връзка"
 #: forum/skins/default/templates/feedback.html:11
 #: forum/skins/nuxeo/templates/feedback.html:11
 msgid "Give us your feedback!"
-msgstr "Дайте ни обратна информация"
+msgstr "Кажете ни какво мислите за howto.bg!"
 
 #: forum/skins/default/templates/feedback.html:18
 #: forum/skins/nuxeo/templates/feedback.html:17
@@ -3494,9 +3494,9 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"            <span class='big strong'>%(user_name)s</span>, очакваме да чуем "
-"твоята обратна връзка. \n"
-"            Моля, напиши и изпрати твоето мнение в полето долу.\n"
+"            <span class='big strong'>Хей %(user_name)s,</span> За нас е ценно и полезно да се вслушваме в мнението на  "
+"хората за които howto.bg е предназначено. <br/>"
+"            Моля, изпрати ни твоето, като го напишеш в полето долу и цъкнеш бутон под него.\n"
 "            "
 
 #: forum/skins/default/templates/feedback.html:25
@@ -3509,7 +3509,7 @@ msgid ""
 "            "
 msgstr ""
 "\n"
-"            <span class='big strong'>Здравей</span>, очакваме да чуем твоята "
+"            <span class='big strong'>Здравей,</span> Очакваме да чуем твоята "
 "обратна връзка. \n"
 "            Моля, напиши и изпрати твоето мнение в полето долу.\n"
 "            "
@@ -4328,12 +4328,12 @@ msgstr "Абониранирани сте за този въпрос автом�
 #: forum/skins/default/templates/subscription_status.html:11
 #: forum/skins/nuxeo/templates/subscription_status.html:11
 msgid "You are subscribed to this question."
-msgstr "Вие сте абониран за този въпрос."
+msgstr "Получавате"
 
 #: forum/skins/default/templates/subscription_status.html:14
 #: forum/skins/nuxeo/templates/subscription_status.html:14
 msgid "You are not subscribed to this question."
-msgstr "Вие не сте абониран за този въпрос."
+msgstr "Не получавате"
 
 #: forum/skins/default/templates/subscription_status.html:19
 #: forum/views/commands.py:520
@@ -4349,11 +4349,10 @@ msgstr "абонирай ме"
 #, python-format
 msgid ""
 "\n"
-"            (you can adjust your notification settings on your <a href="
+"                (you can adjust your notification settings on your <a href="
 "\"%(subscriptions_url)s\">profile</a>)\n"
-"        "
+"            "
 msgstr ""
-"\n"
 "(<a href=\"%(subscriptions_url)s\">настройки на абонаментите</a>)"
 
 #: forum/skins/default/templates/subscription_status.html:30
@@ -6425,7 +6424,6 @@ msgid "Suspended"
 msgstr "Спиране"
 
 #: forum/skins/default/templates/users/info.html:42
-#, fuzzy
 msgid "Administrator"
 msgstr "Администратор"
 
@@ -6441,12 +6439,12 @@ msgstr "Истинско име"
 #: forum/skins/default/templates/users/info.html:60
 #: forum/skins/nuxeo/templates/users/info.html:71
 msgid "member for"
-msgstr "регистриран на"
+msgstr "Регистриран на:"
 
 #: forum/skins/default/templates/users/info.html:65
 #: forum/skins/nuxeo/templates/users/info.html:75
 msgid "last seen"
-msgstr "последно видян"
+msgstr "Последно в сайта:"
 
 #: forum/skins/default/templates/users/info.html:71
 msgid "user's website"
@@ -7269,15 +7267,15 @@ msgstr "Ууупс, нещо се обърка в средата на този �
 
 #: forum/views/auth.py:252
 msgid "An email has been sent with your temporary login key"
-msgstr "Един имейл е изпратен с временна ви паролата - ключ"
+msgstr "Изпратихме ви email с временна паролата - ключ"
 
 #: forum/views/auth.py:273
 msgid ""
 "You are logged in with a temporary access key, please take the time to fix "
 "your issue with authentication."
 msgstr ""
-"Влезли сте с временна ключ за достъп, моля отделете време да се "
-"отстранитепроблемът си с влизането като потребител."
+"Влезли сте с временна парола-ключ за достъп, моля отделете време "
+"да коригирате детайлите за влизането като потребител."
 
 #: forum/views/auth.py:298
 msgid "A message with an email validation link was just sent to your address."
@@ -7290,9 +7288,8 @@ msgid "Thank you, your email is now validated."
 msgstr "Благодаря, email-ла ви е валидиран успешно."
 
 #: forum/views/auth.py:333
-#, fuzzy
 msgid "New password set"
-msgstr "Нова парола е сменена"
+msgstr "Паролата Ви е сменена"
 
 #: forum/views/auth.py:337
 msgid "Your password was changed"
@@ -7590,7 +7587,7 @@ msgstr "Благодарим за обратната връзка!"
 #: forum/views/meta.py:78
 msgid "We look forward to hearing your feedback! Please, give it next time :)"
 msgstr ""
-"С нетърпение очакваме да чуем вашето мнение! Дано следващия път не се "
+"Вашето мнение е полезно за howto.bg! Дано следващия път не се "
 "откажеш :)"
 
 #: forum/views/readers.py:39
@@ -8996,7 +8993,11 @@ msgstr "Тест фраза 4"
 
 #: forum/skins/default/templates/question_list/count.html:4
 msgid "Subscribe to them via RSS"
-msgstr "Следи ги чрез RSS"
+msgstr "Получвай известия за нови по RSS"
+
+#: forum/skins/default/templates/users/info.html:108
+msgid "Report user"
+msgstr "Съобщи за нередност около потребителя"
 
 #~ msgid "Change email "
 #~ msgstr "Промяна на emailа "

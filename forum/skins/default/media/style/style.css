@@ -45,6 +45,7 @@ button {
   input[type="button"]:active,
   input[type="submit"]:active,
   button:active {
+    color: #b1d3f7;
     box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(255, 255, 255, 0.6); }
 
 input[type="text"],
@@ -61,6 +62,7 @@ textarea {
   border-radius: 3px;
   border: solid 1px #dddddd;
   padding: 4px 6px;
+  vertical-align: middle;
   transition: border 0.2s; }
   input:hover, input:focus,
   textarea:hover,
@@ -206,7 +208,6 @@ blockquote {
 
 #CAFull {
   float: left;
-  padding: 0 5px;
   width: 1090px; }
   #CAFull .short-summary {
     width: 100%; }
@@ -915,6 +916,8 @@ span.form-error {
   width: 100%; }
   .preview-toggle span:hover {
     cursor: pointer; }
+  .preview-toggle #id_wiki {
+    vertical-align: middle; }
 
 #revisions {
   width: 1090px; }
@@ -1676,11 +1679,15 @@ div.dialog.prompt {
   text-decoration: line-through; }
 
 .feed-icon {
-  width: 14px;
-  height: 14px;
+  width: 12px;
+  height: 12px;
   display: inline-block;
   margin-bottom: -2px;
   background: none; }
+  .feed-icon:before {
+    font-family: FontAwesome;
+    content: "\f09e";
+    color: #a40000; }
 
 div#subscription_list {
   width: 100%; }
@@ -1735,7 +1742,15 @@ div.wmd-button-bar {
 
 #interestingTagAdd,
 #ignoredTagAdd {
-  padding: 6px 11px 5px; }
+  transition: all 0.3s;
+  padding: 4px 11px 5px;
+  line-height: 19px;
+  vertical-align: bottom;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.1) inset; }
+  #interestingTagAdd:active,
+  #ignoredTagAdd:active {
+    box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.4), 0 1px 2px rgba(255, 255, 255, 0.6);
+    text-shadow: none; }
 
 .provider_logo {
   border-radius: 3px; }

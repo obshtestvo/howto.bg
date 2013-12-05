@@ -522,7 +522,7 @@ def subscribe(request, id, user=None):
     return {
         'commands': {
             'set_subscription_button': [subscribed and _('unsubscribe me') or _('subscribe me')],
-            'set_subscription_status': ['']
+            'set_subscription_status': [subscribed and _('You are subscribed to this question.') or _("You are not subscribed to this question.") ]
         }
     }
 

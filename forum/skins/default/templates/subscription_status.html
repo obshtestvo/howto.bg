@@ -3,40 +3,41 @@
 <h3 class="subtitle">{% trans "Follow this question" %}</h3>
 <strong>{% trans "By Email" %}:</strong>
 {% if request.user.is_authenticated %}
-    <div class="subscription-status">
-        {% if subscription %}
-            {% if subscription.auto_subscription %}
-                <p>{% trans "You were automatically subscribed to this question." %}</p>
-            {% else %}
-                <p>{% trans "You are subscribed to this question." %}</p>
-            {% endif %}
-        {% else %}
-            <p>{% trans "You are not subscribed to this question." %}</p>
-        {% endif %}
-        <a class="ajax-command subscription_switch" href="{% url subscribe_simple id=question.id %}">
+    <div>
+        <span class="subscription-status">
             {% if subscription %}
-                {% trans "unsubscribe me" %}
+                {% if subscription.auto_subscription %}
+                    {% trans "You were automatically subscribed to this question." %}
+                {% else %}
+                    {% trans "You are subscribed to this question." %}
+                {% endif %}
             {% else %}
-                {% trans "subscribe me" %}
+                {% trans "You are not subscribed to this question." %}
             {% endif %}
+        </span> - <a class="ajax-command subscription_switch" href="{% url subscribe_simple id=question.id %}">
+                {% if subscription %}
+                    {% trans "unsubscribe me" %}
+                {% else %}
+                    {% trans "subscribe me" %}
+                {% endif %}
         </a>
+        <p>
+            {% blocktrans with request.user.get_user_subscriptions_url as subscriptions_url %}
+                (you can adjust your notification settings on your <a href="{{ subscriptions_url }}">profile</a>)
+            {% endblocktrans %}
+        </p>
     </div>
-    <p>
-        {% blocktrans with request.user.get_user_subscriptions_url as subscriptions_url %}
-            (you can adjust your notification settings on your <a href="{{ subscriptions_url }}">profile</a>)
-        {% endblocktrans %}
-    </p>
 {% else %}
     <p>{% trans "Once you sign in you will be able to subscribe for any updates here" %}</p>
 {% endif %}
 <strong>{% trans "By RSS" %}:</strong>
 <p>
-    <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');"
+    <a class="feed-icon"
         href="{{ question.get_absolute_url }}?type=rss" title="{% trans "subscribe to answers" %}"></a>
     {% trans "Answers" %}
 </p>
 <p>
-    <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');"
+    <a class="feed-icon"
         href="{{ question.get_absolute_url }}?type=rss&comments=yes" title="{% trans "subscribe to comments and answers" %}"></a>
     {% trans "Answers and Comments" %}
 </p>

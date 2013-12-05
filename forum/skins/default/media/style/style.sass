@@ -80,6 +80,7 @@ button
     background: darken(#1c46ac, 4%)
 
   &:active
+    color: #b1d3f7
     box-shadow: inset 0 1px 1px rgba(0,0,0,0.4), 0 1px 2px rgba(255,255,255,0.6)
 
 input[type="text"],
@@ -96,6 +97,7 @@ textarea
   border-radius: 3px
   border: $color-input-border
   padding: 4px 6px
+  vertical-align: middle
   transition: border $time-transition
 
   &:hover, &:focus
@@ -243,7 +245,6 @@ blockquote
 
 #CAFull
   float: left
-  padding: 0 5px
   width: $size-page-full
   
   .short-summary
@@ -1048,6 +1049,8 @@ span.form-error
   width: 100%
   span:hover
     cursor: pointer
+  #id_wiki
+    vertical-align: middle
 
 #revisions
   width: $size-page-full
@@ -1846,11 +1849,15 @@ div.dialog
   text-decoration: line-through
 
 .feed-icon
-  width: 14px
-  height: 14px
+  width: 12px
+  height: 12px
   display: inline-block
   margin-bottom: -2px
   background: none
+
+  &:before
+    @include icon($rss)
+    color: #A40000
 
 div#subscription_list
   width: 100%
@@ -1912,8 +1919,15 @@ div
 
 #interestingTagAdd,
 #ignoredTagAdd
-  padding: 6px 11px 5px
+  transition: all 0.3s
+  padding: 4px 11px 5px
+  line-height: 19px
+  vertical-align: bottom
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.3), 0 1px 1px rgba(255, 255, 255, 0.1) inset
 
+  &:active
+    box-shadow: inset 0 1px 1px rgba(0,0,0,0.4), 0 1px 2px rgba(255,255,255,0.6)
+    text-shadow: none
 
 .provider_logo
   border-radius: 3px

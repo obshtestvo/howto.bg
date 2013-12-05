@@ -17,8 +17,8 @@
                 {% plural %}
                 <span class="count">{{counter}}</span> Questions
                 {% endblocktrans %}
-                <a class="feed-icon" style="background-image:url('{% media "media/images/feed-icon-small.png" %}');"
-                    href="{{ view_user.get_asked_url }}?type=rss" title="{% trans "subscribe to question RSS feed" %}"></a>
+                <a class="feed-icon"
+                    href="{{ view_user.get_asked_url  }}?type=rss" title="{% trans "subscribe to question RSS feed" %}"></a>
             </h2>
             {% endspaceless %}
             {{ questions.paginator.sort_tabs }}
