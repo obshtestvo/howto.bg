@@ -296,19 +296,20 @@
 
 {% markdown_help %}
 {% sidebar_lower %}
+{% if similar_questions %}
 <div class="boxC">
     <h3 class="subtitle">{% trans "Related questions" %}</h3>
     <div class="questions-related">
 
-        {% for question in similar_questions %}
-        <p>
-            <a href="{{ question.get_absolute_url }}">{{ question.headline }}</a>
-        </p>
-        {% endfor %}
+            {% for question in similar_questions %}
+            <p>
+                <a href="{{ question.get_absolute_url }}">{{ question.headline }}</a>
+            </p>
+            {% endfor %}
 
     </div>
 </div>
-
+{% endif %}
 {% endblock %}
 
 {% block endjs %}
