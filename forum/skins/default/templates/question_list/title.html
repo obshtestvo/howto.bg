@@ -14,4 +14,8 @@
             {{ questions.paginator.sort_description }} {% if "unanswered" == tab %} {% trans "unanswered" %} {% endif %}
         {% endif %}
     {% endif %}
+    {% if tag %}
+        {% trans "tagged with" %} "{{ tag }}"
+    {% endif %}
+
 </div>

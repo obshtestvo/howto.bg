@@ -618,6 +618,10 @@ msgstr "%(user)s ретагна %(post_desc)s"
 msgid "reverted"
 msgstr "претагнато"
 
+#: forum/skins/default/templates/question_list/title.html:15
+msgid "tagged with"
+msgstr "с тага"
+
 #: forum/actions/node.py:133
 #, python-format
 msgid ""

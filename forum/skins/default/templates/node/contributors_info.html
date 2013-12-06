@@ -4,7 +4,7 @@
         {{ node_verb }}
         <strong>{% diff_date node.added_at %}</strong>
     </p>
-    {% gravatar node.author 32 %}
+    <a href="{{node.author.get_profile_url }} ">{% gravatar node.author 32 %}</a>
     <p><a {% if node.author.is_suspended %}class="suspended-user" {% endif %}href="{{ node.author.get_profile_url }}">{{ node.author.decorated_name }}</a><br/>
     {% get_score_badge node.author %}<br />
     {% get_accept_rate node.author %}</p>
@@ -18,7 +18,7 @@
             </a>
         </p>
         {% ifnotequal node.author node.last_edited.by %}
-            {% gravatar node.last_edited.by 32 %}
+            <a href="{{node.last_edited.by.get_profile_url }} ">{% gravatar node.last_edited.by 32 %}</a>
             <p><a {% if node.last_edited.by.is_suspended %}class="suspended-user" {% endif %}href="{{ node.last_edited.by.get_profile_url }}">{{ node.last_edited.by.decorated_name }}</a><br/>
             {% get_score_badge node.last_edited.by %}</p>
         {% endifnotequal %}
