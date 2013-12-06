@@ -7689,7 +7689,7 @@ msgstr "Въпроси без отговор"
 #: forum/views/readers.py:124
 #, python-format
 msgid "questions tagged <span class=\"tag\">%(tag)s</span>"
-msgstr "въпроси с таг <span class=\"tag\">%(tag)s</span>"
+msgstr "въпроса с таг <span class=\"tag\">%(tag)s</span>"
 
 #: forum/views/readers.py:126
 #, python-format
@@ -8999,7 +8999,7 @@ msgstr "Тест фраза 4"
 
 #: forum/skins/default/templates/question_list/count.html:4
 msgid "Subscribe to them via RSS"
-msgstr "Получвай известия за нови по RSS"
+msgstr "Получавай известия за нови по RSS"
 
 #: forum/skins/default/templates/users/info.html:108
 msgid "Report user"
