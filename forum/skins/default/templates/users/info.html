@@ -8,7 +8,9 @@
 {% load user_tags %}
 
 <div id="subheader" class="headUser{% if view_user.is_suspended %} suspended-user{% endif %}">
-    <h1>{{view_user.decorated_name}}</h1>
+    <h1>{{view_user.decorated_name}}
+        {% if can_view_private %}{% user_menu request.user view_user %}{% endif %}
+    </h1>
     {% include "users/tabs.html" %}
 </div>
 
@@ -35,7 +37,6 @@
             </table>
         </td>
         <td width="360" style="vertical-align: top;">
-        {% if can_view_private %}{% user_menu request.user view_user %}{% endif %}
             <table class="user-details">
                 <tr>
                     <th colspan="2" align="left">
@@ -104,6 +105,8 @@
                 </tr>
                 {% endif %}
 
+
+                {% if not can_view_private %}
                 <tr>
                     <td colspan="2" style="text-align:right">
                         <a href="{% url user_report view_user.pk %}" class="ajax-command withprompt">
@@ -111,6 +114,7 @@
                         </a>
                     </td>
                 </tr>
+                {% endif %}
 				<!--
                 {% if votes_today_left %}
                 <tr>

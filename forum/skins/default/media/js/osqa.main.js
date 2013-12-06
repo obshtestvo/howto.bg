@@ -333,7 +333,7 @@ function load_prompt(evt, el, url) {
         }
 
         if (el.hasClass('copy')) {
-            $.extend(doptions, { yes_text : 'Copy', copy: true});
+            $.extend(doptions, { yes_text : 'Копирай', copy: true});
         }
 
         if (!el.is('.centered')) {

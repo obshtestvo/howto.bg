@@ -1,7 +1,7 @@
 {% spaceless %}
 {% load i18n extra_tags %}
-<h3 class="subtitle">{% trans "Follow this question" %}</h3>
-<strong>{% trans "By Email" %}:</strong>
+<h3 class="subtitle">{% trans "Follow this question" %} </h3>
+<strong class="subscription-type">{% trans "By Email" %}:</strong>
 {% if request.user.is_authenticated %}
     <div>
         <span class="subscription-status">
@@ -21,16 +21,12 @@
                     {% trans "subscribe me" %}
                 {% endif %}
         </a>
-        <p>
-            {% blocktrans with request.user.get_user_subscriptions_url as subscriptions_url %}
-                (you can adjust your notification settings on your <a href="{{ subscriptions_url }}">profile</a>)
-            {% endblocktrans %}
-        </p>
+
     </div>
 {% else %}
     <p>{% trans "Once you sign in you will be able to subscribe for any updates here" %}</p>
 {% endif %}
-<strong>{% trans "By RSS" %}:</strong>
+<strong class="subscription-type">{% trans "By RSS" %}:</strong>
 <p>
     <a class="feed-icon"
         href="{{ question.get_absolute_url }}?type=rss" title="{% trans "subscribe to answers" %}"></a>
@@ -41,4 +37,13 @@
         href="{{ question.get_absolute_url }}?type=rss&comments=yes" title="{% trans "subscribe to comments and answers" %}"></a>
     {% trans "Answers and Comments" %}
 </p>
+{% if request.user.is_authenticated %}
+        <p>
+            <span class="subscription-actions">
+            {% blocktrans with request.user.get_user_subscriptions_url as subscriptions_url %}
+                (you can adjust your notification settings on your <a href="{{ subscriptions_url }}">profile</a>)
+            {% endblocktrans %}</span>
+        </p>
+{% endif %}
 {% endspaceless %}
+

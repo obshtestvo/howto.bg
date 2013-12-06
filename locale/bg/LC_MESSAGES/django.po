@@ -114,7 +114,7 @@ msgstr "Настройки на достъпа"
 
 #: forum/registry.py:90
 msgid "email notification settings"
-msgstr "Настройки на email известията"
+msgstr "Настройки на известията"
 
 #: forum/registry.py:97
 msgid "other preferences"
@@ -579,9 +579,8 @@ msgid "answered"
 msgstr "отговорено"
 
 #: forum/actions/node.py:55
-#, fuzzy, python-format
 msgid "%(user)s answered %(asker)s on %(question)s"
-msgstr "%(user)s отговори %(asker)s на %(question)s"
+msgstr "%(user)s отговорихте на %(asker)s върху %(question)s"
 
 #: forum/actions/node.py:62
 msgid "commented"
@@ -919,7 +918,7 @@ msgstr "бронз"
 
 #: forum/forms/admin.py:49 forum/settings/static.py:6
 msgid "Markdown"
-msgstr "Markdown съвети"
+msgstr "Markdown"
 
 #: forum/forms/admin.py:50 forum/settings/static.py:7
 msgid "HTML"
@@ -1172,14 +1171,14 @@ msgstr ""
 
 #: forum/forms/qanda.py:147
 msgid "update summary:"
-msgstr "информация за обновяването:"
+msgstr "описание на промените:"
 
 #: forum/forms/qanda.py:148
 msgid ""
 "enter a brief summary of your revision (e.g. fixed spelling, grammar, "
 "improved style, this field is optional)"
 msgstr ""
-"въведете кратко заключение на новата версия (коригиран правопис, граматика, "
+"напишете накратко, като заключение на новата версия (коригиран правопис, граматика, "
 "подобрен стил, това поле не е задължително)"
 
 #: forum/forms/qanda.py:152
@@ -3216,7 +3215,7 @@ msgstr "Съвети"
 #: forum/skins/default/templates/answer_edit_tips.html:7
 #: forum/skins/nuxeo/templates/answer_edit_tips.html:7
 msgid "please make your answer relevant to this community"
-msgstr "моля, направете отговора си свързан със зададения въпрос"
+msgstr "моля,  свързан със зададения въпрос"
 
 #: forum/skins/default/templates/answer_edit_tips.html:10
 #: forum/skins/nuxeo/templates/answer_edit_tips.html:10
@@ -3591,13 +3590,13 @@ msgstr "Излез сега"
 #: forum/skins/default/templates/markdown_help.html:6
 #: forum/skins/nuxeo/templates/markdown_help.html:6
 msgid "Markdown Help"
-msgstr "Markdown съвети"
+msgstr "Съвети за текстовото оформление"
 
 #: forum/skins/default/templates/markdown_help.html:15
 #: forum/skins/nuxeo/templates/markdown_help.html:15
 #, fuzzy
 msgid "Markdown Syntax"
-msgstr "Markdown съвети"
+msgstr "Markdown"
 
 #: forum/skins/default/templates/markdown_help.html:16
 #: forum/skins/nuxeo/templates/markdown_help.html:16
@@ -4313,12 +4312,12 @@ msgstr ""
 #: forum/skins/default/templates/subscription_status.html:3
 #: forum/skins/nuxeo/templates/subscription_status.html:3
 msgid "Follow this question"
-msgstr "Получавай известия"
+msgstr "Следи въпроса"
 
 #: forum/skins/default/templates/subscription_status.html:4
 #: forum/skins/nuxeo/templates/subscription_status.html:4
 msgid "By Email"
-msgstr "По email"
+msgstr "Известия по email"
 
 #: forum/skins/default/templates/subscription_status.html:9
 #: forum/skins/nuxeo/templates/subscription_status.html:9
@@ -4338,7 +4337,7 @@ msgstr "Не получавате"
 #: forum/skins/default/templates/subscription_status.html:19
 #: forum/views/commands.py:520
 msgid "unsubscribe me"
-msgstr "премахни абонамента ми"
+msgstr "премахни абонамента"
 
 #: forum/skins/default/templates/subscription_status.html:21
 #: forum/views/commands.py:520
@@ -4353,19 +4352,16 @@ msgid ""
 "\"%(subscriptions_url)s\">profile</a>)\n"
 "            "
 msgstr ""
-"(<a href=\"%(subscriptions_url)s\">настройки на абонаментите</a>)"
+"(<a href=\"%(subscriptions_url)s\">детайлни настройки</a>)"
 
 #: forum/skins/default/templates/subscription_status.html:30
-#, fuzzy
 msgid "Once you sign in you will be able to subscribe for any updates here"
-msgstr ""
-"<span class='strong'>Тук</span> (след като се оторизирате) ще можете да се "
-"абонирате за периодични известявания по този въпрос."
+msgstr "След регистрация в Howto.bg от това каре ще имате възможността да се абонирате за обновления на въпроса."
 
 #: forum/skins/default/templates/subscription_status.html:32
 #: forum/skins/nuxeo/templates/subscription_status.html:33
 msgid "By RSS"
-msgstr "По RSS"
+msgstr "Известия по RSS"
 
 #: forum/skins/default/templates/subscription_status.html:35
 #: forum/skins/nuxeo/templates/subscription_status.html:35
@@ -4884,13 +4880,12 @@ msgstr "отбележи въпроса като любим"
 msgid ""
 "\n"
 "Would you like to copy the permanent link to your clipboard?\n"
-msgstr ""
+msgstr "Искате ли да направо да копирате линка?"
 
 #: forum/skins/default/templates/node/permanent_link.html:10
 #: forum/skins/nuxeo/templates/node/permanent_link.html:6
-#, fuzzy
 msgid "Permanent link"
-msgstr "link"
+msgstr "Линк"
 
 #: forum/skins/default/templates/node/post_controls.html:14
 #: forum/skins/nuxeo/templates/node/post_controls.html:14
@@ -6304,7 +6299,7 @@ msgstr "Всички Въпроси"
 #: forum/skins/default/templates/sidebar/markdown_help.html:3
 #: forum/skins/nuxeo/templates/sidebar/markdown_help.html:3
 msgid "Markdown Basics"
-msgstr "Markdown съвети"
+msgstr "Съвети за текстовото оформление"
 
 #: forum/skins/default/templates/sidebar/markdown_help.html:6
 msgid "*italic* or _italic_"
@@ -6354,7 +6349,7 @@ msgstr "основни HTML тагове също се поддържат"
 #: forum/skins/default/templates/sidebar/markdown_help.html:33
 #: forum/skins/nuxeo/templates/sidebar/markdown_help.html:33
 msgid "learn more about Markdown"
-msgstr "научете повече относно Markdown"
+msgstr "прочетете още за формата <strong>Markdown</strong>"
 
 #: forum/skins/default/templates/sidebar/recent_awards.html:4
 #: forum/skins/nuxeo/templates/sidebar/recent_awards.html:4
@@ -6552,10 +6547,9 @@ msgstr "(спрян)"
 
 #: forum/skins/default/templates/users/stats.html:13
 #: forum/skins/nuxeo/templates/users/stats.html:13
-#, fuzzy, python-format
 msgid ""
 "\n"
-"                <span class=\"count\">%(counter)s</span> Question\n"
+"                <span class=\"count\">{{counter}}</span> Question\n"
 "                "
 msgid_plural ""
 "\n"
@@ -6563,8 +6557,7 @@ msgid_plural ""
 "                "
 msgstr[0] ""
 "\n"
-"<div class=\"questions-count\">%(q_num)s</div><p>question without an "
-"accepted answer</p>"
+"<div class=\"count\">%(counter)s</div> Въпрос "
 msgstr[1] ""
 "\n"
 "<div class=\"questions-count\">%(q_num)s</div><p>questions without an "
@@ -6671,7 +6664,7 @@ msgid ""
 "            "
 msgid_plural ""
 "\n"
-"            <span class=\"count\">%(counter)s</span> Значки\n"
+"            <span class=\"count\">%(counter)s</span> Badges\n"
 "            "
 msgstr[0] ""
 msgstr[1] ""
@@ -6688,9 +6681,8 @@ msgstr "не показвай автоматичните абонаменти"
 
 #: forum/skins/default/templates/users/subscriptions_management.html:11
 #: forum/skins/nuxeo/templates/users/subscriptions_management.html:11
-#, fuzzy
 msgid "show auto-subscribe"
-msgstr "махни абонамента ми"
+msgstr "покажи автоматичните абонаменти"
 
 #: forum/skins/default/templates/users/subscriptions_settings.html:5
 #: forum/skins/nuxeo/templates/users/subscriptions_settings.html:5
@@ -6947,12 +6939,10 @@ msgid "reputation points"
 msgstr "точки"
 
 #: forum/templatetags/extra_tags.py:114
-#, fuzzy, python-format
 msgid "%(user)s has %(count)d accepted answers"
 msgstr "%(user)s е дал %(count)d правилни отговора"
 
 #: forum/templatetags/extra_tags.py:120
-#, fuzzy, python-format
 msgid "%s has one accepted answer"
 msgstr "%s е дал един правилен отговор"
 
@@ -6998,8 +6988,8 @@ msgid "min ago"
 msgstr "преди минута"
 
 #: forum/templatetags/extra_tags.py:172
-msgid "mins ago"
-msgstr "преди минути"
+msgid "%(min)d mins ago"
+msgstr "преди %(min)d минути"
 
 #: forum/templatetags/extra_tags.py:172
 #, python-format
@@ -7013,8 +7003,8 @@ msgid "sec ago"
 msgstr "преди секунда"
 
 #: forum/templatetags/extra_tags.py:174
-msgid "secs ago"
-msgstr "преди секунди"
+msgid "%(sec)d secs ago"
+msgstr "преди %(sec)d секунди"
 
 #: forum/templatetags/extra_tags.py:174
 #, python-format
@@ -7025,7 +7015,7 @@ msgstr[1] ""
 
 #: forum/templatetags/node_tags.py:104
 msgid "permanent link"
-msgstr "постоянна връзка"
+msgstr "линк към въпроса"
 
 #: forum/templatetags/node_tags.py:105
 msgid "answer permanent link"
@@ -7079,7 +7069,6 @@ msgid "cancel community wiki"
 msgstr "wiki общност"
 
 #: forum/templatetags/node_tags.py:171
-#, fuzzy
 msgid "convert to comment"
 msgstr "превърни в коментар"
 
@@ -7339,6 +7328,17 @@ msgstr ""
 "%(action)s.<br />Моля, проверете <a href='%(faq_url)s'>Често Задавани "
 "Въпроси</a>"
 
+#: forum/settings/sidebar.py:24
+#, python-format
+msgid ""
+"\n"
+" - **ask a question relevant to the |APP_TITLE| community**\n"
+" - the title must be in the form of a question\n"
+" - provide enough details\n"
+" - be clear and concise\n"
+""
+msgstr "ehaa"
+
 #: forum/views/commands.py:39
 #, python-format
 msgid ""
@@ -7539,9 +7539,8 @@ msgid "Answer by %(uname)s: %(snippet)s..."
 msgstr "Отговорен от %(uname)s: %(snippet)s..."
 
 #: forum/views/commands.py:455
-#, fuzzy
 msgid "Question"
-msgstr "Въпроси"
+msgstr "Въпрос"
 
 #: forum/views/commands.py:464 forum/views/commands.py:467
 msgid "That is an invalid post to put the comment under"
@@ -8531,7 +8530,11 @@ msgstr "Награди"
 
 #: forum_modules/exporter/exporter.py:538
 msgid "Settings"
-msgstr ""
+msgstr "Настройки"
+
+#: forum_modules/exporter/exporter.py:538
+msgid "Manage"
+msgstr "Управление"
 
 #: forum_modules/exporter/forms.py:5
 #, fuzzy

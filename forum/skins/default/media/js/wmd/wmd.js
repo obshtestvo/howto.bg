@@ -2385,7 +2385,7 @@ Attacklab.wmdBase = function(){
 			});
 			
 		if(!chunk.selection){
-			chunk.selection = useDefaultText ? "List item" : " ";
+			chunk.selection = useDefaultText ? "Нова точка от списъка" : " ";
 		}
 		
 		var prefix = getItemPrefix();

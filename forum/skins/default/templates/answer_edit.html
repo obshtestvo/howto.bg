@@ -86,17 +86,21 @@
                 </div>
                 <div id="previewer" class="wmd-preview"></div>
             </div>
-            
-            <strong>{{ form.summary.label_tag }}</strong> <br/>
-            {{ form.summary }}  {{ form.summary.errors }}
-            <div class="title-desc">
-                {{ form.summary.help_text }}
+
+            <div class="form-item">
+                <strong>{{ form.summary.label_tag }}</strong>
+                {{ form.summary }}  {{ form.summary.errors }}
+                <div class="title-desc">
+                    {{ form.summary.help_text }}
+                </div>
             </div>
-            
+
             {% if form.recaptcha %}
-            <div class="question-captcha">
-            	{{ form.recaptcha.errors }}
-            	{{ form.recaptcha }}
+            <div class="form-item">
+                <div class="question-captcha">
+                    {{ form.recaptcha.errors }}
+                    {{ form.recaptcha }}
+                </div>
             </div>
             {% endif %}
             

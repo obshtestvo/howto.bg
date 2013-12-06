@@ -62,6 +62,7 @@ textarea {
   border-radius: 3px;
   border: solid 1px #dddddd;
   padding: 4px 6px;
+  margin-left: 0;
   vertical-align: middle;
   transition: border 0.2s; }
   input:hover, input:focus,
@@ -74,7 +75,14 @@ h1, h2, h3, ul, li, form, img, p {
   padding: 0; }
 
 label {
-  vertical-align: middle; }
+  vertical-align: middle;
+  padding-left: 3px; }
+  label[for="id_revision"], label[for="id_title"], label[for="id_tags"] {
+    text-transform: capitalize; }
+  label[for="id_summary"] {
+    display: block; }
+    label[for="id_summary"]:first-letter {
+      text-transform: capitalize; }
 
 .login label {
   display: block; }
@@ -127,10 +135,13 @@ h3 {
   font-size: 13px;
   font-weight: 600;
   padding: 3px 0; }
+  h3 span.actions {
+    font-size: 11px; }
 
 ul {
   list-style: disc outside none;
-  margin-left: 20px;
+  margin-left: 2.2em;
+  margin-bottom: 12px;
   padding-left: 0; }
 
 ol {
@@ -170,7 +181,8 @@ blockquote {
   margin-bottom: 10px;
   margin-right: 15px;
   padding: 10px 0 1px 10px;
-  max-width: 650px; }
+  max-width: 650px;
+  margin-left: 12px; }
   blockquote blockquote {
     margin: 0;
     padding: 0; }
@@ -472,6 +484,7 @@ blockquote {
     margin-top: 5px; }
     #searchBar .options label {
       margin-right: 10px;
+      text-transform: lowercase;
       font-size: 11px;
       cursor: pointer; }
     #searchBar .options input {
@@ -750,10 +763,24 @@ a.medal {
 
 .headUser {
   border-bottom: 1px solid #ddddde;
+  text-align: left;
   font-size: 20px;
   margin-bottom: 12px;
-  padding: 5px;
-  text-align: left; }
+  height: 30px; }
+  .headUser h1 {
+    display: inline-block;
+    font-size: inherit;
+    overflow: visible; }
+    .headUser h1 #user-menu-container {
+      font-size: 0.6em;
+      display: inline-block; }
+      .headUser h1 #user-menu-container ul {
+        margin-left: 0;
+        padding: 0; }
+        .headUser h1 #user-menu-container ul li:first-child {
+          padding-top: 0.6em; }
+        .headUser h1 #user-menu-container ul li:last-child {
+          padding-bottom: 0.4em; }
 
 .questions-related {
   word-wrap: break-word; }
@@ -792,12 +819,14 @@ ul.errorlist {
       margin-right: 3px; }
 
 .answer {
-  padding: 15px 12.2px;
+  padding: 15px 0;
+  margin: 15px 0;
   padding-top: 10px;
   width: 100%; }
 
 .answer-body {
   font-size: 14px;
+  padding: 0 12.2px;
   line-height: 20px;
   min-height: 80px;
   margin: 2px 0 20px 0; }
@@ -853,13 +882,8 @@ div.question-body p, div.answer-body p {
   border: solid 1px #22dd22;
   box-shadow: none; }
 
-.list-item ul {
-  margin: 0;
-  list-style-position: inside; }
-  .list-item ul li {
-    padding: 0 0 7.5px 0;
-    margin-bottom: 7.5px;
-    border-bottom: solid 1px #ddddde; }
+.list-item ul li {
+  margin-bottom: 7.5px; }
 
 .form-row {
   line-height: 25px; }
@@ -895,7 +919,9 @@ span.form-error {
   margin-left: 5px; }
 
 .title-desc {
-  font-size: 12px; }
+  font-size: 12px;
+  color: #aaaaaa;
+  padding-left: 3px; }
 
 #editor {
   line-height: 18px;
@@ -905,6 +931,7 @@ span.form-error {
 .wmd-preview {
   background-color: whitesmoke;
   margin-top: 10px;
+  margin-bottom: 10px;
   min-height: 20px;
   padding: 6px;
   width: 98%;
@@ -1221,6 +1248,9 @@ ins {
 .ask-body {
   padding-right: 10px; }
 
+.form-item {
+  margin-bottom: 12px; }
+
 .notify p {
   margin: 0; }
 
@@ -1331,6 +1361,7 @@ ul.form-horizontal-rows {
 
 .post-controls {
   font-size: 11px;
+  margin-left: 12.2px;
   line-height: 12px;
   margin-bottom: 5px;
   min-width: 200px; }
@@ -1599,7 +1630,10 @@ div.comment-tools {
 #ask-related-questions {
   max-height: 150px;
   overflow-y: auto;
-  border: solid 1px #ddddde; }
+  border: solid 0 #ddddde;
+  background: #fbfaf8;
+  margin-top: 5px;
+  border-radius: 5px; }
 
 .context-menu {
   position: relative; }
@@ -1703,6 +1737,16 @@ div#subscription_list {
   .subscription_switch:active {
     position: relative;
     top: 1px; }
+
+#subscription_box p {
+  margin: 0; }
+#subscription_box .subscription-type {
+  display: block;
+  padding-top: 10px; }
+
+.subscription-actions {
+  display: block;
+  padding-top: 11px; }
 
 div.subscription_summary {
   border-top: 2px solid #ddddde;

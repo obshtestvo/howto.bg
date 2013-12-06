@@ -94,15 +94,17 @@
 <div id="main-body" class="ask-body">
     <div id="askform">
         <form id="fmedit" action="" method="post">
-            {% csrf_token %}
-            <label for="id_revision" ><strong>{% trans "revision" %}:</strong></label> <br/> 
-            {% if revision_form.revision.errors %}{{ revision_form.revision.errors.as_ul }}{% endif %}
-            <div style="vertical-align:middle">
-            {{ revision_form.revision }} <input type="submit" style="display:none" id="select_revision" name="select_revision" 
-											value="{% trans "select revision"%}">
-            </div> 
             <div class="form-item">
-                <label for="id_title" ><strong>{{ form.title.label_tag }}:</strong></label> <span class="form-error"></span><br/> 
+                {% csrf_token %}
+                <label for="id_revision" ><strong>{% trans "revision" %}:</strong></label> <br/>
+                {% if revision_form.revision.errors %}{{ revision_form.revision.errors.as_ul }}{% endif %}
+                <div style="vertical-align:middle">
+                {{ revision_form.revision }} <input type="submit" style="display:none" id="select_revision" name="select_revision"
+                                                value="{% trans "select revision"%}">
+                </div>
+            </div>
+            <div class="form-item">
+                <strong>{{ form.title.label_tag }}:</strong> <span class="form-error"></span><br/>
                 {{ form.title }} {{ form.title.errors }}  
                 <div class="title-desc">
                     {{ form.title.help_text }}
@@ -137,18 +139,22 @@
                     {{ form.tags.help_text }}
                 </div>
             </div>
-            <strong>{{ form.summary.label_tag }}</strong> <br/>
-            {{ form.summary }}  {{ form.summary.errors }}
-            <div class="title-desc">
-                {{ form.summary.help_text }}
+            <div class="form-item">
+                <strong>{{ form.summary.label_tag }}</strong>
+                {{ form.summary }}  {{ form.summary.errors }}
+                <div class="title-desc">
+                    {{ form.summary.help_text }}
+                </div>
             </div>
             
             {% if form.recaptcha %}
-            <div class="question-captcha" style="float: left">
-            	{{ form.recaptcha.errors }}
-            	{{ form.recaptcha }}
+            <div class="form-item">
+                <div class="question-captcha" style="float: left">
+                    {{ form.recaptcha.errors }}
+                    {{ form.recaptcha }}
+                </div>
+                <div class="clear"></div>
             </div>
-            <div class="clear"></div>
             {% endif %}
             
             <div class="error" ></div>

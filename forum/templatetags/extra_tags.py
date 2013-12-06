@@ -169,9 +169,9 @@ def diff_date(date, limen=2):
     elif minutes >= 60:
         return ungettext(_("hour ago"), _("%(hr)d hours ago"), hours) % {'hr':hours}
     elif diff.seconds >= 60:
-        return ungettext('%(min)d ' + _("min ago"), '%(min)d ' + _("mins ago"), minutes) % {'min':minutes}
+        return ungettext(_("min ago"), _("%(min)d mins ago"), minutes) % {'min':minutes}
     else:
-        return ungettext('%(sec)d ' + _("sec ago"), '%(sec)d ' + _("secs ago"), diff.seconds) % {'sec':diff.seconds}
+        return ungettext(_("sec ago"), _("%(sec)d secs ago"), diff.seconds) % {'sec':diff.seconds}
 
 @register.simple_tag
 def media(url):

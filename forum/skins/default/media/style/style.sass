@@ -97,6 +97,7 @@ textarea
   border-radius: 3px
   border: $color-input-border
   padding: 4px 6px
+  margin-left: 0
   vertical-align: middle
   transition: border $time-transition
 
@@ -110,6 +111,15 @@ h1, h2, h3, ul, li, form, img, p
 
 label
   vertical-align: middle
+  padding-left: 3px
+
+  &[for="id_revision"], &[for="id_title"], &[for="id_tags"]
+    text-transform: capitalize
+  &[for="id_summary"]
+    display: block
+    &:first-letter
+      text-transform: capitalize
+
 
 .login
   label
@@ -164,9 +174,13 @@ h3
   font-weight: 600
   padding: 3px 0
 
+  span.actions
+    font-size: 11px
+
 ul
   list-style: disc outside none
-  margin-left: 20px
+  margin-left: 2.2em
+  margin-bottom: $font-size
   padding-left: 0
 
 ol
@@ -207,6 +221,7 @@ blockquote
   margin-right: 15px
   padding: 10px 0 1px 10px
   max-width: 650px
+  margin-left: $font-size
 
   blockquote
     margin: 0
@@ -872,7 +887,17 @@ a.medal
   h1
     display: inline-block
     font-size: inherit
-
+    overflow: visible
+    #user-menu-container
+      font-size: 0.6em
+      display: inline-block
+      ul
+        margin-left: 0
+        padding: 0
+        li:first-child
+          padding-top: 0.6em
+        li:last-child
+          padding-bottom: 0.4em
 
 .questions-related
   word-wrap: break-word
@@ -914,12 +939,14 @@ ul.errorlist
       margin-right: 3px
 
 .answer
-  padding: $size-padding-content-y $size-padding-content-x
+  padding: $size-padding-content-y 0
+  margin: $size-padding-content-y 0
   padding-top: 10px
   width: 100%
 
 .answer-body
   font-size: $font-size-large
+  padding: 0 $size-padding-content-x
   line-height: 20px
   min-height: 80px
   margin: 2px 0 20px 0
@@ -989,13 +1016,8 @@ div
 
 .list-item
   ul
-    margin: 0
-    list-style-position: inside
-
     li
-      padding: 0 0 $size-padding-content-y/2 0
       margin-bottom: $size-padding-content-y/2
-      border-bottom: solid 1px $color-divider
 
 
 .form-row
@@ -1034,6 +1056,8 @@ span.form-error
 
 .title-desc
   font-size: $font-size
+  color: #AAAAAA
+  padding-left: 3px
 
 #editor
   line-height: 18px
@@ -1043,6 +1067,7 @@ span.form-error
 .wmd-preview
   background-color: #F5F5F5
   margin-top: 10px
+  margin-bottom: 10px
   min-height: 20px
   padding: 6px
   width: 98%
@@ -1365,6 +1390,9 @@ ins
 .ask-body
   padding-right: 10px
 
+.form-item
+  margin-bottom: $font-size
+
 .notify p
   margin: 0
 
@@ -1479,6 +1507,7 @@ ul.form-horizontal-rows
 
 .post-controls
   font-size: $font-size-small
+  margin-left: $size-padding-content-x
   line-height: 12px
   margin-bottom: 5px
   min-width: 200px
@@ -1762,7 +1791,10 @@ div.comment-tools
 #ask-related-questions
   max-height: 150px
   overflow-y: auto
-  border: solid 1px $color-divider
+  border: solid 0 $color-divider
+  background: #fbfaf8
+  margin-top: 5px
+  border-radius: 5px
 
 .context-menu
   position: relative
@@ -1880,6 +1912,18 @@ div#subscription_list
   &:active
     position: relative
     top: 1px
+
+#subscription_box
+  p
+    margin: 0
+
+  .subscription-type
+    display: block
+    padding-top: $font-size-tiny
+
+.subscription-actions
+  display: block
+  padding-top: $font-size-small
 
 div
   &.subscription_summary
