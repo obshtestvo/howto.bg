@@ -4234,7 +4234,7 @@ msgstr "отговора"
 #: forum/views/readers.py:58 forum/views/readers.py:311
 #: forum/views/users.py:53 forum/views/users.py:54 forum/views/users.py:382
 msgid "votes"
-msgstr "гласове"
+msgstr "гласа"
 
 #: forum/skins/default/templates/question_summary_list_roll.html:15
 #: forum/skins/default/templates/question_list/item.html:19
@@ -4808,9 +4808,8 @@ msgid " cancel"
 msgstr "откажи"
 
 #: forum/skins/default/templates/node/comment_skeleton.html:24
-#, fuzzy
 msgid "Use canned comment"
-msgstr "post a comment"
+msgstr "Използвай шаблон"
 
 #: forum/skins/default/templates/node/comment_skeleton.html:41
 #: forum/skins/default/templates/node/comments.html:19

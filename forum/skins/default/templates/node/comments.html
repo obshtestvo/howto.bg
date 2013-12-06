@@ -6,7 +6,7 @@
 <div class="comments-container" id="comments-container-{{ post.id }}">
     {% for comment in comments %}
         <a name="{{ comment.id }}"></a>
-        <div class="comment{% if not comment.top_scorer %} not_top_scorer{% endif %}" id="comment-{{comment.id}}">
+        <div class="comment clearfix{% if not comment.top_scorer %} not_top_scorer{% endif %}" id="comment-{{comment.id}}">
             <div id="post-{{ comment.id }}-score" class="comment-score">{% if comment.score %}{{ comment.score }}{% endif %}</div>
             <div class="comment-text">{{ comment.comment }}</div>
             <div class="comment-info" id="comment-{{comment.id}}-info">

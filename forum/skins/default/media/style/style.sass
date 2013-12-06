@@ -19,7 +19,7 @@ $size-page-full: $size-page - 2*$size-padding-x
 $size-page-left: $size-page-full * 75 / 100
 $size-page-right: $size-page-full - $size-page-left - $size-padding-content-x
 
-$size-block: 50px
+$size-block: 59px
 
 $size-top-height: 38px
 $size-roof-height: 155px
@@ -266,7 +266,7 @@ blockquote
     width: 100%
     
     .question-summary-wrapper
-      width: $size-page - 2 * $size-block - $size-padding-content-x - ($size-block * 2) - $size-padding-content-x
+      width: $size-page - 2 * $size-block - $size-padding-content-x - ($size-block * 2) - $size-padding-content-x * 2
 
     .counts
       width: ($size-block * 2) + $size-padding-content-x
@@ -494,6 +494,8 @@ blockquote
 #askform
   hr
     display: none
+  .tabBar
+    margin-top: $size-top-height
 
 #nav_questions:before
   padding-right: $font-size / 3
@@ -624,13 +626,13 @@ blockquote
 
   .question-summary-wrapper
     float: right
-    width: $size-page-left - 2 * $size-block - $size-padding-content-x
+    width: $size-page-left - 2 * $size-block - $size-padding-content-x - 4
 
   .status
     border-radius: 4px
 
   .votes, .status, .views
-    font-size: $font-size-tiny / 1.2
+    font-size: $font-size-tiny
     float: left
     height: $size-block
     padding: 8px 2px 0
@@ -639,7 +641,7 @@ blockquote
 
     .item-count
       font-size: $font-size-huge * 1.5
-      line-height: $font-size-huge
+      line-height: $font-size-huge * 1.5
       margin-top: 4px
 
   .votes, .views
@@ -907,6 +909,7 @@ a.medal
 .question-body
   font-size: $font-size-large
   min-height: 100px
+  padding: 0 $size-padding-content-x
 
   p
     line-height: $font-size-big * 1.7
@@ -1524,6 +1527,7 @@ ul.form-horizontal-rows
 
 #question-tags
   margin-top: 15px
+  padding: 0 $size-padding-content-x
 
 .post-controls
   float: left
@@ -1652,20 +1656,20 @@ a.favorite-mark:hover
   vertical-align: top
   float: left
   width: 22px
-  height: 100%
   text-align: center
 
 .comment-text
   color: #444444
   font-size: $font-size
-  margin: 0 0 0 22px
+  margin: $font-size-tiny/2 0 0 $size-padding-content-x
   padding: 0
   p
     font-size: $font-size
+    margin: $font-size-tiny/8
 
 .comment-info
   font-size: $font-size-small
-  margin: 0 0 4px 0
+  margin: 0
   text-align: right
   height: 18px
   vertical-align: middle
@@ -1679,9 +1683,11 @@ a.favorite-mark:hover
   color: $color-text !important
 
 a
+  height: 18px
   &.comment-like, &.comment-delete, &.comment-edit, &.comment-convert, &.comment-convert-to-question
     margin-left: 2px
     width: 18px
+    float: right
   &.comment-like
     background: url("../images/comment-like.png") no-repeat scroll center center transparent
     &:hover, &.on
@@ -1725,6 +1731,7 @@ span.comment-chars-left
 
 div.comment-tools
   padding-top: 12px
+  padding-left: $size-padding-content-x
   text-align: right
 
   span.comment-tools-separator
@@ -1740,7 +1747,7 @@ div.comment-tools
     font-size: $font-size-small
 
   a
-    background: $color-background-header
+    background-color: #EEEEEE
     font-size: $font-size-small
     padding: 3px 8px
     border-radius: 3px
@@ -1983,3 +1990,22 @@ div
 
 .provider_logo
   border-radius: 3px
+
+/*
+ * Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+
+.clearfix:before, .clearfix:after
+  content: " " /* 1 */
+  display: table /* 2 */
+
+.clearfix:after
+  clear: both
