@@ -8194,7 +8194,6 @@ msgid "Created a tag used by %s questions"
 msgstr "Създаде таг използван от %s въпроса"
 
 #: forum_modules/default_badges/badges.py:326
-#, fuzzy
 msgid "Validated Email"
 msgstr "Потвърдил email-а си"
 

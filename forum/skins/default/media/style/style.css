@@ -55,6 +55,20 @@ input[type="password"],
 textarea {
   font-size: 13px;
   box-shadow: inset 0 1px 2px rgba(0, 0, 0, 0.1); }
+  input[type="text"]#id_title,
+  input[type="email"]#id_title,
+  input[type="number"]#id_title,
+  input[type="password"]#id_title,
+  textarea#id_title {
+    width: 90%;
+    max-width: 500px; }
+  input[type="text"]#id_tags,
+  input[type="email"]#id_tags,
+  input[type="number"]#id_tags,
+  input[type="password"]#id_tags,
+  textarea#id_tags {
+    width: 90%;
+    max-width: 370px; }
 
 input,
 textarea {
@@ -187,16 +201,19 @@ blockquote {
     margin: 0;
     padding: 0; }
 
+.wrapper {
+  padding: 30px 2.4% 0 2.4%; }
+
 #body {
   box-shadow: 0 2px 25px rgba(0, 0, 0, 0.1), 0 0 3px rgba(0, 0, 0, 0.1), 0 1px 1px rgba(0, 0, 0, 0.1);
-  margin: 30px auto 0 auto;
-  width: 1190px;
+  margin: 0 auto;
+  max-width: 1190px;
   background-color: white;
   border-radius: 4px;
   overflow: hidden; }
 
 #content {
-  padding: 20px 50px; }
+  padding: 20px 4.2%; }
 
 #roof {
   height: 155px;
@@ -209,18 +226,18 @@ blockquote {
 #CALeft {
   float: left;
   position: relative;
-  width: 817.5px; }
+  width: 75%; }
 
 #CARight {
   float: right;
-  width: 260.3px;
+  width: 20.8%;
   background: #fbfaf8;
   border-radius: 5px;
   overflow: hidden; }
 
 #CAFull {
   float: left;
-  width: 1090px; }
+  width: 100%; }
   #CAFull .short-summary {
     width: 100%; }
     #CAFull .short-summary .question-summary-wrapper {
@@ -230,13 +247,13 @@ blockquote {
 
 #ground {
   text-align: center;
-  width: 1190px;
+  max-width: 1190px;
   margin: 15px auto; }
 
 #top {
   font-size: 12px;
   position: absolute;
-  right: 50px;
+  right: 4.2%;
   height: 38px;
   text-align: right; }
   #top a {
@@ -250,11 +267,11 @@ blockquote {
 #logo {
   position: absolute;
   top: 0;
-  left: 50px; }
+  left: 4.2%; }
 
 #nav {
   height: 38px;
-  padding: 0 50px 0 240px;
+  padding: 0 4.2% 0 240px;
   background: #ecebe7; }
   #nav a:first-child {
     border-left: none; }
@@ -303,17 +320,27 @@ blockquote {
         color: #fde8e4; }
 
 /* ----------------  index page ----------------  */
+.index #body {
+  background: url("../images/bg-darker.jpg") no-repeat 0 -152px;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover; }
 .index #content {
-  padding-bottom: 10px; }
+  padding: 20px 0 0 0; }
 .index #nav .on {
   background-color: transparent;
   color: #666666;
   box-shadow: none; }
 .index #nav #nav_ask {
-  top: 135px;
-  right: 90p; }
+  top: 129px; }
+  @media screen and (max-width: 1006px) {
+    .index #nav #nav_ask {
+      top: 208px;
+      margin-right: -67px;
+      right: 50%; } }
 .index #searchBar {
-  width: 1090px;
+  width: 91.6%;
   text-align: center;
   top: 120px; }
   .index #searchBar form {
@@ -323,10 +350,11 @@ blockquote {
     padding: 15px 10px;
     display: inline-block;
     border-radius: 6px;
-    position: relative; }
+    position: relative;
+    width: 64.22%; }
   .index #searchBar #keywords {
+    width: 100%;
     margin-bottom: 10px;
-    width: 680px;
     padding: 7.5px 6.1px;
     font-size: 15px;
     height: 35px;
@@ -348,25 +376,24 @@ blockquote {
 .index #room {
   padding: 0; }
 .index #roof {
-  height: 400px;
-  border-bottom: solid 1px #ddddde;
-  background-position: top center; }
+  background: none;
+  height: 240px; }
   .index #roof .options {
     display: none; }
 
 .selected-tags {
-  position: absolute;
+  position: relative;
+  padding-bottom: 50px;
   text-align: center;
-  margin-left: -25%;
-  top: 290px;
-  width: 50%;
+  margin-left: -29%;
+  width: 58%;
   left: 50%; }
   .selected-tags h1 {
     margin-bottom: 10px;
-    color: white;
-    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5); }
+    color: #524337;
+    text-shadow: 0 1px 7px rgba(255, 255, 255, 0.5); }
   .selected-tags a {
-    background: rgba(255, 255, 255, 0.7);
+    background: rgba(255, 255, 255, 0.75);
     box-shadow: 0 1px 1px rgba(0, 0, 0, 0.3), inset 0 1px 0 rgba(255, 255, 255, 0.5);
     color: #666666;
     font-size: 11px;
@@ -383,7 +410,9 @@ blockquote {
 
 .selected-articles {
   width: 100%;
-  padding-top: 22px; }
+  padding: 42px 4.2% 50px 4.2%;
+  border-top: solid 1px #ddddde;
+  background: white; }
   .selected-articles .header {
     background: #fbfaf8;
     padding: 10px 15px;
@@ -450,11 +479,11 @@ blockquote {
 #searchBar {
   position: absolute;
   top: 67.5px;
-  left: 50px;
+  left: 4.2%;
   padding: 4px 0 0;
-  width: 1090px; }
+  width: 91.6%; }
   #searchBar .searchInput {
-    width: 408.75px;
+    width: 37.5%;
     margin: 0;
     vertical-align: middle; }
   #searchBar .searchBtn {
@@ -506,11 +535,9 @@ blockquote {
 
 .short-summary {
   border-top: 1px solid #ddddde;
-  float: left;
   overflow: hidden;
   padding: 12.2px 0px 12.2px 0;
-  position: relative;
-  width: 817.5px; }
+  position: relative; }
 
 #listA .short-summary:first-of-type {
   border-top: none; }
@@ -536,8 +563,7 @@ blockquote {
   margin-top: 4px;
   padding-right: 2px; }
 .short-summary .question-summary-wrapper {
-  float: right;
-  width: 683.3px; }
+  margin-left: 130.2px; }
 .short-summary .status {
   border-radius: 4px; }
 .short-summary .votes, .short-summary .status, .short-summary .views {
@@ -838,7 +864,7 @@ ul.errorlist {
 
 /* Fixes OSQA-143 IE8 text overflow issue */
 div.question-body p, div.answer-body p {
-  max-width: 817.5px;
+  max-width: 75%;
   padding-left: 5px; }
 
 .accepted-answer {
@@ -862,7 +888,7 @@ div.question-body p, div.answer-body p {
   padding: 0; }
   .tagsList li {
     float: left;
-    width: 266.4px; }
+    width: 25%; }
 
 .badge-list {
   list-style-type: none;
@@ -953,7 +979,7 @@ span.form-error {
     vertical-align: middle; }
 
 #revisions {
-  width: 1090px; }
+  width: 100%; }
 
 .revision {
   margin: 10px 0;
@@ -1264,7 +1290,7 @@ ins {
   color: #eeeeee;
   background-color: #333333;
   border-color: #bce8f1;
-  right: 50px;
+  right: 4.2%;
   top: 20px;
   padding: 15px 48.8px 15px 24.4px;
   position: fixed;
