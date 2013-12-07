@@ -218,58 +218,24 @@ function show_dialog (extern) {
     html += '<button class="dialog-yes"' + copy_id + '>' + options.yes_text + '</button>' + '</div></div>';
 
     var $dialog = $(html);
-
+    var $dialogContent = $dialog.find('.dialog-content');
+    $dialogContent.css('visibility', 'hidden');
     $('body').append($dialog);
-    var message = $('.dialog-content')[0];
-    message.style.visibility = "hidden";
 
     if (options.dim === false) {
         $dialog.css({
             visibility: 'hidden',
             display: 'block'
         });
-
         options.dim = {w: $dialog.width(), h: $dialog.height()};
-
-        $dialog.css({
-            width: 1,
-            height: 1,
-            visibility: 'visible'
-        });
     }
 
     $dialog.css({
-        top: options.pos.y,
-        left: options.pos.x
+        top: options.pos.y - $dialog.height()/2,
+        left: options.pos.x - $dialog.width()/2,
+        visibility: 'visible'
     });
-    
-    top_position_change = (options.dim.h / 2)
-    left_position_change = (options.dim.w / 2)
-    
-    new_top_position = options.pos.y - top_position_change
-    new_left_position = options.pos.x - left_position_change
-    
-    if (new_left_position < 0) {
-        left_position_change = 0
-    }
-    if (($(window).scrollTop() - new_top_position) > 0) {
-        top_position_change = 0
-    }
-    if ((options.event.pageY + options.dim.h) > ($(window).height() + $(window).scrollTop())) {
-        top_position_change = options.dim.h
-    }
-    if ((options.event.pageX + options.dim.w) > ($(window).width() + $(window).scrollLeft())) {
-        left_position_change = options.dim.w
-    }
-    
-    $dialog.animate({
-        top: "-=" + top_position_change,
-        left: "-=" + left_position_change,
-        width: options.dim.w,
-        height: options.dim.h
-    }, 200, function() {
-        message.style.visibility = "visible";
-    });
+    $dialogContent.css('visibility', 'visible')
 
     $dialog.find('.dialog-yes').click(function() {
         options.yes_callback($dialog);
@@ -462,17 +428,31 @@ $(function() {
         var $menu = $(this);
         var $trigger = $menu.find('.context-menu-trigger');
         var $dropdown = $menu.find('.context-menu-dropdown');
+//        $trigger.click(function() {
+//            $dropdown.slideToggle('fast', function() {
+//                if ($dropdown.is(':visible')) {
+//                   $dropdown.one('clickoutside', function() {
+//                       if ($dropdown.is(':visible'))
+//                            $dropdown.slideUp('fast');
+//                    });
+//                }
+//            });
+//        });
+
 
         $trigger.click(function() {
-            $dropdown.slideToggle('fast', function() {
-                if ($dropdown.is(':visible')) {
-                   $dropdown.one('clickoutside', function() {
-                       if ($dropdown.is(':visible'))
-                            $dropdown.slideUp('fast');
-                    });
-                }
-            });    
+            if ($dropdown.is(':visible')) {
+                $dropdown.hide();
+            } else {
+                $dropdown.show();
+            }
         });
+        $(document).click(function(e) {
+            var $target = $(e.target);
+            if ($dropdown.is(':visible') && !$target.is($trigger) && !$target.is($dropdown)) {
+                $dropdown.hide();
+            }
+        })
     });
 
     $('div.comment-form-container').each(function() {
@@ -1110,6 +1090,40 @@ var i18nEn = {
     'cannot flag message as offensive twice':'cannot flag message as offensive twice ',
 	'>100 points required to downvote':'>100 points required to downvote '
 };
+
+
+var i18nBg = {
+	'need >15 points to report spam':'need >15 points to report spam ',
+    '>15 points requried to upvote':'>15 points required to upvote ',
+	'tags cannot be empty':'please enter at least one tag',
+	'anonymous users cannot vote':'sorry, anonymous users cannot vote ',
+	'anonymous users cannot select favorite questions':'sorry, anonymous users cannot select favorite questions ',
+	'to comment, need': '(to comment other people\'s posts, karma ',
+	'please see':'please see ',
+	'community karma points':' or more is necessary) - ',
+	'upload image':'Upload image:',
+	'enter image url':'въведете URL към изображение, e.g. http://www.example.com/image.jpg \"image title\"',
+	'enter url':'enter Web address, e.g. http://www.example.com \"page title\"',
+	'daily vote cap exhausted':'sorry, you\'ve used up todays vote cap',
+	'cannot pick own answer as best':'sorry, you cannot accept your own answer',
+	'cannot revoke old vote':'sorry, older votes cannot be revoked',
+	'please confirm offensive':'are you sure this post is offensive, contains spam, advertising, malicious remarks, etc.?',
+	'flag offensive cap exhausted':'sorry, you\'ve used up todays cap of flagging offensive messages ',
+	'confirm delete':'are you sure you want to delete this?',
+	'anonymous users cannot delete/undelete':'sorry, anonymous users cannot delete or undelete posts',
+	'post recovered':'your post is now restored!',
+	'post deleted':'your post has been deleted',
+	'confirm delete comment':'do you really want to delete this comment?',
+	'can write':'have ',
+	'tablimits info':'up to 5 tags, no more than 20 characters each',
+	'content minchars': 'please enter more than {0} characters',
+	'title minchars':"please enter at least {0} characters",
+	'characters':'characters left',
+    'cannot vote for own posts':'sorry, you cannot vote for your own posts',
+    'cannot flag message as offensive twice':'cannot flag message as offensive twice ',
+	'>100 points required to downvote':'>100 points required to downvote '
+};
+
 
 var i18nEs = {
 	'insufficient privilege':'privilegio insuficiente',

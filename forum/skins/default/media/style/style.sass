@@ -35,6 +35,7 @@ $color-bronze: #CC9933
 
 $color-divider: #ddddde
 $color-accepted: #00cc00
+$color-upvote: #549e60
 
 $color-input-border: solid 1px #ddd
 $color-input-border-hover: solid 1px #999
@@ -1588,6 +1589,7 @@ a
 a
   &.accept-answer
     display: block
+    margin-top: 7px
     height: 24px
     position: relative
     width: 24px
@@ -1636,13 +1638,7 @@ a.favorite-mark:hover
 
 .comments-container
   clear: both
-  padding: 0
-
-.answered-by-owner .comments-container
-  background-color: #E6ECFF
-
-.accepted-answer .comments-container
-  background-color: #CCFFBF
+  margin: 0 $size-padding-content-x
 
 .comment
   border-top: 1px solid $color-divider
@@ -1651,30 +1647,35 @@ a.favorite-mark:hover
   &.not_top_scorer
     display: none
 
+.comment:hover
+  background: $color-background-header
+  
+.comment:hover a.comment-like
+  visibility: visible
+
 .comment-score
-  padding-top: 3px
+  padding-top: $font-size-tiny/2
+  padding-left: $font-size-tiny/2
   vertical-align: top
   float: left
-  width: 22px
-  text-align: center
+  font-weight: bold
 
 .comment-text
   color: #444444
   font-size: $font-size
-  margin: $font-size-tiny/2 0 0 $size-padding-content-x
+  margin: $font-size-tiny/2 0 0 $size-padding-content-x * 3
   padding: 0
   p
     font-size: $font-size
-    margin: $font-size-tiny/8
+    display: inline
 
 .comment-info
   font-size: $font-size-small
   margin: 0
-  text-align: right
-  height: 18px
+  display: inline
   vertical-align: middle
   *
-  float: right
+    display: inline-block
     height: 18px
     margin-left: 4px
 
@@ -1688,33 +1689,40 @@ a
     width: 18px
     height: 18px
     float: right
+    font-size: $font-size-small
+    text-decoration: none
+    &:before
+      color: $color-text
+    &:hover:before, &.on:before
+      color: $color-link
   &.comment-like
-    background: url("../images/comment-like.png") no-repeat scroll center center transparent
-    &:hover, &.on
-      background: url("../images/comment-like-on.png") no-repeat scroll center center transparent
+    float: left
+    margin-top: $font-size-tiny/2
+    visibility: hidden
+    font-size: $font-size*1.8
+    &:before
+      @include icon($caret-up)
+    &:hover:before, &.on:before
+      color: $color-upvote
   &.comment-delete
-    background: url("../images/comment-delete.png") no-repeat scroll center center transparent
-    &:hover
-      background: url("../images/comment-delete-hover.png") no-repeat scroll center center transparent
+    &:before
+      @include icon($trash)
   &.comment-convert
-    background: url("../images/convert-off.png") no-repeat scroll center center transparent
-    &:hover
-      background: url("../images/convert-hover.png") no-repeat scroll center center transparent
+    &:before
+      @include icon($undo)
   &.comment-convert-to-question
-    background: url("../images/convert-to-question-off.png") no-repeat scroll center center transparent
-    &:hover
-      background: url("../images/convert-to-question-hover.png") no-repeat scroll center center transparent
+    &:before
+      @include icon($repeat)
   &.comment-edit
-    background: url("../images/comment-edit.png") no-repeat scroll center center transparent
-    &:hover
-      background: url("../images/comment-edit-hover.png") no-repeat scroll center center transparent
+    &:before
+      @include icon($edit)
 
 img.subscription-remove
   float: right
 
 .comment-form-container
   display: none
-  padding-top: 12px
+  padding: 12px $size-padding-content-x 0 $size-padding-content-x
   margin-bottom: 8px
 
 .comment-form-widgets-container
@@ -1730,8 +1738,7 @@ span.comment-chars-left
   margin-right: 20px
 
 div.comment-tools
-  padding-top: 12px
-  padding-left: $size-padding-content-x
+  padding: $font-size $size-padding-content-x 0 $size-padding-content-x
   text-align: right
 
   span.comment-tools-separator
@@ -1763,6 +1770,8 @@ div.comment-tools
 
 .action-link-separator
   color: #CCCCCC
+  &:first-child
+    display: none
 
 .deleted
   background-color: #F4E7E7
@@ -1883,6 +1892,9 @@ div.dialog
 
   &.prompt
     width: 355px
+    border-radius: 5px
+    box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255,255,255,0.3)
+
     .dialog-content
       select, textarea, input[type=text]
         width: 100%

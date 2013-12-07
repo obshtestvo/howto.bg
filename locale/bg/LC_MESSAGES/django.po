@@ -1099,7 +1099,7 @@ msgstr "(моля въведете описателно заглавие на в
 #: forum/forms/qanda.py:31
 #, python-format
 msgid "title must be must be at least %s characters"
-msgstr "заглавието трябва да е поне %s симвула"
+msgstr "заглавието трябва да е поне %s символа"
 
 #: forum/forms/qanda.py:40
 msgid "content"
@@ -1108,12 +1108,12 @@ msgstr "съдържание"
 #: forum/forms/qanda.py:55
 #, python-format
 msgid "question content must be at least %s characters"
-msgstr "въпросът трябва да е поне %s симвула"
+msgstr "въпросът трябва да е поне %s символа"
 
 #: forum/forms/qanda.py:68
 #, python-format
 msgid "answer content must be at least %s characters"
-msgstr "отговорът трябва да е поне %s симвула"
+msgstr "отговорът трябва да е поне %s символа"
 
 #: forum/forms/qanda.py:80 forum/skins/default/templates/header.html:36
 #: forum/skins/default/templates/search.html:21
@@ -4100,8 +4100,8 @@ msgstr "Въпроса беше затворен поради \"%(close_reason)s
 #, python-format
 msgid "One Answer:"
 msgid_plural "%(counter)s Answers:"
-msgstr[0] "Един отговор:"
-msgstr[1] "%(counter)s Отговори"
+msgstr[0] "Един отговор"
+msgstr[1] "%(counter)s Отговора"
 
 #: forum/skins/default/templates/question.html:199
 #: forum/skins/nuxeo/templates/question.html:200
@@ -4827,9 +4827,8 @@ msgstr "Изтрий коментара"
 #: forum/skins/default/templates/node/comments.html:27
 #: forum/skins/nuxeo/templates/node/comments.html:25
 #: forum/skins/nuxeo/templates/node/comments.html:72
-#, fuzzy
 msgid "Convert comment to answer"
-msgstr "коментиран отговор"
+msgstr "Превърни коментара в отговор"
 
 #: forum/skins/default/templates/node/comment_skeleton.html:48
 #: forum/skins/nuxeo/templates/node/comments.html:75
@@ -4839,12 +4838,11 @@ msgstr "току що"
 #: forum/skins/default/templates/node/comments.html:15
 #: forum/skins/nuxeo/templates/node/comments.html:13
 msgid "I like this comment (click again to cancel)"
-msgstr "Аз харесвам този коментар"
+msgstr "Харесвам този коментар (цъкни отново за да отмениш) "
 
 #: forum/skins/default/templates/node/comments.html:29
-#, fuzzy
 msgid "Convert comment to question"
-msgstr "списък на всички въпроси"
+msgstr "Превърни коментара във въпрос"
 
 #: forum/skins/default/templates/node/comments.html:44
 #: forum/skins/nuxeo/templates/node/comments.html:40
@@ -6556,14 +6554,14 @@ msgid ""
 "                "
 msgid_plural ""
 "\n"
-"                <span class=\"count\">%(counter)s</span> Questions\n"
+"                <span class=\"count\">{{counter}}</span> Questions\n"
 "                "
 msgstr[0] ""
 "\n"
-"<div class=\"count\">%(counter)s</div> Въпрос "
+"<div class=\"count\">{{counter}}</div> Въпрос "
 msgstr[1] ""
 "\n"
-"<div class=\"questions-count\">%(q_num)s</div><p>questions without an "
+"<div class=\"questions-count\">{{counter}}</div><p>questions without an "
 "accepted answer</p>"
 
 #: forum/skins/default/templates/users/stats.html:37
@@ -6571,15 +6569,15 @@ msgstr[1] ""
 #, fuzzy, python-format
 msgid ""
 "\n"
-"                <span class=\"count\">%(counter)s</span> Answer\n"
+"                <span class=\"count\">{{counter}}</span> Answer\n"
 "                "
 msgid_plural ""
 "\n"
-"                <span class=\"count\">%(counter)s</span> Answers\n"
+"                <span class=\"count\">{{counter}}</span> Answers\n"
 "                "
 msgstr[0] ""
 "\n"
-"(one comment)"
+"<span class=\"count\">{{counter}}</span> Отговор"
 msgstr[1] ""
 "\n"
 "(one comment)"
@@ -6965,7 +6963,7 @@ msgstr "Процент отговори приети за валидни"
 
 #: forum/templatetags/extra_tags.py:166
 msgid "2 days ago"
-msgstr "преди 2 дена"
+msgstr "преди 2 дни"
 
 #: forum/templatetags/extra_tags.py:168
 msgid "yesterday"
@@ -7026,7 +7024,7 @@ msgstr "връзка към отговора"
 
 #: forum/templatetags/node_tags.py:109
 msgid "award points"
-msgstr ""
+msgstr "прехвърли точки на
 
 #: forum/templatetags/node_tags.py:110
 #, python-format
@@ -7047,7 +7045,7 @@ msgstr "затвори"
 
 #: forum/templatetags/node_tags.py:131
 msgid "report"
-msgstr "съобщи"
+msgstr "съобщи за проблем"
 
 #: forum/templatetags/node_tags.py:139
 msgid ""
@@ -7891,9 +7889,8 @@ msgid "validate your email"
 msgstr "валидирайте email-а си"
 
 #: forum/views/writers.py:129
-#, fuzzy
 msgid "Converted to question"
-msgstr "Промени във въпрос"
+msgstr "Превърнат във въпрос"
 
 #: forum/views/writers.py:267
 #, python-format

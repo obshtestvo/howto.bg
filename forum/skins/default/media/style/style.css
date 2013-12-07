@@ -224,9 +224,9 @@ blockquote {
   #CAFull .short-summary {
     width: 100%; }
     #CAFull .short-summary .question-summary-wrapper {
-      width: 965.6px; }
+      width: 917.4px; }
     #CAFull .short-summary .counts {
-      width: 112.2px; }
+      width: 130.2px; }
 
 #ground {
   text-align: center;
@@ -414,6 +414,8 @@ blockquote {
 /* ---------------- end page ----------------  */
 #askform hr {
   display: none; }
+#askform .tabBar {
+  margin-top: 38px; }
 
 #nav_questions:before {
   padding-right: 4px;
@@ -535,19 +537,19 @@ blockquote {
   padding-right: 2px; }
 .short-summary .question-summary-wrapper {
   float: right;
-  width: 705.3px; }
+  width: 683.3px; }
 .short-summary .status {
   border-radius: 4px; }
 .short-summary .votes, .short-summary .status, .short-summary .views {
-  font-size: 8.33333px;
+  font-size: 10px;
   float: left;
-  height: 50px;
+  height: 59px;
   padding: 8px 2px 0;
   text-align: center;
-  width: 50px; }
+  width: 59px; }
   .short-summary .votes .item-count, .short-summary .status .item-count, .short-summary .views .item-count {
     font-size: 22.5px;
-    line-height: 15px;
+    line-height: 22.5px;
     margin-top: 4px; }
 .short-summary .votes, .short-summary .views {
   color: #666666; }
@@ -789,7 +791,8 @@ a.medal {
 
 .question-body {
   font-size: 14px;
-  min-height: 100px; }
+  min-height: 100px;
+  padding: 0 12.2px; }
   .question-body p {
     line-height: 22.1px; }
   .question-body img {
@@ -1377,7 +1380,8 @@ ul.form-horizontal-rows {
   margin: 0 0 16px 0; }
 
 #question-tags {
-  margin-top: 15px; }
+  margin-top: 15px;
+  padding: 0 12.2px; }
 
 .post-controls {
   float: left; }
@@ -1434,6 +1438,7 @@ a.post-vote {
 
 a.accept-answer {
   display: block;
+  margin-top: 7px;
   height: 24px;
   position: relative;
   width: 24px; }
@@ -1480,13 +1485,7 @@ a.favorite-mark:hover {
 
 .comments-container {
   clear: both;
-  padding: 0; }
-
-.answered-by-owner .comments-container {
-  background-color: #e6ecff; }
-
-.accepted-answer .comments-container {
-  background-color: #ccffbf; }
+  margin: 0 12.2px; }
 
 .comment {
   border-top: 1px solid #ddddde;
@@ -1495,31 +1494,37 @@ a.favorite-mark:hover {
   .comment.not_top_scorer {
     display: none; }
 
+.comment:hover {
+  background: #fbfaf8; }
+
+.comment:hover a.comment-like {
+  visibility: visible; }
+
 .comment-score {
-  padding-top: 3px;
+  padding-top: 5px;
+  padding-left: 5px;
   vertical-align: top;
   float: left;
-  width: 22px;
-  height: 100%;
-  text-align: center; }
+  font-weight: bold; }
 
 .comment-text {
   color: #444444;
   font-size: 12px;
-  margin: 0 0 0 22px;
+  margin: 5px 0 0 36.6px;
   padding: 0; }
   .comment-text p {
-    font-size: 12px; }
+    font-size: 12px;
+    display: inline; }
 
 .comment-info {
   font-size: 11px;
-  margin: 0 0 4px 0;
-  text-align: right;
-  height: 18px;
-  vertical-align: middle;
-  float: right;
-    float-height: 18px;
-    float-margin-left: 4px; }
+  margin: 0;
+  display: inline;
+  vertical-align: middle; }
+  .comment-info * {
+    display: inline-block;
+    height: 18px;
+    margin-left: 4px; }
 
 .comment-cancel {
   background: #eeeeee !important;
@@ -1527,34 +1532,44 @@ a.favorite-mark:hover {
 
 a.comment-like, a.comment-delete, a.comment-edit, a.comment-convert, a.comment-convert-to-question {
   margin-left: 2px;
-  width: 18px; }
+  width: 18px;
+  height: 18px;
+  float: right;
+  font-size: 11px;
+  text-decoration: none; }
+  a.comment-like:before, a.comment-delete:before, a.comment-edit:before, a.comment-convert:before, a.comment-convert-to-question:before {
+    color: #666666; }
+  a.comment-like:hover:before, a.comment-like.on:before, a.comment-delete:hover:before, a.comment-delete.on:before, a.comment-edit:hover:before, a.comment-edit.on:before, a.comment-convert:hover:before, a.comment-convert.on:before, a.comment-convert-to-question:hover:before, a.comment-convert-to-question.on:before {
+    color: #2a5594; }
 a.comment-like {
-  background: url("../images/comment-like.png") no-repeat scroll center center transparent; }
-  a.comment-like:hover, a.comment-like.on {
-    background: url("../images/comment-like-on.png") no-repeat scroll center center transparent; }
-a.comment-delete {
-  background: url("../images/comment-delete.png") no-repeat scroll center center transparent; }
-  a.comment-delete:hover {
-    background: url("../images/comment-delete-hover.png") no-repeat scroll center center transparent; }
-a.comment-convert {
-  background: url("../images/convert-off.png") no-repeat scroll center center transparent; }
-  a.comment-convert:hover {
-    background: url("../images/convert-hover.png") no-repeat scroll center center transparent; }
-a.comment-convert-to-question {
-  background: url("../images/convert-to-question-off.png") no-repeat scroll center center transparent; }
-  a.comment-convert-to-question:hover {
-    background: url("../images/convert-to-question-hover.png") no-repeat scroll center center transparent; }
-a.comment-edit {
-  background: url("../images/comment-edit.png") no-repeat scroll center center transparent; }
-  a.comment-edit:hover {
-    background: url("../images/comment-edit-hover.png") no-repeat scroll center center transparent; }
+  float: left;
+  margin-top: 5px;
+  visibility: hidden;
+  font-size: 21.6px; }
+  a.comment-like:before {
+    font-family: FontAwesome;
+    content: "\f0d8"; }
+  a.comment-like:hover:before, a.comment-like.on:before {
+    color: #549e60; }
+a.comment-delete:before {
+  font-family: FontAwesome;
+  content: "\f014"; }
+a.comment-convert:before {
+  font-family: FontAwesome;
+  content: "\f0e2"; }
+a.comment-convert-to-question:before {
+  font-family: FontAwesome;
+  content: "\f01e"; }
+a.comment-edit:before {
+  font-family: FontAwesome;
+  content: "\f044"; }
 
 img.subscription-remove {
   float: right; }
 
 .comment-form-container {
   display: none;
-  padding-top: 12px;
+  padding: 12px 12.2px 0 12.2px;
   margin-bottom: 8px; }
 
 .comment-form-widgets-container input {
@@ -1569,7 +1584,7 @@ span.comment-chars-left {
   margin-right: 20px; }
 
 div.comment-tools {
-  padding-top: 12px;
+  padding: 12px 12.2px 0 12.2px;
   text-align: right; }
   div.comment-tools span.comment-tools-separator {
     float: left;
@@ -1582,7 +1597,7 @@ div.comment-tools {
     color: #ddddde;
     font-size: 11px; }
   div.comment-tools a {
-    background: #fbfaf8;
+    background-color: #eeeeee;
     font-size: 11px;
     padding: 3px 8px;
     border-radius: 3px; }
@@ -1597,6 +1612,8 @@ div.comment-tools {
 
 .action-link-separator {
   color: #cccccc; }
+  .action-link-separator:first-child {
+    display: none; }
 
 .deleted {
   background-color: #f4e7e7; }
@@ -1703,7 +1720,9 @@ div.dialog .dialog-buttons {
 div.dialog.confirm, div.dialog.warning {
   text-align: center; }
 div.dialog.prompt {
-  width: 355px; }
+  width: 355px;
+  border-radius: 5px;
+  box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2), inset 0 1px 0 rgba(255, 255, 255, 0.3); }
   div.dialog.prompt .dialog-content select, div.dialog.prompt .dialog-content textarea, div.dialog.prompt .dialog-content input[type=text] {
     width: 100%;
     padding: 0;
@@ -1801,3 +1820,20 @@ div.wmd-button-bar {
 
 .provider_logo {
   border-radius: 3px; }
+
+/* Clearfix: contain floats
+ *
+ * For modern browsers
+ * 1. The space content is one way to avoid an Opera bug when the
+ *    `contenteditable` attribute is included anywhere else in the document.
+ *    Otherwise it causes space to appear at the top and bottom of elements
+ *    that receive the `clearfix` class.
+ * 2. The use of `table` rather than `block` is only necessary if using
+ *    `:before` to contain the top-margins of child elements.
+ */
+.clearfix:before, .clearfix:after {
+  content: " ";
+  display: table; }
+
+.clearfix:after {
+  clear: both; }
