@@ -18,7 +18,7 @@ $size-padding-content-x: $font-size + 1/5
 $size-padding-content-y: 15px
 
 $max-page-size: 1190px
-$max-home-page-floating: 1006px
+$ipad-page-size: 1024px
 $page-size-full: 100%
 $page-size-left: 75%
 $max-page-size-right: 100 - $page-size-left - $size-padding-x
@@ -80,7 +80,7 @@ button
   transition: all $time-transition
   font-size: $font-size
   box-shadow: 0 1px 2px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,255,0.3)
-  
+
   &:hover
     background: darken(#1c46ac, 4%)
 
@@ -275,10 +275,10 @@ blockquote
 #CAFull
   float: left
   width: $page-size-full
-  
+
   .short-summary
     width: 100%
-    
+
     .question-summary-wrapper
       width: $max-page-size - 2 * $size-block - $size-padding-content-x - ($size-block * 2) - $size-padding-content-x * 2
 
@@ -298,6 +298,27 @@ blockquote
   height: $size-top-height
   text-align: right
 
+  .handle
+    display: none
+    height: $size-top-height
+    line-height: $size-top-height
+    text-align: right
+    cursor: pointer
+    &:after
+      padding-left: $font-size-tiny
+      @include icon($reorder)
+
+    @media screen and (max-width: $ipad-page-size)
+      display: inline-block
+  ul
+    list-style-type: none
+    max-resolution: 0
+    padding: 0
+    @media screen and (max-width: $ipad-page-size)
+      display: none
+    li
+      display: inline-block
+
   a
     height: $size-top-height
     line-height: $size-top-height
@@ -307,13 +328,14 @@ blockquote
     text-align: right
 
 #logo
-  position: absolute
+  float: left
   top: 0
-  left: $size-padding-x
+  margin-left: $size-padding-x
+  margin-right: 1.5%
 
 #nav
   height: $size-top-height
-  padding: 0 $size-padding-x 0 240px
+  padding: 0 $size-padding-x 0 20%
   background: #ecebe7
 
   a:first-child
@@ -323,7 +345,7 @@ blockquote
     color: #807f7b
     display: block
     float: left
-    padding: 4px 9px
+    padding: 4px 1%
     text-decoration: none
     text-transform: capitalize
     transition: all $time-transition
@@ -392,7 +414,7 @@ blockquote
 
   #nav #nav_ask
     top: 129px
-    @media screen and (max-width: $max-home-page-floating)
+    @media screen and (max-width: $ipad-page-size)
       top: 208px
       margin-right: -67px
       right: 50%

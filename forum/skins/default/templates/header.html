@@ -8,7 +8,10 @@
 		</div>
 	  
 		<div id="top">
-		    {% loadregistry header_links %}{% endloadregistry %}
+            <span class="handle">{% trans "Menu" %}</span>
+            <ul>
+                <li>{% loadregistry header_links %}</li><li>{% endloadregistry %}</li>
+            </ul>
 		</div>
 
         <div id="nav">
