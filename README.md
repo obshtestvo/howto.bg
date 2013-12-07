@@ -66,6 +66,13 @@ python manage.py syncdb --all
 python manage.py migrate forum --fake
 ```
 
+Влизате в директорията `forum_modules/mysqlfulltext` и изпълнявате
+
+```
+mysql osqa -u <mysquser> -p < fts_install.sql
+```
+
+
 И активирате сървърите:
 
 ```
