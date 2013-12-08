@@ -151,10 +151,10 @@
             <div class="form-item">
                 <strong>{{ form.tags.label_tag }}:</strong> <span class="form-error"></span><br/>
                 {{ form.tags }}  {{ form.tags.errors }}
+                <p class="title-desc">
+                    {{ form.tags.help_text }}
+                </p>
             </div>
-			<p class="title-desc">
-				{{ form.tags.help_text }}
-			</p>
 			
             {% if form.recaptcha %}
             <div class="question-captcha" style="float: left">

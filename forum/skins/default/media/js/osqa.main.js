@@ -428,17 +428,6 @@ $(function() {
         var $menu = $(this);
         var $trigger = $menu.find('.context-menu-trigger');
         var $dropdown = $menu.find('.context-menu-dropdown');
-//        $trigger.click(function() {
-//            $dropdown.slideToggle('fast', function() {
-//                if ($dropdown.is(':visible')) {
-//                   $dropdown.one('clickoutside', function() {
-//                       if ($dropdown.is(':visible'))
-//                            $dropdown.slideUp('fast');
-//                    });
-//                }
-//            });
-//        });
-
 
         $trigger.click(function() {
             if ($dropdown.is(':visible')) {
@@ -1288,3 +1277,26 @@ if (!window.addEventListener) {
         };
     }
 }
+
+
+$(function() {
+    var $topSecondaryNav = $('#top')
+    var $topTrigger = $topSecondaryNav.find('.handle')
+    var $dropdown = $topSecondaryNav.find('ul')
+    $topTrigger.click(function() {
+        if ($dropdown.hasClass('show')) {
+            $dropdown.removeClass('show');
+        } else {
+            $dropdown.addClass('show');
+        }
+    });
+    $dropdown.on('clickoutside', function(e) {
+        var $target = $(e.target);
+        if ($dropdown.hasClass('show') && !$target.is($topTrigger)) {
+            $dropdown.removeClass('show');
+        }
+    })
+    $(window).on('resize', function(e) {
+            $dropdown.removeClass('show');
+    })
+})

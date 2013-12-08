@@ -293,8 +293,8 @@ blockquote
 
 #top
   font-size: $font-size
-  position: absolute
-  right: $size-padding-x
+  float: right
+  margin-right: $size-padding-x
   height: $size-top-height
   text-align: right
 
@@ -304,6 +304,7 @@ blockquote
     line-height: $size-top-height
     text-align: right
     cursor: pointer
+    margin-right: $font-size
     &:after
       padding-left: $font-size-tiny
       @include icon($reorder)
@@ -316,8 +317,27 @@ blockquote
     padding: 0
     @media screen and (max-width: $ipad-page-size)
       display: none
+      width: 19.53%
+      background: #ecebe7
+      position: absolute
+      top: $size-top-height
+      right: 0
+      z-index: 9999
+      border-radius: 0 0 0 4px
+      &.show
+        display: block
     li
       display: inline-block
+      @media screen and (max-width: $ipad-page-size)
+        display: block
+        padding-right: 21.5%
+        min-width: 180px
+        float: right
+        clear: both
+        background: #ecebe7
+        border-top: 1px solid #DBDAD6
+        &:last-child
+          border-radius: 0 0 0 4px
 
   a
     height: $size-top-height
@@ -1748,6 +1768,8 @@ a
     font-size: $font-size*1.8
     &:before
       @include icon($caret-up)
+    &.on
+      visibility: visible
     &:hover:before, &.on:before
       color: $color-upvote
   &.comment-delete

@@ -252,8 +252,8 @@ blockquote {
 
 #top {
   font-size: 12px;
-  position: absolute;
-  right: 4.2%;
+  float: right;
+  margin-right: 4.2%;
   height: 38px;
   text-align: right; }
   #top .handle {
@@ -261,7 +261,8 @@ blockquote {
     height: 38px;
     line-height: 38px;
     text-align: right;
-    cursor: pointer; }
+    cursor: pointer;
+    margin-right: 12px; }
     #top .handle:after {
       padding-left: 10px;
       font-family: FontAwesome;
@@ -275,9 +276,29 @@ blockquote {
     padding: 0; }
     @media screen and (max-width: 1024px) {
       #top ul {
-        display: none; } }
+        display: none;
+        width: 19.53%;
+        background: #ecebe7;
+        position: absolute;
+        top: 38px;
+        right: 0;
+        z-index: 9999;
+        border-radius: 0 0 0 4px; }
+        #top ul.show {
+          display: block; } }
     #top ul li {
       display: inline-block; }
+      @media screen and (max-width: 1024px) {
+        #top ul li {
+          display: block;
+          padding-right: 21.5%;
+          min-width: 180px;
+          float: right;
+          clear: both;
+          background: #ecebe7;
+          border-top: 1px solid #dbdad6; }
+          #top ul li:last-child {
+            border-radius: 0 0 0 4px; } }
   #top a {
     height: 38px;
     line-height: 38px;
@@ -1598,6 +1619,8 @@ a.comment-like {
   a.comment-like:before {
     font-family: FontAwesome;
     content: "\f0d8"; }
+  a.comment-like.on {
+    visibility: visible; }
   a.comment-like:hover:before, a.comment-like.on:before {
     color: #549e60; }
 a.comment-delete:before {

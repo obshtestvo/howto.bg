@@ -622,6 +622,10 @@ msgstr "претагнато"
 msgid "tagged with"
 msgstr "с тага"
 
+#: forum/skins/default/templates/question_list/title.html:15
+msgid "searching for"
+msgstr "в търсене за"
+
 #: forum/actions/node.py:133
 #, python-format
 msgid ""
@@ -1163,15 +1167,15 @@ msgstr ""
 #: forum/skins/nuxeo/templates/question_summary_list_roll.html:26
 #: forum/skins/nuxeo/templates/question_summary_list_roll.html:39
 msgid "community wiki"
-msgstr "уики общност"
+msgstr "групово усилие"
 
 #: forum/forms/qanda.py:129
 msgid ""
 "if you choose community wiki option, the question and answer do not generate "
 "points and name of author will not be shown"
 msgstr ""
-"ако изберете тип wiki, въпроса и отговора не генерират точки и името на "
-"автора няма да бъде показвано"
+"Ако изберете 'групово усилия' написаното няма да носи точки, а името на "
+"автора няма да бъде показано "
 
 #: forum/forms/qanda.py:147
 msgid "update summary:"
@@ -7508,6 +7512,11 @@ msgstr ""
 "              Браво! Избрахте правилен отговор.\n"
 "            "
 
+#: forum/views/commands.py:347
+msgid "Congratulations, you have received a badge '%(badge_name)s'. <a href=\"%(badge_url)s\">Find out who has it, too</a>."
+msgstr "Поздравления, получихте значката '%(badge_name)s'! <a href=\"%(badge_url)s\">Разберете, кой още има съшата</a>."
+
+
 #: forum/views/commands.py:369 forum/views/commands.py:372
 msgid "delete posts"
 msgstr "изтрий публикациите"
@@ -7723,16 +7732,16 @@ msgstr "класиране"
 
 #: forum/views/readers.py:251
 msgid "relevance"
-msgstr "връзка"
+msgstr "най-близки"
 
 #: forum/views/readers.py:251
 msgid "most relevant questions"
-msgstr "подобни въпроси"
+msgstr "съвпадащи въпроси"
 
 #: forum/views/readers.py:259 forum/views/readers.py:261
 #, python-format
 msgid "questions matching '%(keywords)s'"
-msgstr "въпроси съвпадащи с '%(keywords)s'"
+msgstr "въпросa съвпадащи с '%(keywords)s'"
 
 #: forum/views/readers.py:414
 #, python-format
@@ -9002,6 +9011,9 @@ msgstr "Съобщи за нередност около потребителя"
 
 msgid "accept rate"
 msgstr "приети отговори"
+
+msgid "Menu"
+msgstr "Меню"
 
 #~ msgid "Change email "
 #~ msgstr "Промяна на emailа "
