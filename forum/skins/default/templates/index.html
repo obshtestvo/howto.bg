@@ -1,7 +1,7 @@
 {% extends "base_content.html" %}
 
 {% block title %}{% spaceless %}
-    PAGE TITLE INDEX
+    Как, къде и кога ... в България?
 {% endspaceless %}{% endblock %}
 
 {% block roofclass %}index{% endblock %}
@@ -11,26 +11,23 @@
     <div class="selected-tags">
         <h1>Или прегледайте въпросите по избрани тагове:</h1>
         <div>
-            <a href="tags/ddd">образование</a>
-            <a href="tags/ddd">данъци</a>
-            <a href="tags/ddd">право</a>
-            <a href="tags/ddd">закони</a>
-            <a href="tags/ddd">бизнес</a>
-            <a href="tags/ddd">помощи</a>
-            <a href="tags/ddd">работа</a>
-            <a href="tags/ddd">заплата</a>
-            <a href="tags/ddd">осигуровки</a>
-            <a href="tags/ddd">финанси</a>
-            <a href="tags/ddd">транспорт</a>
-            <a href="tags/ddd">права</a>
-            <a href="tags/ddd">задължения</a>
-            <a href="tags/ddd">администрация</a>
-            <a href="tags/ddd">полиция</a>
-            <a href="tags/ddd">протести</a>
-            <a href="tags/ddd">европа</a>
-            <a href="tags/ddd">пари</a>
-            <a href="tags/ddd">юридически лица</a>
-            <a href="tags/ddd">сделки</a>
+            <a href="tags/работа">работа</a>
+            <a href="tags/деца">деца</a>
+            <a href="tags/образование">образование</a>
+            <a href="tags/данъци">данъци</a>
+            <a href="tags/европейски-проекти">европейски-проекти</a>
+            <a href="tags/здравни">здраве</a>
+            <a href="tags/измама">измами</a>
+            <a href="tags/кариера">кариера</a>
+            <a href="tags/кола">коли</a>
+            <a href="tags/курсове">курсове</a>
+            <a href="tags/куче">кучета</a>
+            <a href="tags/община">община</a>
+            <a href="tags/осигуровки">осигуровки</a>
+            <a href="tags/родители">родители</a>
+            <a href="tags/училище">училище</a>
+            <a href="tags/финансиране">финансиране</a>
+            <a href="tags/чужди-езици">чужди-езици</a>
         </div>
     </div>
 
@@ -38,7 +35,7 @@
         <div>
             <div class="header">
                 <h2>Образование</h2>
-                <p class="description">Lorem lisum dolor sit ement, numer li.</p>
+                <p class="description">Въпроси свързани с образование ...</p>
             </div>
             <ul>
                 {% for question in first_row %}
@@ -49,7 +46,7 @@
         <div>
             <div class="header">
                 <h2>Дом</h2>
-                <p class="description">Lorem lisum dolor li poerta de fuela.</p>
+                <p class="description">Проблеми свързани с дома.</p>
             </div>
             <ul>
                 {% for question in second_row %}
@@ -60,7 +57,7 @@
         <div>
             <div class="header">
                 <h2>Транспорт</h2>
-                <p class="description">Lorem lisum de fuela.</p>
+                <p class="description">Автобуси, Трамваи, Метро ...</p>
             </div>
             <ul>
                 {% for question in third_row %}

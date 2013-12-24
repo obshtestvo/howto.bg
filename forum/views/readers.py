@@ -75,9 +75,9 @@ def feed(request):
 @decorators.render('index.html')
 def index(request):
     return {
-        'first_row': Question.objects.filter(tags__name="ddd").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
-        'second_row': Question.objects.filter(tags__name="dd").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
-        'third_row': Question.objects.filter(tags__name="fgwgew").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+        'first_row': Question.objects.filter(tags__name=u"образование").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+        'second_row': Question.objects.filter(tags__name=u"дом").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
+        'third_row': Question.objects.filter(tags__name=u"транспорт").filter_state(deleted=False).order_by('-last_activity_at')[0:5],
     }
 
 @decorators.render('questions.html', 'unanswered', _('unanswered'), weight=400)
@@ -88,7 +88,7 @@ def unanswered(request):
                          None,
                          _("Unanswered Questions"))
 
-@decorators.render('questions.html', 'questions', _('Questions'), weight=0)
+@decorators.render('questions.html', 'questions', _('questions'), weight=0)
 def questions(request):
     return question_list(request,
                          Question.objects.all(),
