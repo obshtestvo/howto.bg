@@ -105,7 +105,7 @@
     {% for provider in stackitem_providers %}
         {% if provider.id == "local" %}
         <h3 class="or_label">{% trans 'Or...' %}</h3>
-        <form class="signin_form" method="POST" action="{% url auth_provider_signin provider=provider.id %}" accept-charset="utf-8">
+        <form class="signin_form" method="POST" action="{% url "auth_provider_signin" provider=provider.id %}" accept-charset="utf-8">
             {% csrf_token %}
             {% include provider.stack_item_template %}
             <input type="hidden" class="validate_email" name="validate_email" value="yes" />

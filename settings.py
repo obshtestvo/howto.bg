@@ -74,6 +74,7 @@ app_url_split = APP_URL.split("://")
 APP_PROTOCOL = app_url_split[0]
 APP_DOMAIN = app_url_split[1].split('/')[0]
 APP_BASE_URL = '%s://%s' % (APP_PROTOCOL, APP_DOMAIN)
+STATIC_URL = '/admin_media/'
 
 FORCE_SCRIPT_NAME = ''
 

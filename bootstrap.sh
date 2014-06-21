@@ -14,7 +14,7 @@ wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - 
 sudo mkdir -p $HOME/.oh-my-zsh/custom/plugins
 git clone git://github.com/zsh-users/zsh-syntax-highlighting.git  $HOME/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
 sudo chsh -s `which zsh` vagrant
-sed -i.bak 's/^plugins=(.*/plugins=(git django python pip virtualenvwrapper emoji-clock zsh-syntax-highlighting bower)/' $HOME/.zshrc
+sed -i.bak 's/^plugins=(.*/plugins=(git django python pip virtualenvwrapper zsh-syntax-highlighting)/' $HOME/.zshrc
 echo "export LC_ALL=en_US.UTF-8" >> $HOME/.zshrc
 echo "export LANG=en_US.UTF-8" >> $HOME/.zshrc
 
@@ -23,13 +23,6 @@ echo "export LANG=en_US.UTF-8" >> $HOME/.zshrc
 if [ ! -f "$VAGRANT_DIR/server/settings_app.py" ]; then
     cp $VAGRANT_DIR/server/settings_app.py.vagrant-sample $VAGRANT_DIR/server/settings_app.py
 fi
-
-# nodejs for `bower` as frontend package management
-wget -qO- https://raw.github.com/creationix/nvm/v0.4.0/install.sh | sh
-source $HOME/.nvm/nvm.sh
-nvm install 0.10
-nvm alias default 0.10
-npm install bower -g
 
 # database
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password password'
@@ -47,22 +40,26 @@ mkvirtualenv $PROJECT_NAME --no-site-packages
 workon $PROJECT_NAME
 pip install -r $VAGRANT_DIR/requirements.dev.txt
 
+# project sturcture & permissions
+mkdir -p $VAGRANT_DIR/log
+mkdir -p $VAGRANT_DIR/cache
+touch $VAGRANT_DIR/log/django.osqa.log
+chmod 777 -R $VAGRANT_DIR/log
+chmod 777 -R $VAGRANT_DIR/cache
+chmod 777 -R $VAGRANT_DIR/forum/upfiles
+
 # django database init
-python $VAGRANT_DIR/manage.py syncdb --noinput
+python $VAGRANT_DIR/manage.py syncdb --all --noinput
 #python $VAGRANT_DIR/manage.py migrate
 python $VAGRANT_DIR/manage.py migrate forum --fake
-expect -c "spawn python $VAGRANT_DIR/manage.py createsuperuser --username=admin --email=" -c "expect \"Password:\"" -c "send \"admin\n\"" -c "expect \"Password (again):\"" -c "send \"admin\n\"" -c "expect eof"
-mysql $PROJECT_NAME -u root < forum_modules/mysqlfulltext/fts_install.sql
+mysql $PROJECT_NAME -u root < $VAGRANT_DIR/forum_modules/mysqlfulltext/fts_install.sql
 
 # servers
 sudo apt-get install nginx-full uwsgi uwsgi-plugin-python -y
 sudo usermod -a -G vagrant www-data
-touch $VAGRANT_DIR/log/django.osqa.log
-chmod 777 -R $VAGRANT_DIR/log
-mkdir -p $VAGRANT_DIR/cache
 sudo ln -s $VAGRANT_DIR/server/settings_nginx.vagrant.conf /etc/nginx/sites-enabled/vagrant.conf
 sudo ln -s $VAGRANT_DIR/server/settings_uwsgi.vagrant.ini /etc/uwsgi/apps-enabled/vagrant.ini
-ln -s $HOME/.virtualenvs/$PROJECT_NAME/lib/python2.7/site-packages/django/contrib/admin/media $VAGRANT_DIR/admin_media
+ln -s $HOME/.virtualenvs/$PROJECT_NAME/lib/python2.7/site-packages/django/contrib/admin/static/admin/ $VAGRANT_DIR/admin_media
 sudo rm /etc/nginx/sites-available/default
 sudo service nginx restart
 sudo service uwsgi restart

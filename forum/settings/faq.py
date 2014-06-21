@@ -1,5 +1,7 @@
+# coding: utf-8
 from base import Setting, SettingSet
 from django.forms.widgets import Textarea
+from django.utils.translation import ugettext_lazy as _
 
 FAQ_SET = SettingSet('faq', _('FAQ page'), _("Define the text in the about page. You can use markdown and some basic html tags."), 2000, True)
 

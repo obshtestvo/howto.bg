@@ -35,13 +35,14 @@ LOGGING = {
 ADMINS = ()
 MANAGERS = ADMINS
 
-DEBUG = False
+DEBUG = True
 DEBUG_TOOLBAR_CONFIG = {
     'INTERCEPT_REDIRECTS': True
 }
 TEMPLATE_DEBUG = DEBUG
 INTERNAL_IPS = ('127.0.0.1',)
-ALLOWED_HOSTS = ('yourhostname.com',)
+#ALLOWED_HOSTS = ('yourhostname.com',)
+
 
 DATABASES = {
     'default': {
@@ -50,25 +51,18 @@ DATABASES = {
         'NAME': 'howtobg', # Or path to database file if using sqlite3.
         'USER': 'root',
         'PASSWORD': '',
-        'HOST': '',
-        'PORT': '',
         'CONN_MAX_AGE': 600,
     }
 }
 
-CACHE_BACKEND = 'file://%s' % os.path.join(os.path.dirname(__file__),'cache').replace('\\','/')
+CACHE_BACKEND = 'file://%s' % os.path.join(SITE_SRC_ROOT,'cache').replace('\\','/')
 #CACHE_BACKEND = 'dummy://'
 SESSION_ENGINE = 'django.contrib.sessions.backends.db'
-# Customize the values below if OSQA is in a subfolder and especially you're planning on
-# running multiple Django applications (OSQA or others) on the same domain in different
-# subfolders
-#SESSION_COOKIE_PATH = '/'
-#CSRF_COOKIE_PATH = '/'
 
 # This should be equal to your domain name, plus the web application context.
 # This shouldn't be followed by a trailing slash.
 # I.e., http://www.yoursite.com or http://www.hostedsite.com/yourhostapp
-APP_URL = 'http://'
+APP_URL = 'http://127.0.0.1'
 
 #LOCALIZATIONS
 TIME_ZONE = 'America/New_York'
@@ -81,3 +75,4 @@ LANGUAGE_CODE = 'en'
 OSQA_DEFAULT_SKIN = 'default'
 
 DISABLED_MODULES = ['books', 'recaptcha', 'project_badges']
+DEBUG_TOOLBAR_PATCH_SETTINGS = False

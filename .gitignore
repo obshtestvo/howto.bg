@@ -1,9 +1,11 @@
 *.pyc
 .pydevproject
+.idea
 .settings
 .project
-log/django.osqa.log
+log
+cache
 tmp/*
-
-osqa.wsgi
-settings_local.py
+server/settings_app.py
+server/access.log
+.vagrant
