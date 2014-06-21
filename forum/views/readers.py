@@ -8,6 +8,7 @@ from django.core.paginator import Paginator, EmptyPage, InvalidPage
 from django.template import RequestContext
 from django import template
 from django.utils.html import *
+from django.utils.http import urlquote
 from django.db.models import Q, Count
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
@@ -29,9 +30,28 @@ import decorators
 
 class HottestQuestionsSort(pagination.SortBase):
     def apply(self, questions):
-        return questions.annotate(new_child_count=Count('all_children')).filter(
-                all_children__added_at__gt=datetime.datetime.now() - datetime.timedelta(days=1)).order_by('-new_child_count')
+        return questions.extra(select={'new_child_count': '''
+            SELECT COUNT(1)
+                FROM forum_node fn1
+                WHERE fn1.abs_parent_id = forum_node.id
+                    AND fn1.id != forum_node.id
+                    AND NOT(fn1.state_string LIKE '%%(deleted)%%')
+                    AND added_at > %s'''
+            },
+            select_params=[ (datetime.datetime.now() - datetime.timedelta(days=2))
+                .strftime('%Y-%m-%d')]
+        ).order_by('-new_child_count', 'last_activity_at')
 
+class UnansweredQuestionsSort(pagination.SortBase):
+    def apply(self, questions):
+        return questions.extra(select={'answer_count': '''
+            SELECT COUNT(1)
+                FROM forum_node fn1
+                WHERE fn1.abs_parent_id = forum_node.id
+                    AND fn1.id != forum_node.id
+                    AND fn1.node_type='answer'
+                    AND NOT(fn1.state_string LIKE '%%(deleted)%%')'''
+            }).order_by('answer_count', 'last_activity_at')
 
 class QuestionListPaginatorContext(pagination.PaginatorContext):
     def __init__(self, id='QUESTIONS_LIST', prefix='', pagesizes=(15, 30, 50), default_pagesize=30):
@@ -40,6 +60,7 @@ class QuestionListPaginatorContext(pagination.PaginatorContext):
             (_('newest'), pagination.SimpleSort(_('newest'), '-added_at', _("most <strong>recently asked</strong> questions"))),
             (_('hottest'), HottestQuestionsSort(_('hottest'), _("most <strong>active</strong> questions in the last 24 hours</strong>"))),
             (_('mostvoted'), pagination.SimpleSort(_('most voted'), '-score', _("most <strong>voted</strong> questions"))),
+            (_('unanswered'), UnansweredQuestionsSort('unanswered', "questions with no answers")),
         ), pagesizes=pagesizes, default_pagesize=default_pagesize, prefix=prefix)
 
 class AnswerSort(pagination.SimpleSort):
@@ -52,6 +73,7 @@ class AnswerSort(pagination.SimpleSort):
 class AnswerPaginatorContext(pagination.PaginatorContext):
     def __init__(self, id='ANSWER_LIST', prefix='', default_pagesize=10):
         super (AnswerPaginatorContext, self).__init__(id, sort_methods=(
+            (_('active'), AnswerSort(_('active answers'), '-last_activity_at', _("most recently updated answers/comments will be shown first"))),
             (_('oldest'), AnswerSort(_('oldest answers'), 'added_at', _("oldest answers will be shown first"))),
             (_('newest'), AnswerSort(_('newest answers'), '-added_at', _("newest answers will be shown first"))),
             (_('votes'), AnswerSort(_('popular answers'), ('-score', 'added_at'), _("most voted answers will be shown first"))),

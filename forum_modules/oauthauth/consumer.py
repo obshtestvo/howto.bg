@@ -52,7 +52,7 @@ class OAuthAbstractAuthConsumer(AuthenticationConsumer):
         parameters = {}
         # If the installation is configured to automatically redirect to the Twitter provider done page -- do it.
         if bool(TWITTER_AUTO_CALLBACK_REDIRECT):
-            callback_url = '%s%s' % (APP_URL, reverse('auth_provider_done', kwargs={ 'provider' : 'twitter', }))
+            callback_url = '%s%s' % (APP_URL, reverse('auth_provider_done', prefix='/', kwargs={'provider' : 'twitter'}))
             # Pass
             parameters.update({
                 'oauth_callback' : callback_url,

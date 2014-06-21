@@ -1,11 +1,11 @@
 from __future__ import with_statement
 
 import os, tarfile, ConfigParser, datetime
+import json
 
 from StringIO import StringIO
 from django.http import HttpResponse, HttpResponseRedirect, Http404
 from django.utils.translation import ugettext as _
-from django.utils import simplejson
 from django.core.cache import cache
 from django.core.urlresolvers import reverse
 from forum.views.admin import admin_tools_page, admin_page
@@ -74,7 +74,7 @@ def running(request, mode):
     })
 
 def state(request):
-    return HttpResponse(simplejson.dumps(cache.get(CACHE_KEY)), mimetype="application/json")
+    return HttpResponse(json.dumps(cache.get(CACHE_KEY)), mimetype="application/json")
 
 @admin_page
 def download(request):

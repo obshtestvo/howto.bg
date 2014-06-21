@@ -354,6 +354,7 @@ class SubscriptionSettingsForm(forms.ModelForm):
 
     class Meta:
         model = SubscriptionSettings
+        fields = ['enable_notifications', 'member_joins', 'new_question', 'new_question_watched_tags', 'subscribed_questions']
 
 class UserPreferencesForm(forms.Form):
     sticky_sorts = forms.BooleanField(required=False, initial=False)

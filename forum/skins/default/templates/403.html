@@ -19,16 +19,16 @@
             <li>{% trans "you followed a link on an email, but you're currently logged in as another user;" %}</li>
             <li>{% trans "there are errors in the url, please confirm it;" %}</li>
             <li>{% trans "if you believe you shouldn't bee seeing this error, please" %}
-				<a href="{% if settings.CONTACT_URL %}{{ settings.CONTACT_URL }}{% else %}{% url feedback %}{% endif %}" target="_blank">
+				<a href="{% if settings.CONTACT_URL %}{{ settings.CONTACT_URL }}{% else %}{% url "feedback" %}{% endif %}" target="_blank">
 				    {% trans "report this problem" %}
 				</a>
 			</li>
             </ul>
         </div>
         <ul>
-            <li><a href="{% url index %}">{% trans "to home page" %} &raquo;</a></li>
-            <li><a href="{% url questions %}">{% trans "see all questions" %} &raquo;</a></li>
-            <li><a href="{% url tags %}">{% trans "see all tags" %} &raquo;</a></li>
+            <li><a href="{% url "index" %}">{% trans "to home page" %} &raquo;</a></li>
+            <li><a href="{% url "questions" %}">{% trans "see all questions" %} &raquo;</a></li>
+            <li><a href="{% url "tags" %}">{% trans "see all tags" %} &raquo;</a></li>
         </ul>
     </div>
 

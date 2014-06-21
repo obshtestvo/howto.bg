@@ -28,7 +28,7 @@ class ActionQuerySet(CachedQuerySet):
 class ActionManager(CachedManager):
     use_for_related_fields = True
 
-    def get_query_set(self):
+    def get_queryset(self):
         qs = ActionQuerySet(self.model)
 
         if self.model is not Action:

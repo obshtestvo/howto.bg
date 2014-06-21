@@ -4,16 +4,15 @@ import sys
 
 SITE_ID = 1
 
-ADMIN_MEDIA_PREFIX = '/admin_media/'
-SECRET_KEY = '$oo^&_m&qwbib=(_4m_n*zn-d=g#s0he5fx9xonnym#8p6yigm'
+SECRET_KEY = 'a;::qCl1mfh?avagttOJ;8f5Rr54d,9qy7;o15M2cYO75?OQo51u3LnQ;!8N.:,7'
 
 CACHE_MAX_KEY_LENGTH = 235
 
 MIDDLEWARE_CLASSES = [
     'django.middleware.csrf.CsrfViewMiddleware',
-    'django.middleware.csrf.CsrfResponseMiddleware',
     'forum.middleware.django_cookies.CookiePreHandlerMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.common.CommonMiddleware',
     'forum.middleware.extended_user.ExtendedUser',
     'forum.middleware.anon_user.ConnectToSessionMessagesMiddleware',
@@ -28,8 +27,9 @@ MIDDLEWARE_CLASSES = [
 TEMPLATE_CONTEXT_PROCESSORS = [
     'django.core.context_processors.request',
     'forum.context.application_settings',
+    'django.contrib.messages.context_processors.messages',
     'forum.user_messages.context_processors.user_messages',
-    'django.core.context_processors.auth',
+    'django.contrib.auth.context_processors.auth',
 ]
 
 ROOT_URLCONF = 'urls'
@@ -48,25 +48,20 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 ALLOW_FILE_TYPES = ('.jpg', '.jpeg', '.gif', '.bmp', '.png', '.tiff')
 ALLOW_MAX_FILE_SIZE = 1024 * 1024
 
-# User settings
-from settings_local import *
+SESSION_SERIALIZER = 'django.contrib.sessions.serializers.PickleSerializer'
 
-if DEBUG:
-    TEMPLATE_LOADERS = [
-        'django.template.loaders.filesystem.load_template_source',
-        'django.template.loaders.app_directories.load_template_source',
-        'forum.modules.template_loader.module_templates_loader',
-        'forum.skins.load_template_source',
-    ]
-else:
-    TEMPLATE_LOADERS = [
-        ('django.template.loaders.cached.Loader',(
-            'django.template.loaders.filesystem.load_template_source',
-            'django.template.loaders.app_directories.load_template_source',
-            'forum.modules.template_loader.module_templates_loader',
-            'forum.skins.load_template_source',
-            )),
-    ]
+MESSAGE_STORAGE = 'django.contrib.messages.storage.session.SessionStorage'
+
+# User settings
+from server.settings_app import *
+
+template_loaders = (
+    'django.template.loaders.filesystem.Loader',
+    'django.template.loaders.app_directories.Loader',
+    'forum.modules.template_loader.module_templates_loader',
+    'forum.skins.load_template_source',
+)
+TEMPLATE_LOADERS = list(template_loaders) if DEBUG else [ ('django.template.loaders.cached.Loader', template_loaders) ]
 
 try:
     if len(FORUM_SCRIPT_ALIAS) > 0:
@@ -121,7 +116,7 @@ INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.humanize',
     'django.contrib.sitemaps',
-    'django.contrib.markup',
+    'django.contrib.messages',
     'forum',
 ]
 

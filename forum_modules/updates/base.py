@@ -18,9 +18,8 @@ import logging
 from xml.dom.minidom import parse, parseString
 from forum.base import get_database_engine
 from forum.models import Question, Answer, Comment, User
-from forum.settings import APP_URL, SVN_REVISION, APP_TITLE, APP_DESCRIPTION
+from forum.settings import APP_URL, VCS_REVISION, APP_TITLE, APP_DESCRIPTION
 from django import VERSION as DJANGO_VERSION
-from django.utils import simplejson
 from django.utils.html import escape
 from django.utils.encoding import smart_unicode
 from django.conf import settings as django_settings
@@ -82,7 +81,7 @@ def get_admin_emails():
 def check_for_updates():
     # Get the SVN Revision
     try:
-        svn_revision = int(SVN_REVISION.replace('SVN-', ''))
+        svn_revision = int(VCS_REVISION.replace('SVN-', ''))
     except ValueError:
         # Here we'll have to find another way of getting the SVN revision
         svn_revision = 0

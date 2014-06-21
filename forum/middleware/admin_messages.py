@@ -1,7 +1,7 @@
-from forum.user_messages import create_message
 from django.utils.translation import ugettext as _
 from django.core.urlresolvers import reverse
 from django.core.exceptions import ObjectDoesNotExist
+from django.contrib import messages
 
 from forum.settings import EMAIL_HOST, EMAIL_HOST_USER, EMAIL_HOST_PASSWORD, \
         APP_URL
@@ -29,14 +29,8 @@ class AdminMessagesMiddleware(object):
 
             # We do not want to repeat ourselves. If the message already exists in the message list, we're not going to
             # add it. That's why first of all we're going the check if it is there.
-            try:
-                # If the message doesn't exist in the RelatedManager ObjectsDoesNotExist is going to be raised.
-                request.user.message_set.all().get(message=msg)
-            except ObjectDoesNotExist:
-                # Let's create the message.
-                request.user.message_set.create(message=msg)
-            except:
-                pass
+            if msg not in [m.message for m in messages.api.get_messages(request)]:
+                messages.info(request, msg)
 
     def check_app_url(self, request):
         # We consider the APP_URL setting not configured if it contains only the protocol
@@ -50,11 +44,5 @@ class AdminMessagesMiddleware(object):
 
             # We do not want to repeat ourselves. If the message already exists in the message list, we're not going to
             # add it. That's why first of all we're going the check if it is there.
-            try:
-                # If the message doesn't exist in the RelatedManager ObjectsDoesNotExist is going to be raised.
-                request.user.message_set.all().get(message=msg)
-            except ObjectDoesNotExist:
-                # Let's create the message.
-                request.user.message_set.create(message=msg)
-            except:
-                pass
+            if msg not in [m.message for m in messages.api.get_messages(request)]:
+                messages.info(request, msg)

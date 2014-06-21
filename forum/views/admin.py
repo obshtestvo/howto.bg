@@ -1,4 +1,5 @@
 from datetime import datetime, timedelta
+import json
 import time
 
 from django.views.decorators.csrf import csrf_exempt
@@ -7,8 +8,9 @@ from django.core.urlresolvers import reverse
 from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.template import RequestContext
 from django.utils.translation import ugettext as _
-from django.utils import simplejson
 from django.db import models
+
+from django.contrib import messages
 
 from forum.http_responses import HttpResponseUnauthorized
 from forum.settings.base import Setting
@@ -119,7 +121,7 @@ def statistics(request):
             'added_at', flat=True)
 
     last_month_n_questions = Question.objects.filter_state(deleted=False).filter(added_at__lt=last_month).count()
-    qgraph_data = simplejson.dumps([
+    qgraph_data = json.dumps([
     (time.mktime(d.timetuple()) * 1000, i + last_month_n_questions)
     for i, d in enumerate(last_month_questions)
     ])
@@ -129,7 +131,7 @@ def statistics(request):
 
     last_month_n_users = User.objects.filter(date_joined__lt=last_month).count()
 
-    ugraph_data = simplejson.dumps([
+    ugraph_data = json.dumps([
     (time.mktime(d.timetuple()) * 1000, i + last_month_n_users)
     for i, d in enumerate(last_month_users)
     ])
@@ -181,7 +183,7 @@ def settings_set(request, set_name):
 
                 if not 'reset' in request.POST:
                     form.save()
-                    request.user.message_set.create(message=_("'%s' settings saved succesfully") % set_name)
+                    messages.info(request, _("'%s' settings saved succesfully") % set_name)
 
                     if set_name in ('minrep', 'badges', 'repgain'):
                         settings.SETTINGS_PACK.set_value("custom")
@@ -288,7 +290,7 @@ def go_bootstrap(request):
 
     settings.SETTINGS_PACK.set_value("bootstrap")
 
-    request.user.message_set.create(message=_('Bootstrap mode enabled'))
+    messages.info(request, _('Bootstrap mode enabled'))
     return HttpResponseRedirect(reverse('admin_index'))
 
 @super_user_required
@@ -302,7 +304,7 @@ def go_defaults(request):
 
     settings.SETTINGS_PACK.set_value("default")
 
-    request.user.message_set.create(message=_('All values reverted to defaults'))
+    messages.info(request, ('All values reverted to defaults'))
     return HttpResponseRedirect(reverse('admin_index'))
 
 
@@ -318,7 +320,7 @@ def recalculate_denormalized(request):
         u.reputation = u.reputes.aggregate(reputation=models.Sum('value'))['reputation']
         u.save()
 
-    request.user.message_set.create(message=_('All values recalculated'))
+    messages.info(request, _('All values recalculated'))
     return HttpResponseRedirect(reverse('admin_index'))
 
 @admin_page
@@ -337,12 +339,12 @@ def maintenance(request):
                 else:
                     message = _('Settings adjusted')
 
-                request.user.message_set.create(message=message)
+                messages.info(request, message)
 
                 return HttpResponseRedirect(reverse('admin_maintenance'))
         elif 'open' in request.POST:
             settings.MAINTAINANCE_MODE.set_value(None)
-            request.user.message_set.create(message=_("Your site is now running normally"))
+            messages.info(request, _("Your site is now running normally"))
             return HttpResponseRedirect(reverse('admin_maintenance'))
     else:
         form = MaintenanceModeForm(initial={'ips': request.META['REMOTE_ADDR'],
@@ -427,7 +429,7 @@ def create_user(request):
             user_.save()
             UserJoinsAction(user=user_).save()
 
-            request.user.message_set.create(message=_("New user created sucessfully. %s.") % html.hyperlink(
+            messages.info(request, _("New user created sucessfully. %s.") % html.hyperlink(
                     user_.get_profile_url(), _("See %s profile") % user_.username, target="_blank"))
 
             return HttpResponseRedirect(reverse("admin_tools", kwargs={'name': 'createuser'}))
@@ -507,7 +509,7 @@ def node_management(request):
 
                     message = _("All selected nodes deleted")
 
-                request.user.message_set.create(message=message)
+                messages.info(request, message)
 
                 params = pagination.generate_uri(request.GET, ('page',))
                 

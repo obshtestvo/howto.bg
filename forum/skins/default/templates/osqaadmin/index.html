@@ -48,10 +48,10 @@
                                 {% endifequal %}
                             {% endifequal %}
                             {% ifnotequal settings_pack "default" %}
-                                <button onclick="if (window.confirm('{% trans "Are you sure you want to revert to the defaults?" %}')) window.location='{% url admin_go_defaults %}';">{% trans "revert to defaults" %}</button>
+                                <button onclick="if (window.confirm('{% trans "Are you sure you want to revert to the defaults?" %}')) window.location='{% url "admin_go_defaults" %}';">{% trans "revert to defaults" %}</button>
                             {% endifnotequal %}
                             {% ifnotequal settings_pack "bootstrap" %}
-                                <button onclick="if (window.confirm('{% trans "Are you sure you want to run bootstrap mode?" %}')) window.location='{% url admin_go_bootstrap %}';">{% trans "go bootstrap" %}</button>
+                                <button onclick="if (window.confirm('{% trans "Are you sure you want to run bootstrap mode?" %}')) window.location='{% url "admin_go_bootstrap" %}';">{% trans "go bootstrap" %}</button>
                             {% endifnotequal %}
                         </td>
                     </tr>
@@ -63,7 +63,7 @@
                     </tr>
                 </table>
                 <h3>{%trans "Recalculate scores and reputation" %}</h3>
-                 <button onclick="if (window.confirm('{% trans "This is a heavy operation, are you sure?" %}')) window.location='{% url admin_denormalize %}';">{% trans "Recalculate" %}</button>
+                 <button onclick="if (window.confirm('{% trans "This is a heavy operation, are you sure?" %}')) window.location='{% url "admin_denormalize" %}';">{% trans "Recalculate" %}</button>
             </td>
         </tr>
         <tr>
@@ -76,5 +76,5 @@
                 </table>
             </td>
         </tr>
-    </table>        
+    </table>
 {% endblock %}

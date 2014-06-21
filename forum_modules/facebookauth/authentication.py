@@ -8,18 +8,13 @@ from forum.authentication.base import AuthenticationConsumer, ConsumerTemplateCo
 
 from django.conf import settings as django_settings
 from django.utils.encoding import smart_unicode
+from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext as _
 
 import settings
 
-try:
-    from json import load as load_json
-except Exception:
-    from django.utils.simplejson import JSONDecoder
+from json import load as load_json
 
-    def load_json(json):
-        decoder = JSONDecoder()
-        return decoder.decode(json.read())
 
 class FacebookAuthConsumer(AuthenticationConsumer):
 
@@ -33,10 +28,11 @@ class FacebookAuthConsumer(AuthenticationConsumer):
         facebook_api_authentication_url = "https://graph.facebook.com/oauth/authorize?" + urlencode(args)
 
         return facebook_api_authentication_url
-    
+
     def process_authentication_request(self, request):
         try:
-            args = dict(client_id=settings.FB_API_KEY, redirect_uri="%s%s" % (django_settings.APP_URL, request.path))
+            redirect_uri = "%s%s" % (django_settings.APP_URL, reverse('auth_provider_done', prefix='/', kwargs={'provider': 'facebook'}))
+            args = dict(client_id=settings.FB_API_KEY, redirect_uri=redirect_uri)
 
             args["client_secret"] = settings.FB_APP_SECRET  #facebook APP Secret
 

@@ -1,4 +1,4 @@
-{% load extra_tags extra_filters i18n %}
+{% load extra_tags extra_filters i18n admin_static %}
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
@@ -6,10 +6,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
-    <link rel="stylesheet" href="{{ settings.ADMIN_MEDIA_PREFIX }}css/base.css" type="text/css"/>
-    <link rel="stylesheet" href="{{ settings.ADMIN_MEDIA_PREFIX }}css/forms.css" type="text/css"/>
-    <link rel="stylesheet" href="{{ settings.ADMIN_MEDIA_PREFIX }}css/changelists.css" type="text/css"/>
-    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{{ settings.ADMIN_MEDIA_PREFIX }}css/ie.css" /><![endif]-->
+    <link rel="stylesheet" href="{% static 'admin/css/base.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'admin/css/forms.css' %}" type="text/css"/>
+    <link rel="stylesheet" href="{% static 'admin/css/changelists.css' %}" type="text/css"/>
+    <!--[if lte IE 7]><link rel="stylesheet" type="text/css" href="{% static 'admin/css/ie.css' %}" /><![endif]-->
     <link rel="stylesheet" type="text/css" media="screen" href="{% media "/media/style/djstyle_admin.css" %}"/>
     <script src="http://www.google.com/jsapi" type="text/javascript"></script>
     <script type="text/javascript">
@@ -32,14 +32,14 @@
             <div id="user-tools">
                 {% trans "Welcome," %}
                 <strong>{{ request.user.username }}</strong>.
-                <a href="{% url admin_switch_interface %}?to=default">{% trans "To standard interface" %}</a>
-                / <a href="{% url index %}">{% trans "Back to home page" %}</a>
-                / <a href="{% url logout %}">{% trans "Log out" %}</a>
+                <a href="{% url "admin_switch_interface" %}?to=default">{% trans "To standard interface" %}</a>
+                / <a href="{% url "index" %}">{% trans "Back to home page" %}</a>
+                / <a href="{% url "logout" %}">{% trans "Log out" %}</a>
             </div>
         </div>
         <div class="breadcrumbs">
-            <a href="{% url index %}">{% trans "Home" %}</a> &gt;
-            <a href="{% url admin_index %}">{% trans "Dashboard" %}</a> &gt;
+            <a href="{% url "index" %}">{% trans "Home" %}</a> &gt;
+            <a href="{% url "admin_index" %}">{% trans "Dashboard" %}</a> &gt;
             {% block pagename %}{% endblock %} - 
             {% block description %}{% endblock %}
         </div>
@@ -60,7 +60,7 @@
                 <div id="changes-box" class="module">
                     <h2>{% trans "Unpublished changes" %}</h2>
                     <p>
-                        <img src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_alert.gif" />
+                        <img src="{% static 'admin/img/admin/icon_alert.gif' %}" />
                         {% trans "Items marked with this icon have unpublished changes." %}
                     </p>
                 </div>
@@ -68,50 +68,50 @@
                 <div id="basic-sets-menu" class="module">
                     <h2>{% trans "Basic settings" %}</h2>
                     <ul>
-                        <li><a href="{% url admin_set allsets.basic.name %}">{{ allsets.basic.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.users.name %}">{{ allsets.users.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.email.name %}">{{ allsets.email.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.paths.name %}">{{ allsets.paths.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.urls.name %}">{{ allsets.urls.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.extkeys.name %}">{{ allsets.extkeys.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.basic.name %}">{{ allsets.basic.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.users.name %}">{{ allsets.users.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.email.name %}">{{ allsets.email.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.paths.name %}">{{ allsets.paths.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.urls.name %}">{{ allsets.urls.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.extkeys.name %}">{{ allsets.extkeys.title }}</a></li>
                     </ul>
                 </div>
                 <div id="workflow-sets-menu" class="module">
                     <h2>{% trans "Workflow settings" %}</h2>
                     <ul>
-                        <li><a href="{% url admin_set allsets.repgain.name %}">{{ allsets.repgain.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.minrep.name %}">{{ allsets.minrep.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.voting.name %}">{{ allsets.voting.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.accept.name %}">{{ allsets.accept.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.badges.name %}">{{ allsets.badges.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.repgain.name %}">{{ allsets.repgain.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.minrep.name %}">{{ allsets.minrep.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.voting.name %}">{{ allsets.voting.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.accept.name %}">{{ allsets.accept.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.badges.name %}">{{ allsets.badges.title }}</a></li>
                     </ul>
                 </div>
                 <div id="forum-sets-menu" class="module">
                     <h2>{% trans "Forum settings" %}</h2>
                     <ul>
-                        <li><a href="{% url admin_set allsets.form.name %}">{{ allsets.form.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.view.name %}">{{ allsets.view.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.moderation.name %}">{{ allsets.moderation.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.form.name %}">{{ allsets.form.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.view.name %}">{{ allsets.view.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.moderation.name %}">{{ allsets.moderation.title }}</a></li>
                     </ul>
                 </div>
                 <div id="pages-sets-menu" class="module">
                     <h2>{% trans "Static content" %}</h2>
                     <ul>
-                        <li><a href="{% url admin_static_pages %}">{% trans "Custom Pages" %}</a></li>
-                        <li><a href="{% url admin_set allsets.about.name %}">{{ allsets.about.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.faq.name %}">{{ allsets.faq.title }}</a></li>
-                        <li><a href="{% url admin_set allsets.sidebar.name %}">{{ allsets.sidebar.title }}</a></li>
+                        <li><a href="{% url "admin_static_pages" %}">{% trans "Custom Pages" %}</a></li>
+                        <li><a href="{% url "admin_set" allsets.about.name %}">{{ allsets.about.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.faq.name %}">{{ allsets.faq.title }}</a></li>
+                        <li><a href="{% url "admin_set" allsets.sidebar.name %}">{{ allsets.sidebar.title }}</a></li>
                         <li>
-                            <a href="{% url admin_set allsets.css.name %}">{{ allsets.css.title }}</a>
-                            {% if "css"|contained_in:unsaved %}<img width="12" height="12" src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_alert.gif" alt="{% trans "Unsaved changes" %}" />{% endif %}
+                            <a href="{% url "admin_set" allsets.css.name %}">{{ allsets.css.title }}</a>
+                            {% if "css"|contained_in:unsaved %}<img width="12" height="12" src="{% static 'admin/img/admin/icon_alert.gif' %}" alt="{% trans "Unsaved changes" %}" />{% endif %}
                         </li>
                         <li>
-                            <a href="{% url admin_set allsets.headandfoot.name %}">{{ allsets.headandfoot.title }}</a>
-                            {% if "headandfoot"|contained_in:unsaved %}<img width="12" height="12" src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_alert.gif" alt="{% trans "Unsaved changes" %}" />{% endif %}
+                            <a href="{% url "admin_set" allsets.headandfoot.name %}">{{ allsets.headandfoot.title }}</a>
+                            {% if "headandfoot"|contained_in:unsaved %}<img width="12" height="12" src="{% static 'admin/img/admin/icon_alert.gif' %}" alt="{% trans "Unsaved changes" %}" />{% endif %}
                         </li>
                         <li>
-                            <a href="{% url admin_set allsets.head.name %}">{{ allsets.head.title }}</a>
-                            {% if "head"|contained_in:unsaved %}<img width="12" height="12" src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_alert.gif" alt="{% trans "Unsaved changes" %}" />{% endif %}
+                            <a href="{% url "admin_set" allsets.head.name %}">{{ allsets.head.title }}</a>
+                            {% if "head"|contained_in:unsaved %}<img width="12" height="12" src="{% static 'admin/img/admin/icon_alert.gif' %}" alt="{% trans "Unsaved changes" %}" />{% endif %}
                         </li>
                     </ul>
                 </div>
@@ -120,8 +120,8 @@
                     <ul>
                     {% for set in othersets %}
                         <li>
-                            <a href="{% url admin_set set.name %}">{{ set.title }}</a>
-                            {% if set.name|contained_in:unsaved %}<img width="12" height="12" src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_alert.gif" alt="{% trans "Unsaved changes" %}" />{% endif %}
+                            <a href="{% url "admin_set" set.name %}">{{ set.title }}</a>
+                            {% if set.name|contained_in:unsaved %}<img width="12" height="12" src="{% static 'admin/img/admin/icon_alert.gif' %}" alt="{% trans "Unsaved changes" %}" />{% endif %}
                         </li>
                     {% endfor %}
                     </ul>
@@ -129,10 +129,10 @@
                 <div id="tools-menu" class="module">
                     <h2>{% trans "Tools" %}</h2>
                     <ul>
-                        <li><a href="{% url admin_maintenance %}">{% trans "Maintenance mode" %}</a></li>
-                        <li><a href="{% url admin_flagged_posts %}">{% trans "Flagged Posts" %}</a></li>
+                        <li><a href="{% url "admin_maintenance" %}">{% trans "Maintenance mode" %}</a></li>
+                        <li><a href="{% url "admin_flagged_posts" %}">{% trans "Flagged Posts" %}</a></li>
                         {% for name,tool in tools %}
-                            <li><a href="{% url admin_tools name %}">{{ tool }}</a></li>
+                            <li><a href="{% url "admin_tools" name %}">{{ tool }}</a></li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -140,7 +140,7 @@
             {% endif %}
         </div>
         <div id="footer" class="breadcumbs">
-            <a href="http://www.osqa.net">OSQA</a> <span class="version">{{ settings.OSQA_VERSION }} ({{ settings.SVN_REVISION }})</span>
+            <a href="http://www.osqa.net">OSQA</a> <span class="version">{{ settings.OSQA_VERSION }} ({{ settings.VCS_REVISION }})</span>
         </div>
     </div>
 </body>

@@ -88,7 +88,7 @@
     {% comment %}<!-- this form associates openID with an existing password-protected account, not yet functional -->
     {% if form2 %}
 	<div class="login" style="display:none">
-        <form name="fverify" action="{% url user_register %}" method="POST">
+        <form name="fverify" action="{% url "user_register" %}" method="POST">
             {% csrf_token %}
             {{ form2.next }}
 			<fieldset style="padding:10px">
@@ -99,7 +99,7 @@
 				<!--todo double check translation from chinese 确认 = "Register" -->
 				<div class="submit-row">
 					<input type="submit" class="submit" name="bverify" value="{% trans "Register" %}"/> 
-					<a href="{% url user_sendpw %}">{% trans "Forgot your password?" %}</a>
+					<a href="{% url "user_sendpw" %}">{% trans "Forgot your password?" %}</a>
 				</div>
 			</fieldset>
 		</form>

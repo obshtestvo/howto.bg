@@ -7,17 +7,14 @@ from django.conf import settings
 from django.http import HttpResponse, Http404
 from django.template import loader
 from django.core import urlresolvers
+from django.core.urlresolvers import get_script_prefix
 from django.utils.encoding import smart_str
 from django.core.paginator import EmptyPage, PageNotAnInteger
 
 def index(request, sitemaps):
     sites = []
-    for section, site in sitemaps.items():
-        if callable(site):
-            pages = site().paginator.num_pages
-        else:
-            pages = site.paginator.num_pages
-        sitemap_url = urlresolvers.reverse('sitemap_section_index', kwargs={'section': section})
+    for section in sitemaps.keys():
+        sitemap_url = urlresolvers.reverse('sitemap_section_index', prefix='/', kwargs={'section': section})
 
         # Replace double forward slashes with single ones
         final_url = '%s%s' % (settings.APP_URL, sitemap_url)
@@ -41,7 +38,7 @@ def sitemap_section_index(request, section, sitemaps):
     locations = []
 
     for page in paginator.page_range:
-        location = urlresolvers.reverse('sitemap_section_page', kwargs={ 'page' : page, 'section' : section })
+        location = urlresolvers.reverse('sitemap_section_page', prefix='/', kwargs={ 'page' : page, 'section' : section })
         location = '%s%s' % (settings.APP_URL, location)
         location = re.sub("/+", "/", location)
         location = location.replace('http:/', 'http://')
@@ -98,7 +95,9 @@ class OsqaSitemap(Sitemap):
     def get_urls(self, page=1):
         urls = []
         for item in self.paginator.page(page).object_list:
-            loc = "%s%s" % (settings.APP_URL, self.__get('location', item))
+            root_relative_url = self.__get('location', item)
+            relative_url = root_relative_url[len(get_script_prefix()):]
+            loc = "%s/%s" % (settings.APP_URL, relative_url)
             url_info = {
                 'location':   loc,
                 'lastmod':    self.__get('lastmod', item, None),

@@ -1,11 +1,14 @@
 from django.utils.translation import ungettext, ugettext as _
 from django.core.urlresolvers import reverse
 from django.db.models import F
+from django.contrib import messages
 from forum.models.action import ActionProxy
 from forum.models import Award, Badge, ValidationHash, User
-from forum import settings
+from forum import settings, REQUEST_HOLDER
 from forum.settings import APP_SHORT_NAME
 from forum.utils.mail import send_template_email
+
+from django.contrib import messages
 
 class UserJoinsAction(ActionProxy):
     verb = _("joined")
@@ -19,7 +22,7 @@ class UserJoinsAction(ActionProxy):
 
     def describe(self, viewer=None):
         return _("%(user)s %(have_has)s joined the %(app_name)s Q&A community") % {
-        'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+        'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
         'have_has': self.viewer_or_user_verb(viewer, self.user, _('have'), _('has')),
         'app_name': APP_SHORT_NAME,
         }
@@ -29,7 +32,7 @@ class UserLoginAction(ActionProxy):
 
     def describe(self, viewer=None):
         return _("%(user)s %(have_has)s logged in") % {
-            'user' : self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+            'user' : self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
             'have_has': self.viewer_or_user_verb(viewer, self.user, _('have'), _('has')),
         }
 
@@ -45,7 +48,7 @@ class EmailValidationAction(ActionProxy):
 
     def describe(self, viewer=None):
         return _("%(user)s %(have_has)s validated the e-mail %(email)s") % {
-        'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+        'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
         'have_has': self.viewer_or_user_verb(viewer, self.user, _('have'), _('has')),
         'email' : self.user.email if viewer.is_superuser or viewer.is_staff or viewer == self.user else ""
         }
@@ -55,9 +58,9 @@ class EditProfileAction(ActionProxy):
 
     def describe(self, viewer=None):
         return _("%(user)s edited %(hes_or_your)s %(profile_link)s") % {
-        'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+        'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
         'hes_or_your': self.viewer_or_user_verb(viewer, self.user, _('your'), _('his')),
-        'profile_link': self.hyperlink(self.user.get_profile_url(), _('profile')),
+        'profile_link': self.hyperlink(self.user.get_absolute_url(), _('profile')),
         }
 
 class BonusRepAction(ActionProxy):
@@ -76,8 +79,7 @@ class BonusRepAction(ActionProxy):
                     message=_("Congratulations, you have been awarded an extra %s reputation points.") % self._value +
                     '<br />%s' % self.extra.get('message', _('Thank you')))
         else:
-            self._affected.message_set.create(
-                    message=_("You have been penalized in %s reputation points.") % self._value +
+            messages.info(REQUEST_HOLDER.request, _("You have penalized %s in %s reputation points.") % (self._affected, self._value) +
                     '<br />%s' % self.extra.get('message', ''))
 
     def describe(self, viewer=None):
@@ -87,12 +89,12 @@ class BonusRepAction(ActionProxy):
         try:
             if int(value) > 0:
                 return _("%(user)s awarded an extra %(value)s reputation points to %(users)s: %(message)s") % {
-                'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+                'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
                 'value': value, 'users':self.affected_links(viewer), 'message': message
                 }
             else:
                 return _("%(user)s penalised %(users)s in %(value)s reputation points: %(message)s") % {
-                'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+                'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
                 'value': value, 'users':self.affected_links(viewer), 'message': message
                 }
         except Exception, e:
@@ -110,7 +112,6 @@ class AwardPointsAction(ActionProxy):
         self.repute(self._affected, self._value)
         self.repute(self.user, -self._value)
 
-
         self._affected.message_set.create(
                 message=_("Congratulations, you have been awarded an extra %(points)s reputation %(points_label)s on <a href=\"%(answer_url)s\">this</a> answer.") % {
                         'points': self._value,
@@ -124,12 +125,12 @@ class AwardPointsAction(ActionProxy):
         try:
             if int(value) > 0:
                 return _("%(user)s awarded an extra %(value)s reputation points to %(users)s") % {
-                'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+                'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
                 'value': value, 'users':self.affected_links(viewer),
                 }
             else:
                 return _("%(user)s penalised %(users)s in %(value)s reputation points") % {
-                'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+                'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
                 'value': value, 'users':self.affected_links(viewer),
                 }
         except Exception, e:
@@ -188,7 +189,7 @@ class AwardAction(ActionProxy):
 
     def describe(self, viewer=None):
         return _("%(user)s %(were_was)s awarded the %(badge_name)s badge") % {
-        'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+        'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
         'were_was': self.viewer_or_user_verb(viewer, self.user, _('were'), _('was')),
         'badge_name': self.award.badge.name,
         }
@@ -217,7 +218,7 @@ class ReportAction(ActionProxy):
     def describe(self, viewer=None):
 
         return _("%(user)s reported %(reported) : %(msg)s") % {
-            'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+            'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
             'reporter': self.extra.get('reported').username,
             'msg': self.extra.get('publicmsg', _('N/A'))
         }
@@ -250,6 +251,6 @@ class SuspendAction(ActionProxy):
             suspension = _("indefinetely")
 
         return _("%(user)s suspended %(users)s %(suspension)s: %(msg)s") % {
-        'user': self.hyperlink(self.user.get_profile_url(), self.friendly_username(viewer, self.user)),
+        'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
         'users': self.affected_links(viewer), 'suspension': suspension, 'msg': self.extra.get('publicmsg', _('Bad behaviour'))
         }

@@ -4,7 +4,7 @@
 
 {% block subtitle %}{% trans "Editing page" %}{% endblock %}
 {% block pagename %}
-    <a href="{% url admin_static_pages %}">{% trans "Static Pages" %}</a> &gt;
+    <a href="{% url "admin_static_pages" %}">{% trans "Static Pages" %}</a> &gt;
     {% if page %}{% trans "Editing page" %}{% else %}{% trans "Creating page" %}{% endif %}
 {% endblock %}
 {% block description %}

@@ -9,7 +9,7 @@
 {% block admincontent %}
     <h1>{% trans "Select page to edit" %}</h1>
     <ul class="object-tools">
-        <li><a class="addlink" href="{% url admin_new_page %}">{% trans "New page" %}</a></li>
+        <li><a class="addlink" href="{% url "admin_new_page" %}">{% trans "New page" %}</a></li>
     </ul>
     <div class="module">
         <table style="width: 100%">
@@ -17,10 +17,10 @@
             <tbody>
                 {% for page in pages %}
                     <tr>
-                        <th scope="row"><a href="{% url admin_edit_page id=page.id %}">{{ page.headline }}</a></th>
-                        <td style="width: 125px;"><a class="changelink" href="{% url admin_edit_page id=page.id %}">{% trans "Edit" %}</a></td>
+                        <th scope="row"><a href="{% url "admin_edit_page" id=page.id %}">{{ page.headline }}</a></th>
+                        <td style="width: 125px;"><a class="changelink" href="{% url "admin_edit_page" id=page.id %}">{% trans "Edit" %}</a></td>
                         <td style="width: 125px;">
-                            <a onclick="return confirm('{% trans "Are you sure you want to delete this page?" %}');" class="deletelink" href="{% url admin_delete_page id=page.id %}">
+                            <a onclick="return confirm('{% trans "Are you sure you want to delete this page?" %}');" class="deletelink" href="{% url "admin_delete_page" id=page.id %}">
                                 {% trans "Delete" %}
                             </a>
                         </td>

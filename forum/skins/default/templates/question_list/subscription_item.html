@@ -1,6 +1,6 @@
 {% load i18n humanize extra_filters extra_tags user_tags %}
 <div class="subscription_summary">
-    <div style="height:100%"><a class="sidebar_button subscription_unsubscribe_button" href="{% url subscribe id=subscription.question.id user=subscription.user.id %}">
+    <div style="height:100%"><a class="sidebar_button subscription_unsubscribe_button" href="{% url "subscribe" id=subscription.question.id user=subscription.user.id %}">
         {% trans "Unsubscribe" %}
     </a></div>
 

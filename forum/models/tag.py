@@ -11,8 +11,8 @@ from forum import modules
 class ActiveTagManager(CachedManager):
     use_for_related_fields = True
 
-    def get_query_set(self):
-        return super(ActiveTagManager, self).get_query_set().exclude(used_count__lt=1)
+    def get_queryset(self):
+        return super(ActiveTagManager, self).get_queryset().exclude(used_count__lt=1)
 
 class Tag(BaseModel):
     name            = models.CharField(max_length=255, unique=True)

@@ -1,5 +1,4 @@
 """Utilities for working with HTML."""
-#import html5lib
 from html5lib import sanitizer, serializer, tokenizer, treebuilders, treewalkers, HTMLParser
 from urllib import quote_plus
 from django.utils.html import strip_tags
@@ -69,8 +68,7 @@ def hyperlink(url, title, **attrs):
     return mark_safe('<a href="%s" %s>%s</a>' % (url, " ".join('%s="%s"' % i for i in attrs.items()), title))
 
 def objlink(obj, **attrs):
-    return hyperlink(settings.APP_URL + obj.get_absolute_url(), unicode(obj), **attrs)
-
-    
-
-
+    link = obj.get_absolute_url()
+    if not link.startswith(settings.APP_URL):
+        link = settings.APP_URL + link
+    return hyperlink(link, unicode(obj), **attrs)

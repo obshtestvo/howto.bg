@@ -1,6 +1,6 @@
 {% extends basetemplate %}
 
-{% load i18n humanize %}
+{% load i18n humanize admin_static %}
 
 {% block subtitle %}{% trans "Moderation" %}{% endblock %}
 {% block pagename %}{% trans "Moderation" %}{% endblock %}
@@ -56,9 +56,9 @@
                         <p><a href="{{ cheater.get_profile_url }}">{{ cheater.username }}</a></p>
                         <p><b>{% trans "Email" %}</b>
                         {% if cheater.email_isvalid %}
-                            <img src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon-yes.gif" alt="{% trans "Validated" %}" />
+                            <img src="{% static 'img/admin/icon-yes.gif' %}" alt="{% trans "Validated" %}" />
                         {% else %}
-                            <img src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon-no.gif" alt="{% trans "Not validated" %}" />
+                            <img src="{% static 'img/admin/icon-no.gif' %}" alt="{% trans "Not validated" %}" />
                         {% endif %}
                         <a href="mailto: {{ cheater.email }}">{{ cheater.email }}</a></p>
                         <p><b>{% trans "Reputation:" %}</b> {{ cheater.reputation|intcomma }}</p>
@@ -80,9 +80,9 @@
                                 <td><a href="{{ fake.get_profile_url }}">{{ fake.username }}</a></td>
                                 <td>
                                     {% if fake.email_isvalid %}
-                                        <img src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon-yes.gif" alt="{% trans "Validated" %}" />
+                                        <img src="{% static 'img/admin/icon-yes.gif' %}" alt="{% trans "Validated" %}" />
                                     {% else %}
-                                        <img src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon-no.gif" alt="{% trans "Not validated" %}" />
+                                        <img src="{% static 'img/admin/icon-no.gif' %}" alt="{% trans "Not validated" %}" />
                                     {% endif %}
                                     <a href="mailto: {{ fake.email }}">{{ fake.email }}</a>
                                 </td>

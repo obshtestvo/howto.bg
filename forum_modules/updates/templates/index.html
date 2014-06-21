@@ -43,7 +43,7 @@ $(function() {
 
 {% block admincontent %}
 
-<a href="{% url updater_check %}" id="check_for_updates" class="button">{% trans "Check for Updates" %}</a>
+<a href="{% url "updater_check" %}" id="check_for_updates" class="button">{% trans "Check for Updates" %}</a>
 <div id="update_check_status"></div>
 
 {% endblock %}

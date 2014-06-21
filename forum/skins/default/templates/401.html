@@ -2,7 +2,7 @@
 {% load i18n %}
 {% block title %}{% trans "Not logged in" %}{% endblock %}
 {% block meta %}
-    <!-- <meta http-equiv="refresh" content="5;url={% url auth_signin %}"> -->
+    <!-- <meta http-equiv="refresh" content="5;url={% url "auth_signin" %}"> -->
 {% endblock %}
 {% block forestyle%}
     <style type="text/css">
@@ -17,7 +17,7 @@
             }, 800);
 
             window.setTimeout(function() {
-                window.location = "{% url auth_signin %}";
+                window.location = "{% url "auth_signin" %}";
             }, 5000);
         });
 
@@ -37,7 +37,7 @@
             </p>
             <p>
                 {% trans "If you're not automatically redirected in 5 seconds, please click" %}
-                <a href="{% url auth_signin %}">{% trans "here" %}</a>.
+                <a href="{% url "auth_signin" %}">{% trans "here" %}</a>.
             </p>
         </div>
     </div>

@@ -13,7 +13,6 @@ from django.utils import dateformat
 from forum.models import Question, Answer, QuestionRevision, AnswerRevision, NodeRevision
 from django.utils.translation import ugettext as _
 from django.utils.translation import ungettext
-from django.utils import simplejson
 from forum import settings
 from django.template.defaulttags import url as default_url
 from forum import skins

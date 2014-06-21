@@ -4,17 +4,17 @@ from base import Setting, SettingSet, BaseSetting
 from django.forms.widgets import Textarea
 from django.utils.translation import ugettext_lazy as _
 from django.conf import settings as djsettings
-from django.utils.version import get_svn_revision
+from django.utils.version import get_git_changeset
 
 from forum.modules import get_modules_script_implementations
 
 OSQA_VERSION = "Development Build"
 
-SVN_REVISION = get_svn_revision(djsettings.SITE_SRC_ROOT)
+VCS_REVISION = get_git_changeset()
 
 # We'll have to keep in mind this variable on every release.
-if SVN_REVISION == u'SVN-unknown':
-    SVN_REVISION = u'SVN-1000'
+if VCS_REVISION == u'SVN-unknown':
+    VCS_REVISION = u'SVN-1000'
 
 MAINTAINANCE_MODE = Setting('MAINTAINANCE_MODE', None)
 
@@ -27,7 +27,6 @@ APP_BASE_URL = djsettings.APP_BASE_URL
 FORCE_SCRIPT_NAME = djsettings.FORCE_SCRIPT_NAME
 OSQA_SKIN = djsettings.OSQA_DEFAULT_SKIN
 LANGUAGE_CODE = djsettings.LANGUAGE_CODE
-ADMIN_MEDIA_PREFIX = djsettings.ADMIN_MEDIA_PREFIX
 ONLINE_USERS = Setting('ONLINE_USERS', {})
 
 

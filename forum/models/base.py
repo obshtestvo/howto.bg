@@ -190,7 +190,7 @@ class CachedQuerySet(models.query.QuerySet):
 class CachedManager(models.Manager):
     use_for_related_fields = True
 
-    def get_query_set(self):
+    def get_queryset(self):
         return CachedQuerySet(self.model)
 
     def get_or_create(self, *args, **kwargs):
@@ -226,7 +226,7 @@ class DenormalizedField(object):
         cls.add_to_class("reset_%s_cache" % name, reset_cache)
 
 
-class BaseMetaClass(models.Model.__metaclass__):
+class BaseMetaClass(type(models.Model)):
     to_denormalize = []
 
     def __new__(cls, *args, **kwargs):

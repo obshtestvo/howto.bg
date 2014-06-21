@@ -1,4 +1,9 @@
-access.log
-app/settings_local.py
 *.pyc
-log/
+.pydevproject
+.settings
+.project
+log/django.osqa.log
+tmp/*
+
+osqa.wsgi
+settings_local.py

@@ -6,7 +6,7 @@ import settings
 from xml.dom.minidom import parse, parseString
 from xml.parsers.expat import ExpatError
 from forum.modules import ui, decorate
-from forum.settings import SVN_REVISION
+from forum.settings import VCS_REVISION
 from django.contrib.auth.middleware import AuthenticationMiddleware
 from django.core.exceptions import ObjectDoesNotExist
 from django.utils.encoding import smart_str
@@ -26,7 +26,7 @@ def process_request(result, self, request):
         for message in messages:
             # Get the SVN Revision
             try:
-                svn_revision = int(SVN_REVISION.replace('SVN-', ''))
+                svn_revision = int(VCS_REVISION.replace('SVN-', ''))
             except ValueError:
                 # Here we'll have to find another way of getting the SVN revision
                 svn_revision = 0

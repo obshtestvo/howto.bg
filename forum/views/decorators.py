@@ -1,11 +1,10 @@
 # -*- coding: utf-8 -*-
-
+import json
 import logging
 
 from datetime import datetime
 
 from django.http import HttpResponse, HttpResponseRedirect
-from django.utils import simplejson
 from django.shortcuts import render_to_response
 from django.core.urlresolvers import reverse
 from django.template import RequestContext
@@ -49,7 +48,7 @@ class CommandException(Exception):
 class RefreshPageCommand(HttpResponse):
     def __init__(self):
         super(RefreshPageCommand, self).__init__(
-                content=simplejson.dumps({'commands': {'refresh_page': []}, 'success': True}),
+                content=json.dumps({'commands': {'refresh_page': []}, 'success': True}),
                 mimetype="application/json")
 
 def command(func, request, *args, **kwargs):
@@ -78,7 +77,7 @@ def command(func, request, *args, **kwargs):
             }
 
     if request.is_ajax():
-        return HttpResponse(simplejson.dumps(response), mimetype="application/json")
+        return HttpResponse(json.dumps(response), mimetype="application/json")
     else:
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 

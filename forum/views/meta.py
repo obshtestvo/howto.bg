@@ -9,13 +9,14 @@ from django.views.decorators.cache import cache_page
 from django.utils.translation import ugettext as _
 from django.utils.safestring import mark_safe
 
+from django.contrib import messages
+
 from forum import settings
 from forum.views.decorators import login_required
 from forum.forms import FeedbackForm
 from forum.modules import decorate
 from forum.forms import get_next_url
 from forum.models import Badge, Award, User, Page
-from forum.badges.base import BadgesMeta
 from forum.http_responses import HttpResponseNotFound, HttpResponseIntServerError
 from forum.utils.mail import send_template_email
 from forum.templatetags.extra_filters import or_preview
@@ -36,7 +37,7 @@ def static(request, title, content):
 def media(request, skin, path):
     response = serve(request, "%s/media/%s" % (skin, path),
                  document_root=os.path.join(os.path.dirname(os.path.dirname(__file__)), 'skins').replace('\\', '/'))
-    content_type = response['Content-Type']
+    content_type = response.get('Content-Type', '')
     if ('charset=' not in content_type):
         if (content_type.startswith('text') or content_type=='application/x-javascript'):
             content_type += '; charset=utf-8'
@@ -68,7 +69,7 @@ def feedback(request):
             send_template_email(recipients, "notifications/feedback.html", context)
 
             msg = _('Thanks for the feedback!')
-            request.user.message_set.create(message=msg)
+            messages.info(request, msg)
             return HttpResponseRedirect(get_next_url(request))
     else:
         form = FeedbackForm(request.user, initial={'next':get_next_url(request)})
@@ -88,6 +89,7 @@ def logout(request):
 
 @decorators.render('badges.html', 'badges', _('badges'), weight=300)
 def badges(request):
+    from forum.badges.base import BadgesMeta
     badges = sorted([Badge.objects.get(id=id) for id in BadgesMeta.by_id.keys()], lambda b1, b2: cmp(b1.name, b2.name))
 
     if request.user.is_authenticated():

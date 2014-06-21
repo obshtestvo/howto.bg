@@ -5,6 +5,7 @@ from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.auth.models import User as DjangoUser, AnonymousUser as DjangoAnonymousUser
 from django.db.models import Q, Manager
+from django.core.urlresolvers import get_script_prefix
 
 from django.utils.encoding import smart_unicode
 
@@ -209,15 +210,6 @@ class User(BaseModel, DjangoUser):
             sub_settings = SubscriptionSettings(user=self)
             sub_settings.save()
 
-    def get_messages(self):
-        messages = []
-        for m in self.message_set.all():
-            messages.append(m.message)
-        return messages
-
-    def delete_messages(self):
-        self.message_set.all().delete()
-
     @models.permalink
     def get_profile_url(self):
         keyword_arguments = {
@@ -230,7 +222,9 @@ class User(BaseModel, DjangoUser):
         return ('user_profile', (), keyword_arguments)
 
     def get_absolute_url(self):
-        return self.get_profile_url()
+        root_relative_url = self.get_profile_url()
+        relative_url = root_relative_url[len(get_script_prefix()):]
+        return '%s/%s' % (django_settings.APP_URL, relative_url)
 
     @models.permalink
     def get_asked_url(self):

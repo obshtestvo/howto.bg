@@ -12,6 +12,8 @@ from django.http import HttpResponseRedirect, HttpResponse, Http404
 from django.utils.html import *
 from django.utils.translation import ugettext as _
 
+from django.contrib import messages
+
 from forum.actions import AskAction, AnswerAction, ReviseAction, RollbackAction, RetagAction, AnswerToQuestionAction, CommentToQuestionAction
 from forum.forms import *
 from forum.models import *
@@ -95,8 +97,8 @@ def ask(request):
                     }
 
                     if request.user.is_authenticated():
-                        request.user.message_set.create(message=_("Your question is pending until you %s.") % html.hyperlink(
-                            reverse('send_validation_email'), _("validate your email")
+                        messages.info(request, _("Your question is pending until you %s.") % html.hyperlink(
+                            django_settings.APP_URL + reverse('send_validation_email', prefix='/'), _("validate your email")
                         ))
                         return HttpResponseRedirect(reverse('index'))
                     else:
@@ -270,8 +272,8 @@ def answer(request, id):
             }
 
             if request.user.is_authenticated():
-                request.user.message_set.create(message=_("Your answer is pending until you %s.") % html.hyperlink(
-                    reverse('send_validation_email'), _("validate your email")
+                messages.info(request, _("Your answer is pending until you %s.") % html.hyperlink(
+                    django_settings.APP_URL + reverse('send_validation_email', prefix='/'), _("validate your email")
                 ))
                 return HttpResponseRedirect(question.get_absolute_url())
             else:

@@ -1,10 +1,11 @@
 from django.http import HttpResponseRedirect, HttpResponse
 from forum.forms import get_next_url
 from django.utils.translation import ugettext as _
-from forum.user_messages import create_message, get_and_delete_messages
 from forum import settings
 from django.core.urlresolvers import reverse
 import logging
+
+from django.contrib import messages
 
 class AnonymousMessageManager(object):
     def __init__(self,request):
@@ -25,8 +26,6 @@ class ConnectToSessionMessagesMiddleware(object):
     def process_request(self, request):
         if not request.user.is_authenticated():
             request.user.__deepcopy__ = dummy_deepcopy #plug on deepcopy which may be called by django db "driver"
-            request.user.message_set = AnonymousMessageManager(request) #here request is linked to anon user
-            request.user.get_and_delete_messages = request.user.message_set.get_and_delete
 
             #also set the first greeting one time per session only
             if 'greeting_set' not in request.session:
@@ -37,7 +36,7 @@ class ConnectToSessionMessagesMiddleware(object):
                 # If the store greeting in cookie setting is activated make sure that the greeting_set cookies isn't set
                 if (settings.STORE_GREETING_IN_COOKIE and not request.COOKIES.has_key('greeting_set')) or \
                   not settings.STORE_GREETING_IN_COOKIE:
-                    request.user.message_set.create(message=msg)
+                    messages.info(request, msg)
 
                 if settings.STORE_GREETING_IN_COOKIE:
                     request.COOKIES.set(key='greeting_set', value=True)

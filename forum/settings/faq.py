@@ -1,8 +1,7 @@
-# coding: utf-8
 from base import Setting, SettingSet
 from django.forms.widgets import Textarea
 
-FAQ_SET = SettingSet('faq', 'FAQ page', "Define the text in the about page. You can use markdown and some basic html tags.", 2000, True)
+FAQ_SET = SettingSet('faq', _('FAQ page'), _("Define the text in the about page. You can use markdown and some basic html tags."), 2000, True)
 
 FAQ_PAGE_TEXT = Setting('FAQ_PAGE_TEXT',
 u"""
@@ -73,6 +72,6 @@ HowTo.bg е сайт за въпроси и отговори – не е мяс�
 
 Моля задайте ги като въпрос в сайтa, ще се радваме да им отговорим!
 """, FAQ_SET, dict(
-label = "FAQ page text",
-help_text = " The faq page. ",
+label = _("FAQ page text"),
+help_text = _("The faq page."),
 widget=Textarea(attrs={'rows': '25'})))

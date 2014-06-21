@@ -7,7 +7,7 @@
         <script type="text/javascript">
         
         $().ready(function(){
-            $("#id_tags").autocomplete("{% url matching_tags %}", {
+            $("#id_tags").autocomplete("{% url "matching_tags" %}", {
         		matchContains: true,
                 max: 20,
                 multiple: true,
@@ -41,7 +41,7 @@
 </div>
 <div id="main-body" class="ask-body">
     <div id="askform">
-        <form id="fmretag" action="{% url edit_question question.id %}" method="post">
+        <form id="fmretag" action="{% url "edit_question" question.id %}" method="post">
             {% csrf_token %}
             <h3>
                 {{ question.headline }}
@@ -78,7 +78,7 @@
         </li>
     </ul>
     <p class='info-box-follow-up-links'>
-        <a href="{% url faq %}">faq &raquo;</a>
+        <a href="{% url "faq" %}">faq &raquo;</a>
     </p>
 </div>
 

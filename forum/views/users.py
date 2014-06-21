@@ -12,7 +12,6 @@ from django.utils.translation import ugettext as _
 from django.utils.http import urlquote_plus
 from django.utils.html import strip_tags
 from django.utils.encoding import smart_unicode
-from django.utils import simplejson
 from django.core.urlresolvers import reverse, NoReverseMatch
 from forum.forms import *
 from forum.utils.html import sanitize_html
@@ -23,7 +22,10 @@ from forum.modules import ui
 from forum.utils import pagination
 from forum.views.readers import QuestionListPaginatorContext, AnswerPaginatorContext
 from forum.settings import ONLINE_USERS
- 
+
+from django.contrib import messages
+
+import json 
 import time
 import datetime
 import decorators
@@ -163,7 +165,7 @@ def edit_user(request, id, slug):
             user.save()
             EditProfileAction(user=user, ip=request.META['REMOTE_ADDR']).save()
 
-            request.user.message_set.create(message=_("Profile updated."))
+            messages.info(request, _("Profile updated."))
             return HttpResponseRedirect(user.get_profile_url())
     else:
         form = EditUserForm(user)
@@ -388,7 +390,7 @@ def user_reputation(request, user, **kwargs):
     values = [r.value for r in rep]
     redux = lambda x, y: x+y
 
-    graph_data = simplejson.dumps([
+    graph_data = json.dumps([
     (time.mktime(rep[i].date.timetuple()) * 1000, reduce(redux, values[:i+1], 0))
     for i in range(len(values))
     ])
@@ -451,7 +453,7 @@ def _user_subscriptions(request, user, **kwargs):
                 user.subscription_settings.enable_notifications = enabled
                 user.subscription_settings.save()
 
-                request.user.message_set.create(message=message)
+                messages.info(request, message)
         else:
             form = SubscriptionSettingsForm(instance=user.subscription_settings)
 
@@ -469,7 +471,7 @@ def user_preferences(request, user, **kwargs):
 
         if form.is_valid():
             user.prop.preferences = form.cleaned_data
-            request.user.message_set.create(message=_('New preferences saved'))
+            messages.info(request, _('New preferences saved'))
 
     else:
         preferences = user.prop.preferences

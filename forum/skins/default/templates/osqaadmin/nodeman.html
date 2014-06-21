@@ -1,6 +1,6 @@
 {% extends basetemplate %}
 
-{% load i18n user_tags extra_tags extra_filters %}
+{% load i18n user_tags extra_tags extra_filters admin_static %}
 
 {% block adminjs %}
     <script type="text/javascript">
@@ -64,7 +64,7 @@
                 }
             });
 
-            $('#author-selector').autocomplete('{% url matching_users %}', {
+            $('#author-selector').autocomplete('{% url "matching_users" %}', {
                 minChars: 1,
                 matchContains: true,
                 max: 10,
@@ -93,7 +93,7 @@
                 }
             });
 
-            $('#tag-selector').autocomplete('{% url matching_tags %}', {
+            $('#tag-selector').autocomplete('{% url "matching_tags" %}', {
                 minChars: 1,
                 matchContains: true,
                 max: 10,
@@ -208,8 +208,7 @@
             padding: 0 0 0 0;
         }
     </style>
-    <script type="text/javascript">window.__admin_media_prefix__ = "{{ settings.ADMIN_MEDIA_PREFIX }}";</script>
-    <link href="{{ settings.ADMIN_MEDIA_PREFIX }}css/base.css" rel="stylesheet" type="text/css" media="screen" />
+    <link href="{% static 'admin/css/base.css' %}" rel="stylesheet" type="text/css" media="screen" />
     <script type="text/javascript">
     /* gettext identity library */
 
@@ -254,7 +253,7 @@
     }
     
     </script>
-    <script type="text/javascript" src="{{ settings.ADMIN_MEDIA_PREFIX }}js/core.js"></script>
+    <script type="text/javascript" src="{% static 'admin/js/core.js' %}"></script>
 {% endblock %}
 
 {% block subtitle %}
@@ -271,7 +270,7 @@
             {% csrf_token %}
             <div>
                 <div>
-                    <label><img alt="Search" src="{{ settings.ADMIN_MEDIA_PREFIX }}img/admin/icon_searchbox.png"></label>
+                    <label><img alt="Search" src="{% static 'admin/img/admin/icon_searchbox.png' %}"></label>
                     <input type="text" size="40" name="text" id="text-filter-input" value="{{ text }}">
                     <input type="submit" value="{% trans "Search" %}">
                     {% if text %}
@@ -390,7 +389,7 @@
             {% endif %}
             <ul id="pre-filter-container">
                 {% for name, uri in settings.NODE_MAN_FILTERS %}
-                <li class="selected"><a href="{% url admin_tools "nodeman" %}?{{ uri }}">{{ name }}</a></li>
+                <li class="selected"><a href="{% url "admin_tools" "nodeman" %}?{{ uri }}">{{ name }}</a></li>
                 {% endfor %}
             </ul>
             <form action="" method="POST">

@@ -93,7 +93,7 @@
             </style>
         </noscript>
 {% endblock %}
-        
+
 {% block content %}
 <div class="headNormal">
     <h1><a href="{{ question.get_absolute_url }}">{{ question.headline }}</a></h1>
@@ -105,7 +105,7 @@
                     <td style="width:30px;vertical-align:top">
                         <div class="vote-buttons">
                             {% vote_buttons question request.user %}
-                            {% favorite_mark question request.user %}                            
+                            {% favorite_mark question request.user %}
                         </div>
                     </td>
                     <td>
@@ -115,11 +115,11 @@
                             </div>
                             <div id="question-tags" class="tags-container tags">
                                 {% for tag in question.tagname_list %}
-                                    <a href="{% url tag_questions tag|urlencode %}" class="post-tag tag-link-{{ tag }}"
+                                    <a href="{% url "tag_questions" tag|urlencode %}" class="post-tag tag-link-{{ tag }}"
                                         title="{% blocktrans with tag as tagname %}see questions tagged '{{ tagname }}'{% endblocktrans %}" rel="tag">{{ tag }}</a>
                                 {% endfor %}
                             </div>
-                            <div id="question-controls" class="post-controls">                            
+                            <div id="question-controls" class="post-controls">
                                 {% post_controls question request.user %}
                                 {% wiki_symbol request.user question %}
                             </div>
@@ -128,7 +128,7 @@
                             </div>
                             {% comments question request.user %}
                         </div>
-                        
+
                     </td>
                 </tr>
             </table>
@@ -151,7 +151,7 @@
                     {{ answers.paginator.sort_tabs }}
                 </div>
                 {{ answers.paginator.page_numbers }}
-  
+
                 {% for answer in answers.paginator.page %}
                     <a name="{{ answer.id }}"></a>
                     <div id="answer-container-{{ answer.id }}" class="answer {% post_classes answer %}{% ifequal answer.id focused_answer_id %} focusedAnswer{% endifequal %}">
@@ -186,11 +186,11 @@
                     {{ answers.paginator.page_numbers }}
                 </div>
             {% endif %}
-        <form id="fmanswer" action="{% url answer question.id %}" method="post">
+        <form id="fmanswer" action="{% url "answer" question.id %}" method="post">
             {% csrf_token %}
             <div style="clear:both">
             </div>
-            
+
             {% if not question.closed %}
                 <div style="padding:10px 0 0 0;">
                     {% spaceless %}
@@ -215,7 +215,7 @@
                         {% endifequal %}
                         {% if not request.user.email_valid_and_can_answer %}
                             {% blocktrans %}Remember, your answer will not be published until you validate your email.{% endblocktrans %}
-                            <a href="{% url send_validation_email %}">{% trans "Send me a validation link." %}</a>
+                            <a href="{% url "send_validation_email" %}">{% trans "Send me a validation link." %}</a>
                         {% endif %}
                     </p>
                 {% endif %}
@@ -244,21 +244,21 @@
                                 </td>
                                 {% endif %}
                             </tr>
-                        
-                        </table>  
+
+                        </table>
                     </div>
                     {{ answer.text.errors }}
                     <div id="previewer" class="wmd-preview"></div>
                 </div>
 
-	            {% if answer.recaptcha %}
-	            <div class="question-captcha" style="float: left;">
-	            	{{ answer.recaptcha.errors }}
-	            	{{ answer.recaptcha }}
-	            </div>
-	            <div class="clear"></div>
-	            {% endif %}
-                
+                {% if answer.recaptcha %}
+                <div class="question-captcha" style="float: left;">
+                    {{ answer.recaptcha.errors }}
+                    {{ answer.recaptcha }}
+                </div>
+                <div class="clear"></div>
+                {% endif %}
+
                 <p><span class="form-error"></span></p>
                 <input type="button"
                     {% if user.is_anonymous %}
@@ -281,6 +281,20 @@
 {% cache 60 questions_tags settings.APP_URL question.id %}
 <div class="boxC">
     <p>
+        {% trans "Question tags" %}:
+    </p>
+    <p class="tags" >
+        {% for tag in question.tags.all %}
+        <a href="{% url "tag_questions" tag.name|urlencode %}"
+            class="tag-link-{{ tag.name }}"
+            title="{% trans "see questions tagged"%}'{{tag.name}}'{% trans "using tags" %}"
+            rel="tag">{{ tag.name }}</a> <span class="tag-number">&#215;{{ tag.used_count|intcomma }}</span><br/>
+        {% endfor %}
+    </p>
+    <p>
+        {% trans "question asked" %}: <strong title="{{ question.added_at }}">{% diff_date question.added_at %}</strong>
+    </p>
+    <p> 
      	{% trans "question was seen" %}: <strong>{{ question.view_count|intcomma }} {% trans "times" %}</strong>
     </p>
     <p>

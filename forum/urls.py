@@ -2,7 +2,7 @@ import startup
 
 import os.path
 from forum import settings
-from django.conf.urls.defaults import *
+from django.conf.urls import patterns, url, include
 from django.conf import settings as djsettings
 from django.contrib import admin
 from forum import views as app
@@ -18,11 +18,6 @@ sitemaps = {
 
 APP_PATH = os.path.dirname(__file__)
 
-try:
-    admin_url = url(r'^%s(.*)' % _('nimda/'), admin.site.root)
-except AttributeError:
-    admin_url = url(r'^%s(.*)' % _('nimda/'), admin.site.urls)
-
 # Choose the user urls pattern
 if bool(settings.INCLUDE_ID_IN_USER_URLS.value):
     core_user_urls_prefix = r'^%s(?P<id>\d+)/(?P<slug>.*)'
@@ -30,7 +25,8 @@ else:
     core_user_urls_prefix = r'^%s(?P<slug>.*)'
 
 core_urls = (
-    url(r'^$', app.readers.index, name='index'), admin_url,
+    url(r'^$', app.readers.index, name='index'),
+    url(r'^%s(.*)' % _('nimda/'), admin.site.urls),
                         
     url(r'^sitemap.xml$', 'forum.sitemap.index', {'sitemaps': sitemaps}),
     url(r'^sitemap-(?P<section>.+)-(?P<page>\d+)\.xml$', 'forum.sitemap.sitemap', {'sitemaps': sitemaps}, name="sitemap_section_page"),
@@ -85,7 +81,7 @@ core_urls = (
     url(r'^%s(?P<id>\d+)/' % _('convert_to_question/'), app.writers.convert_to_question,name='convert_to_question'),
     url(r'^%s(?P<id>\d+)/' % _('wikify/'), app.commands.wikify, name='wikify'),
     
-    url(r'^%s(?P<id>\d+)/(?P<slug>[\w-]*)$' % _('question/'), 'django.views.generic.simple.redirect_to', {'url': '/questions/%(id)s/%(slug)s'}),
+    url(r'^%s(?P<id>\d+)/(?P<slug>[\w-]*)$' % _('question/'), 'django.shortcuts.redirect', {'url': '/questions/%(id)s/%(slug)s'}),
     url(r'^%s(?P<id>\d+)/?$' % _('questions/'), app.readers.question, name='question'),
     url(r'^%s(?P<id>\d+)/(?P<slug>.*)/(?P<answer>\d+)$' % _('questions/'), app.readers.question),
     url(r'^%s(?P<id>\d+)/(?P<slug>.*)$' % _('questions/'), app.readers.question, name='question'),

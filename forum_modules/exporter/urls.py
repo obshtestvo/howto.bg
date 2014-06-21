@@ -1,5 +1,4 @@
-from django.conf.urls.defaults import *
-from django.views.generic.simple import direct_to_template
+from django.conf.urls import patterns, url, include
 from django.utils.translation import ugettext as _
 
 from views import state, running, download

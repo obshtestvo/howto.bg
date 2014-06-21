@@ -1,7 +1,8 @@
+import json
+
 from django.utils.translation import ugettext as _
 from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
-from django.utils import simplejson
 from django.utils.encoding import smart_str
 from django.shortcuts import render_to_response
 from forum.modules import decorate
@@ -15,7 +16,6 @@ from forum.models.user import User
 from forum.forms.general import SimpleCaptchaForm
 
 import settings
-import logging
 
 def can_bypass_spam_check(user):
     return user.is_authenticated and (user.is_superuser or user.is_staff or cmp(int(user.reputation), REP_FOR_NO_SPAM_CHECK) > 0)
@@ -51,7 +51,7 @@ def check_spam(param, comment_type):
                     'success': False,
                     'error_message': _("Sorry, but akismet thinks your %s is spam.") % comment_type
                     }
-                    return HttpResponse(simplejson.dumps(response), mimetype="application/json")
+                    return HttpResponse(json.dumps(response), mimetype="application/json")
                 else:
                     captcha_checked = False
                     try:

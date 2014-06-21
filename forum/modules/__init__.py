@@ -16,15 +16,10 @@ def get_modules_script(script_name):
 
         try:
             all.append(__import__('%s.%s' % (m.__name__, script_name), globals(), locals(), [m.__name__]))
-        except ImportError, e:
-            #print repr(type(e)) + m.__name__ + ":" + str(e)
-            pass
-        except:
-            import traceback
-            msg = "Error importing %s from module %s: \n %s" % (
-                script_name, m, traceback.format_exc()
-            )
-            logging.error(msg)
+        except Exception, e:
+            if isinstance(e, ImportError) and str(e).endswith(script_name):
+                continue
+            logging.exception("Error importing %s from module %s", script_name, m)
 
     return all
 

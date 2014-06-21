@@ -12,7 +12,7 @@
 
 {% block content %}
     <div class="headNormal">
-	    {% trans "OSQA administration area" %} - {% block subtitle %}{% endblock %}
+        {% trans "OSQA administration area" %} - {% block subtitle %}{% endblock %}
     </div>
     <div id="admin_page_description">
         {% block description %}{% endblock %}
@@ -28,23 +28,23 @@
 
     {% else %}
     <div class="boxC">
-        <a href="{% url admin_switch_interface %}?to=djstyle">{% trans "Switch to django style interface" %}</a>
+        <a href="{% url "admin_switch_interface" %}?to=djstyle">{% trans "Switch to django style interface" %}</a>
         <h3 class="subtitle">{% trans "Administration menu" %}</h3>
         <ul>
         {% for set in allsets.values %}
-            <li><a href="{% url admin_set set.name %}">{{ set.title }}</a></li>
+            <li><a href="{% url "admin_set" set.name %}">{{ set.title }}</a></li>
         {% endfor %}
-        
+
         {% for set in othersets %}
             <li>
-                <a href="{% url admin_set set.name %}">{{ set.title }}</a>
+                <a href="{% url "admin_set" set.name %}">{{ set.title }}</a>
             </li>
         {% endfor %}
-        
-        <li><a href="{% url admin_maintenance %}">{% trans "Maintenance mode" %}</a></li>
-        <li><a href="{% url admin_flagged_posts %}">{% trans "Flagged Posts" %}</a></li>
+
+        <li><a href="{% url "admin_maintenance" %}">{% trans "Maintenance mode" %}</a></li>
+        <li><a href="{% url "admin_flagged_posts" %}">{% trans "Flagged Posts" %}</a></li>
         {% for name,tool in tools %}
-            <li><a href="{% url admin_tools name %}">{{ tool }}</a></li>
+            <li><a href="{% url "admin_tools" name %}">{{ tool }}</a></li>
         {% endfor %}
         </ul>
     </div>
@@ -54,5 +54,3 @@
 
     {% endif %}
 {% endblock %}
-
-                

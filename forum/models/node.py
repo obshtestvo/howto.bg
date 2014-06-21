@@ -152,7 +152,7 @@ class NodeQuerySet(CachedQuerySet):
 class NodeManager(CachedManager):
     use_for_related_fields = True
 
-    def get_query_set(self):
+    def get_queryset(self):
         qs = NodeQuerySet(self.model)
 
         # If the node is an answer, question or comment we filter the Node model by type

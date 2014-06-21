@@ -94,7 +94,7 @@
                     if (data.errors == false) {
                         if (exporting) {
                             $('#wait_message').html('{% trans "Your backup is ready to be downloaded."%}');
-                            $('#download_link_a').attr('href', '{% url exporter_download %}?file=' + data.state.overall.fname)
+                            $('#download_link_a').attr('href', '{% url "exporter_download" %}?file=' + data.state.overall.fname)
                             $('#download_link').slideDown();
                         } else {
                             $('#wait_message').html('{% trans "All data sucessfully imported."%}')
@@ -121,7 +121,7 @@
                 }
              }, 1000);
 
-             $.getJSON('{% url exporter_state %}', callback);
+             $.getJSON('{% url "exporter_state" %}', callback);
         }
 
         check_state();

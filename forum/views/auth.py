@@ -14,6 +14,8 @@ from django.utils.translation import ugettext as _
 from django.utils.encoding import smart_unicode
 from django.contrib.auth import login, logout
 
+from django.contrib import messages
+
 from writers import manage_pending_data
 
 from forum.actions import EmailValidationAction
@@ -87,7 +89,7 @@ def prepare_provider_signin(request, provider):
 
         try:
             request_url = provider_class.prepare_authentication_request(request,
-                                                                        reverse('auth_provider_done',
+                                                                        reverse('auth_provider_done', prefix='/',
                                                                                 kwargs={'provider': provider}))
 
             return HttpResponseRedirect(request_url)
@@ -132,8 +134,7 @@ def process_provider_signin(request, provider):
                 except:
                     uassoc = AuthKeyUserAssociation(user=request.user, key=assoc_key, provider=provider)
                     uassoc.save()
-                    request.user.message_set.create(
-                            message=_('The new credentials are now associated with your account'))
+                    messages.info(request, _('The new credentials are now associated with your account'))
                     return HttpResponseRedirect(reverse('user_authsettings', args=[request.user.id]))
 
             return HttpResponseRedirect(reverse('auth_signin'))
@@ -251,7 +252,7 @@ def request_temp_login(request):
 
                 send_template_email([u], "auth/temp_login_email.html", {'temp_login_code': hash})
 
-                request.user.message_set.create(message=_("An email has been sent with your temporary login key"))
+                messages.info(request, _("An email has been sent with your temporary login key"))
 
             return HttpResponseRedirect(reverse('index'))
     else:
@@ -297,7 +298,7 @@ def send_validation_email(request):
             'additional_get_params' : additional_get_params
         })
 
-        request.user.message_set.create(message=_("A message with an email validation link was just sent to your address."))
+        messages.info(request, _("A message with an email validation link was just sent to your address."))
         return HttpResponseRedirect(request.META.get('HTTP_REFERER', '/'))
 
         
@@ -332,11 +333,11 @@ def auth_settings(request, id):
             user_.save()
 
             if is_new_pass:
-                request.user.message_set.create(message=_("New password set"))
+                messages.info(request, _("New password set"))
                 if not request.user.is_superuser:
                     form = ChangePasswordForm(user=user_)
             else:
-                request.user.message_set.create(message=_("Your password was changed"))
+                messages.info(request, _("Your password was changed"))
 
             return HttpResponseRedirect(reverse('user_authsettings', kwargs={'id': user_.id}))
     else:
@@ -372,7 +373,7 @@ def remove_external_provider(request, id):
     if not (request.user.is_superuser or request.user == association.user):
         return HttpResponseUnauthorized(request)
 
-    request.user.message_set.create(message=_("You removed the association with %s") % association.provider)
+    messages.info(request, _("You removed the association with %s") % association.provider)
     association.delete()
     return HttpResponseRedirect(reverse('user_authsettings', kwargs={'id': association.user.id}))
 
@@ -389,7 +390,7 @@ def login_and_forward(request, user, forward=None, message=None):
     if message is None:
         message = _("Welcome back %s, you are now logged in") % smart_unicode(user.username)
 
-    request.user.message_set.create(message=message)
+    messages.info(request, message)
 
     if not forward:
         forward = request.session.get(ON_SIGNIN_SESSION_ATTR, reverse('index'))
@@ -401,7 +402,7 @@ def login_and_forward(request, user, forward=None, message=None):
         if submission_time < datetime.datetime.now() - datetime.timedelta(minutes=int(settings.HOLD_PENDING_POSTS_MINUTES)):
             del request.session[PENDING_SUBMISSION_SESSION_ATTR]
         elif submission_time < datetime.datetime.now() - datetime.timedelta(minutes=int(settings.WARN_PENDING_POSTS_MINUTES)):
-            user.message_set.create(message=(_("You have a %s pending submission.") % pending_data['data_name']) + " %s, %s, %s" % (
+            messages.info(request, (_("You have a %s pending submission.") % pending_data['data_name']) + " %s, %s, %s" % (
                 html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('save')}), _("save it")),
                 html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('review')}), _("review")),
                 html.hyperlink(reverse('manage_pending_data', kwargs={'action': _('cancel')}), _("cancel"))
@@ -432,7 +433,7 @@ def forward_suspended_user(request, user, show_private_msg=True):
     if suspension:
         message += (":<br />" + suspension.extra.get(msg_type, ''))
 
-    request.user.message_set.create(message)
+    messages.info(request, message)
     return HttpResponseRedirect(reverse('index'))
 
 @decorate.withfn(login_required)

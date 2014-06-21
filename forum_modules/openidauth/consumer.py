@@ -4,7 +4,6 @@ import re
 
 from django.utils.encoding import smart_unicode
 from django.utils.html import escape
-from django.http import get_host
 
 from forum.authentication.base import AuthenticationConsumer, InvalidAuthentication
 import settings
@@ -165,7 +164,7 @@ def get_url_host(request):
         protocol = 'https'
     else:
         protocol = 'http'
-    host = escape(get_host(request))
+    host = escape(request.get_host())
     return '%s://%s' % (protocol, host)
 
 def get_full_url(request):

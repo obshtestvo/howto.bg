@@ -81,7 +81,7 @@ class PickledObjectField(models.Field):
                     raise
         return value
 
-    def get_db_prep_value(self, value):
+    def get_db_prep_value(self, value, connection, prepared=False):
         if value is not None and not isinstance(value, PickledObject):
             if type(value).__name__ in self.markable_types and not (isinstance(value, basestring) and len(value
                                                                                                           ) > MAX_MARKABLE_STRING_LENGTH):

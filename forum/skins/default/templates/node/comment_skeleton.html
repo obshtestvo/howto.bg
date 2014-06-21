@@ -4,7 +4,7 @@
 <div class="clear"></div>
 <div id="comment-{{ post.id }}-form-container" class="comment-form-container">
     {% if can_comment %}
-    <form id="comment-{{ post.id }}-form" method="post" action="{% url comment id=post.id %}" accept-charset="utf-8">
+    <form id="comment-{{ post.id }}-form" method="post" action="{% url "comment" id=post.id %}" accept-charset="utf-8">
         {% csrf_token %}
         <div class="comment-form-widgets-container">
             <textarea name="comment" class="commentBox" id="comment"></textarea>

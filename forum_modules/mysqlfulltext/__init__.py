@@ -6,7 +6,7 @@ DESCRIPTION = "Enables Mysql full text search functionality."
 
 try:
     import MySQLdb
-    import settings_local
+    import server.settings_app
     CAN_USE = 'mysql' in database_type
 except Exception, e:
     import traceback

@@ -1,10 +1,7 @@
+import json
+
 from consumer import OAuthAbstractAuthConsumer
 from forum.authentication.base import ConsumerTemplateContext
-
-try:
-    import json as simplejson
-except ImportError:
-    from django.utils import simplejson
 
 from lib import oauth2
 import settings
@@ -24,7 +21,7 @@ class TwitterAuthConsumer(OAuthAbstractAuthConsumer):
         json = self.fetch_data(key, "https://twitter.com/account/verify_credentials.json")
         
         if 'screen_name' in json:
-            creds = simplejson.loads(json)
+            creds = json.loads(json)
 
             return {
                 'username': creds['screen_name']
