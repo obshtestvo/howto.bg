@@ -3,7 +3,7 @@ html5lib
 python-openid
 South
 python-memcached
-django==1.6.0
+django==1.6.6
 django-debug-toolbar
 django-endless-pagination
 pytz
