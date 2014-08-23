@@ -109,7 +109,7 @@
                 {% if not can_view_private %}
                 <tr>
                     <td colspan="2" style="text-align:right">
-                        <a href="{% url "user_report" user.pk %}" class="ajax-command withprompt">
+                        <a href="{% url "user_report" view_user.pk %}" class="ajax-command withprompt">
                         Report user
                         </a>
                     </td>
