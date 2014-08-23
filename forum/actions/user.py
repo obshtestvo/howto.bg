@@ -216,10 +216,9 @@ class ReportAction(ActionProxy):
             )
 
     def describe(self, viewer=None):
-
-        return _("%(user)s reported %(reported) : %(msg)s") % {
+        return _("%(user)s reported %(reported)s : %(msg)s") % {
             'user': self.hyperlink(self.user.get_absolute_url(), self.friendly_username(viewer, self.user)),
-            'reporter': self.extra.get('reported').username,
+            'reported': self.extra.get('reported').username,
             'msg': self.extra.get('publicmsg', _('N/A'))
         }
 
